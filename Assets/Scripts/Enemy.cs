@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PatternType
+{
+    single,
+    way,
+}
+
 public class Enemy : MonoBehaviour
 {
     /// <summary>敵の体力</summary>
@@ -18,23 +24,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform[] m_muzzles = null;
     /// <summary>敵の弾のプレハブ</summary>
     [SerializeField] GameObject m_bulletPrefab = null;
-    /// <summary> 弾幕タイプ </summary>
+    /// <summary>弾幕タイプ</summary>
     [SerializeField] PatternType patternType = PatternType.single;
     float m_timer;
+    /// <summary>発射する弾の進行方向</summary>
     [SerializeField] BulletController.MoveDirection m_moveDirection = BulletController.MoveDirection.aimAtPlayer;
-    Rigidbody2D m_rb = null;
+    //Rigidbody2D m_rb = null;
     GameObject m_player;
 
-    public enum PatternType
-    {
-        single,
-        way,
-    }
+    
 
     void Start()
     {
-        m_rb = GetComponent<Rigidbody2D>();
-        m_player = GameObject.FindGameObjectWithTag("Player");
+        //m_rb = GetComponent<Rigidbody2D>();
+        m_player = GameObject.Find("Player");
 
         if (m_muzzles == null)
         {
@@ -48,11 +51,11 @@ public class Enemy : MonoBehaviour
         //プレイヤーの位置によって自身の身体の向きを変えるだけ
         if (m_player.transform.position.x < this.gameObject.transform.position.x)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector2(-1, 1);
         }
         else
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector2(1, 1);
         }
 
         if (patternType == PatternType.single)
@@ -61,7 +64,8 @@ public class Enemy : MonoBehaviour
         }
         if (patternType == PatternType.way)
         {
-            way();
+            /// 工事中 ///
+            //way();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,6 +74,7 @@ public class Enemy : MonoBehaviour
         {
             if (collision.gameObject.name == "Player")
             {
+                //プレイヤー自身と接触してしまうと後述のBulletControllerを取得する処理でエラーが出るのでそれの対策用
                 return;
             }
             BulletController bullet = collision.GetComponent<BulletController>();
@@ -101,10 +106,10 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
+    /*
     void way()
     {
-        // angleで角度を指定、wayNumでway数を指定出来るNway弾を作りたい
+        //angleで角度を指定、wayNumでway数を指定出来るNway弾を作りたい
 
 
         m_timer += Time.deltaTime;
@@ -124,4 +129,5 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    */
 }

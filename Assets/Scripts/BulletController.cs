@@ -9,7 +9,7 @@ public class BulletController : MonoBehaviour
     /// <summary> 弾速 </summary>
     [SerializeField] public float m_speed = 1f;
     /// <summary> 弾の進行方向 </summary>
-    [SerializeField] MoveDirection moveDirection;
+    MoveDirection moveDirection;
     [SerializeField] public int m_power = 2;
     public enum MoveDirection
     {

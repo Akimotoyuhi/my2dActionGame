@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] IsGrounded ground = null;
     bool m_isGround = false;
     bool m_damage = false;
-    bool m_isJump = false;
-    float m_jumpTimer = 0f;
+    //bool m_isJump = false;
+    //float m_jumpTimer = 0f;
     [SerializeField] float m_jumpTimerLimit = 2f;
     float m_timer;
 
@@ -57,30 +57,32 @@ public class PlayerController : MonoBehaviour
             xSpeed = 0.0f;
         }
 
+        /*
         //Jumpキーを押した時間によってジャンプの高さをを変えたい
-        //if (Input.GetButton("Jump") && m_isGround)
-        //{
-        //    if (m_jumpTimer < m_jumpTimerLimit)
-        //    {
-        //        m_jumpTimer = Time.deltaTime;
-        //    }
+        if (Input.GetButton("Jump") && m_isGround)
+        {
+            if (m_jumpTimer < m_jumpTimerLimit)
+            {
+                m_jumpTimer = Time.deltaTime;
+            }
 
-        //    if (m_jumpTimer > 0)
-        //    {
-        //        if (m_jumpTimer < 1f)
-        //        {
-        //            m_rb.AddForce(Vector2.up * (m_jumpPower / 2), ForceMode2D.Impulse);
-        //            m_anim.SetTrigger("Jump");
-        //            m_jumpTimer = 0;
-        //        }
-        //        else if (m_jumpTimer >= 1f)
-        //        {
-        //            m_rb.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
-        //            m_anim.SetTrigger("Jump");
-        //            m_jumpTimer = 0;
-        //        }
-        //    }
-        //}
+            if (m_jumpTimer > 0)
+            {
+                if (m_jumpTimer < 1f)
+                {
+                    m_rb.AddForce(Vector2.up * (m_jumpPower / 2), ForceMode2D.Impulse);
+                    m_anim.SetTrigger("Jump");
+                    m_jumpTimer = 0;
+                }
+                else if (m_jumpTimer >= 1f)
+                {
+                    m_rb.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
+                    m_anim.SetTrigger("Jump");
+                    m_jumpTimer = 0;
+                }
+            }
+        }
+        */
 
         if (Input.GetButtonDown("Jump") && m_isGround)
         {
