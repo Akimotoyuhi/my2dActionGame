@@ -14,16 +14,6 @@ public class AimAtPlayer : BulletClass
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Untagged")
-        {
-            if (this.gameObject.tag == "Enemy" && collision.tag != "Enemy")
-            {
-                Destroy(this.gameObject);
-            }
-            if (this.gameObject.tag == "Player" && collision.tag != "Player")
-            {
-                Destroy(this.gameObject);
-            }
-        }
+        Destroy(this.gameObject);
     }
 }
