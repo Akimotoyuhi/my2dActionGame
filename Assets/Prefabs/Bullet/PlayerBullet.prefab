@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 9004430037242269870}
   - component: {fileID: 2729883558271400414}
   - component: {fileID: 3819891173230733158}
-  - component: {fileID: 4300963015901439346}
+  - component: {fileID: -7638224272656149811}
   m_Layer: 11
   m_Name: PlayerBullet
-  m_TagString: Player
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4300963015901439346
+--- !u!114 &-7638224272656149811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,9 +130,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8525600345454847061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc2d5af34f941d438781d768ee7b3a8, type: 3}
+  m_Script: {fileID: 11500000, guid: daa30461d80c6ec4bbe206a8a62c5065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 20
-  moveDirection: 4
   m_power: 2

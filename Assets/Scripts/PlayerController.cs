@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>敵が弾を発射する間隔（秒）</summary>
     [SerializeField] float m_fireInterval = 0.5f;
     /// <summary> 自機の体力 </summary>
-    [SerializeField] int m_life = 10;
+    [SerializeField] float m_life = 10;
     /// <summary>自機が弾を発射する場所</summary>
     [SerializeField] Transform[] m_muzzles = null;
     /// <summary>自機の弾のプレハブ</summary>
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     bool m_damage = false;
     //bool m_isJump = false;
     //float m_jumpTimer = 0f;
-    [SerializeField] float m_jumpTimerLimit = 2f;
+    //[SerializeField] float m_jumpTimerLimit = 2f;
     float m_timer;
 
     void Start()
@@ -107,21 +107,29 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 12)
+        if (collision.tag == "EnemyBullet")
         {
-            BulletController bullet = collision.GetComponent<BulletController>();
+            BulletClass bullet = collision.GetComponent<BulletClass>();
             if (m_damage)
             {
                 return;
             }
-
             m_life = m_life - bullet.m_power;
-
-            if (m_life <= 0)
-            {
-                Destroy(gameObject);
-            }
             StartCoroutine("DamageTimer");
+        }
+        if (collision.tag == "Enemy")
+        {
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (m_damage)
+            {
+                return;
+            }
+            m_life = m_life - enemy.m_power;
+            StartCoroutine("DamageTimer");
+        }
+        if (m_life <= 0)
+        {
+            Destroy(gameObject);
         }
     }
     /// <summary>

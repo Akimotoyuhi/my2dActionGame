@@ -156,13 +156,12 @@ MonoBehaviour:
   m_life: 10
   m_power: 2
   m_speed: 1
+  m_fireInterval: 1
   m_jumpPower: 5
-  m_fireInterval: 5
   m_moveinterval: 3
-  m_muzzles:
-  - {fileID: 839358916}
+  m_muzzles: []
   m_bulletPrefab: {fileID: 0}
-  m_moveDirection: 5
+  m_timer: 0
 --- !u!58 &290006543
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1136,13 +1135,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_life: 10
   m_power: 2
+  m_speed: 1
   m_fireInterval: 0.5
+  m_jumpPower: 5
+  m_moveinterval: 3
   m_muzzles:
   - {fileID: 395557619}
   m_bulletPrefab: {fileID: 4786128848228696647, guid: 2fb65aa91669d894dab331c331b16979,
     type: 3}
-  patternType: 0
-  m_moveDirection: 0
+  m_timer: 0
 --- !u!58 &1982757553
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1234,6 +1235,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5543675842090092867, guid: a2905ffc65d65674a9100bd3bbaa0c09,
+        type: 3}
+      propertyPath: m_moveDirection
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5543675842090092868, guid: a2905ffc65d65674a9100bd3bbaa0c09,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -2,31 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
-public class BulletController : MonoBehaviour
+public class BulletClass : MonoBehaviour
 {
-    GameObject m_player;
-    Rigidbody2D m_rb;
+    //GameObject m_player;
+    //Rigidbody2D m_rb;
     /// <summary> 弾速 </summary>
     [SerializeField] public float m_speed = 1f;
-    /// <summary> 弾の進行方向 </summary>
-    MoveDirection moveDirection;
-    [SerializeField] public int m_power = 2;
-    public enum MoveDirection
-    {
-        aimAtPlayer,
-        plaeyrX,
-        playerY,
-        normal,
-        player,
-        naname
-    }
+    /// <summary> 弾の攻撃力 </summary>
+    [SerializeField] public float m_power = 2f;
 
     void Start()
     {
         Vector2 v = Vector2.zero;
-        m_player = GameObject.FindGameObjectWithTag("Player");
-        m_rb = GetComponent<Rigidbody2D>();
-
+        //m_player = GameObject.Find("Player");
+        //m_rb = GetComponent<Rigidbody2D>();
+        /*
         if (m_player)
         {
             if (moveDirection == MoveDirection.aimAtPlayer)
@@ -69,14 +59,7 @@ public class BulletController : MonoBehaviour
             }
             if (moveDirection == MoveDirection.player)
             {
-                if (m_player.transform.localScale.x < 0f)
-                {
-                    v = Vector2.left;
-                }
-                else
-                {
-                    v = Vector2.right;
-                }
+                
             }
             if (moveDirection == MoveDirection.naname)
             {
@@ -97,11 +80,30 @@ public class BulletController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        */
     }
 
-    void Update()
+    public Vector2 Player(GameObject Player)
     {
-        
+        Vector2 v = Vector2.zero;
+        if (Player.transform.localScale.x < 0f)
+        {
+            v = Vector2.left;
+        }
+        else
+        {
+            v = Vector2.right;
+        }
+        Vector2 _v = v.normalized * m_speed;
+        return _v;
+    }
+
+    public Vector2 AimAtPlayer(GameObject Player)
+    {
+        Vector2 v = Vector2.zero;
+        v = Player.transform.position - this.transform.position;
+        Vector2 _v = v.normalized * m_speed;
+        return _v;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

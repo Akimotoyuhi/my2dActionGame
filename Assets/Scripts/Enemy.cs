@@ -2,83 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PatternType
-{
-    single,
-    way,
-}
-
 public class Enemy : MonoBehaviour
 {
-    /// <summary>敵の体力</summary>
-    [SerializeField] float m_life = 10;
-    /// <summary>敵の攻撃力</summary>
-    [SerializeField] float m_power = 2;
-    /// <summary>敵が弾を発射する間隔（秒）</summary>
-    [SerializeField] float m_fireInterval = 1f;
+    /// <summary>体力</summary>
+    [SerializeField] public float m_life = 10;
+    /// <summary>攻撃力</summary>
+    [SerializeField] public float m_power = 2;
+    /// <summary>移動速度</summary>
+    [SerializeField] public float m_speed = 1;
+    /// <summary>弾を発射する間隔（秒）</summary>
+    [SerializeField] public float m_fireInterval = 1f;
+    /// <summary>ジャンプ力</summary>
+    [SerializeField] public float m_jumpPower = 5;
+    /// <summary>移動間隔</summary>
+    [SerializeField] public float m_moveinterval = 3;
     /// <summary>扇状に弾を出す範囲(度)</summary>
     //[SerializeField] float m_angle = 45f;
     /// <summary>way数</summary>
     //[SerializeField] int m_wayNum = 3;
-    /// <summary>敵が弾を発射する場所</summary>
+    /// <summary>弾を発射する場所</summary>
     [SerializeField] Transform[] m_muzzles = null;
-    /// <summary>敵の弾のプレハブ</summary>
+    /// <summary>弾のプレハブ</summary>
     [SerializeField] GameObject m_bulletPrefab = null;
-    /// <summary>弾幕タイプ</summary>
-    [SerializeField] PatternType patternType = PatternType.single;
-    float m_timer;
-    /// <summary>発射する弾の進行方向</summary>
-    [SerializeField] BulletController.MoveDirection m_moveDirection = BulletController.MoveDirection.aimAtPlayer;
-    //Rigidbody2D m_rb = null;
-    GameObject m_player;
+    //public GameObject m_player;
+    public float m_timer;
 
-    
-
-    void Start()
-    {
-        //m_rb = GetComponent<Rigidbody2D>();
-        m_player = GameObject.Find("Player");
-
-        if (m_muzzles == null)
-        {
-            Debug.Log("Muzzleが設定されてないよ！");
-        }
-    }
-
-    
-    void Update()
-    {
-        //プレイヤーの位置によって自身の身体の向きを変えるだけ
-        if (m_player.transform.position.x < this.gameObject.transform.position.x)
-        {
-            transform.localScale = new Vector2(-1, 1);
-        }
-        else
-        {
-            transform.localScale = new Vector2(1, 1);
-        }
-
-        if (patternType == PatternType.single)
-        {
-            Single();
-        }
-        if (patternType == PatternType.way)
-        {
-            /// 工事中 ///
-            //way();
-        }
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "PlayerBullet")
         {
-            if (collision.gameObject.name == "Player")
-            {
-                //プレイヤー自身と接触してしまうと後述のBulletControllerを取得する処理でエラーが出るのでそれの対策用
-                return;
-            }
-            BulletController bullet = collision.GetComponent<BulletController>();
-            
+            BulletClass bullet = collision.GetComponent<BulletClass>();
             m_life = m_life - bullet.m_power;
 
             if (m_life <= 0)
@@ -104,6 +57,19 @@ public class Enemy : MonoBehaviour
                     Instantiate(m_bulletPrefab, t.position, Quaternion.identity);
                 }
             }
+        }
+    }
+
+    public void AtPlayer(GameObject Player)
+    {
+        //プレイヤーの位置によって自身の身体の向きを変えるだけ
+        if (Player.transform.position.x < this.gameObject.transform.position.x)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector2(1, 1);
         }
     }
     /*
