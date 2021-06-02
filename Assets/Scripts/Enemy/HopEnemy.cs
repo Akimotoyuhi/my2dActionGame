@@ -4,21 +4,10 @@ using UnityEngine;
 
 public class HopEnemy : Enemy
 {
-    //float m_life = 10;
-    //float m_power;
-    //float m_speed;
-    //float m_jumpPower;
-    //[SerializeField] float m_fireInterval = 5;
-    //float m_moveinterval;
-    //[SerializeField] Transform[] m_muzzles = null;
-    //[SerializeField] GameObject m_bulletPrefab = null;
-    //[SerializeField] BulletController.MoveDirection m_moveDirection = BulletController.MoveDirection.naname;
     GameObject m_player = null;
     Rigidbody2D m_rb = null;
-    bool m_move = false;
-    //float m_timer;
-    Vector2 m_rightJump = new Vector2(0.5f, 1);
-    Vector2 m_LeftJump = new Vector2(-0.5f, 1);
+    bool m_isMove = false;
+    [SerializeField] float m_sideJump = 0.5f;
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
@@ -29,6 +18,7 @@ public class HopEnemy : Enemy
     void Update()
     {
         AtPlayer(m_player);
+        Single();
         if (m_player)
         {
             StartCoroutine("Move");
@@ -37,33 +27,31 @@ public class HopEnemy : Enemy
 
     IEnumerator Move()
     {
-        float xSpeed = 0f;
-        if (m_move)
+        if (m_isMove)
         {
             yield break;
         }
 
-        m_move = true;
+        m_isMove = true;
+        float xSpeed = 0f;
 
         if (m_player.transform.position.x < this.gameObject.transform.position.x)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-            m_rb.AddForce(m_LeftJump * m_jumpPower, ForceMode2D.Impulse);
+            Vector2 jump = new Vector2(-m_sideJump, 1);
+            m_rb.AddForce(jump * m_jumpPower, ForceMode2D.Impulse);
             xSpeed = -m_speed;
             yield return new WaitForSeconds(m_moveinterval);
         }
         else if (m_player.transform.position.x > this.gameObject.transform.position.x)
         {
             transform.localScale = new Vector3(1, 1, 1);
-            m_rb.AddForce(m_rightJump * m_jumpPower, ForceMode2D.Impulse);
+            Vector2 jump = new Vector2(m_sideJump, 1);
+            m_rb.AddForce(jump * m_jumpPower, ForceMode2D.Impulse);
             xSpeed = m_speed;
             yield return new WaitForSeconds(m_moveinterval);
         }
-        else
-        {
-            xSpeed = 0f;
-        }
 
-        m_move = false;
+        m_isMove = false;
     }
 }

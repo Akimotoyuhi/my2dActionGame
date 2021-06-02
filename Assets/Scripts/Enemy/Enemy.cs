@@ -8,8 +8,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float m_life = 10;
     /// <summary>攻撃力</summary>
     [SerializeField] public float m_power = 2;
+    /// <summary>移動するかどうか</summary>
+    [SerializeField] bool m_move = true;
     /// <summary>移動速度</summary>
     [SerializeField] public float m_speed = 1;
+    /// <summary>弾を撃つかどうか</summary>
+    [SerializeField] bool m_fire = true;
     /// <summary>弾を発射する間隔（秒）</summary>
     [SerializeField] public float m_fireInterval = 1f;
     /// <summary>ジャンプ力</summary>
@@ -24,8 +28,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform[] m_muzzles = null;
     /// <summary>弾のプレハブ</summary>
     [SerializeField] GameObject m_bulletPrefab = null;
-    //public GameObject m_player;
-    public float m_timer;
+    float m_timer;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -41,7 +44,7 @@ public class Enemy : MonoBehaviour
         }
     }
     /// <summary> 単発の弾を連発する </summary>
-    void Single()
+    public void Single()
     {
         if (m_bulletPrefab)
         {

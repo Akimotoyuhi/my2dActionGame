@@ -6,7 +6,7 @@ public class AimAtPlayer : BulletClass
 {
     GameObject m_player;
     Rigidbody2D m_rb = null;
-    private void Start()
+    void Start()
     {
         m_player = GameObject.Find("Player");
         m_rb = GetComponent<Rigidbody2D>();
