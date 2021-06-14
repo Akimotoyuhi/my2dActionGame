@@ -18,8 +18,11 @@ public class HopEnemy : Enemy
     void Update()
     {
         AtPlayer(m_player);
-        Single();
-        if (m_player)
+        if (m_fire)
+        {
+            Way(m_player);
+        }
+        if (m_player && m_move)
         {
             StartCoroutine("Move");
         }
@@ -33,14 +36,14 @@ public class HopEnemy : Enemy
         }
 
         m_isMove = true;
-        float xSpeed = 0f;
+        //float xSpeed = 0f;
 
         if (m_player.transform.position.x < this.gameObject.transform.position.x)
         {
             transform.localScale = new Vector3(-1, 1, 1);
             Vector2 jump = new Vector2(-m_sideJump, 1);
             m_rb.AddForce(jump * m_jumpPower, ForceMode2D.Impulse);
-            xSpeed = -m_speed;
+            //xSpeed = -m_speed;
             yield return new WaitForSeconds(m_moveinterval);
         }
         else if (m_player.transform.position.x > this.gameObject.transform.position.x)
@@ -48,7 +51,7 @@ public class HopEnemy : Enemy
             transform.localScale = new Vector3(1, 1, 1);
             Vector2 jump = new Vector2(m_sideJump, 1);
             m_rb.AddForce(jump * m_jumpPower, ForceMode2D.Impulse);
-            xSpeed = m_speed;
+            //xSpeed = m_speed;
             yield return new WaitForSeconds(m_moveinterval);
         }
 

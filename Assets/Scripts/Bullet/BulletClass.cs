@@ -31,23 +31,4 @@ public class BulletClass : MonoBehaviour
         Vector2 _v = v.normalized * m_speed;
         return _v;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (collision.tag != "Untagged" && collision.tag != "Enemy" && collision.tag != "Player")
-        //{
-        //    Destroy(this.gameObject);
-        //}
-        if (collision.tag != "Untagged")
-        {
-            if (this.gameObject.tag == "Enemy" && collision.tag != "Enemy")
-            {
-                Destroy(this.gameObject);
-            }
-            if (this.gameObject.tag == "Player" && collision.tag != "Player")
-            {
-                Destroy(this.gameObject);
-            }
-        }
-    }
 }
