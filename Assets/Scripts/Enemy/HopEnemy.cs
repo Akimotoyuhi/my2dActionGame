@@ -17,10 +17,10 @@ public class HopEnemy : Enemy
 
     void Update()
     {
-        AtPlayer(m_player);
+        AtPlayer();
         if (m_fire)
         {
-            Way(m_player);
+            Way(0, 0);
         }
         if (m_player && m_move)
         {

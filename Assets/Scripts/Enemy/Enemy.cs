@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     /// <summary>弾を発射する場所</summary>
     [SerializeField] Transform[] m_muzzles = null;
     /// <summary>弾のプレハブ</summary>
-    [SerializeField] GameObject m_bulletPrefab = null;
+    [SerializeField] GameObject[] m_bulletPrefab = null;
     float m_timer;
     //public Rigidbody2D m_rb = null;
 
@@ -47,8 +47,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void AtPlayer(GameObject player)
+    public void AtPlayer()
     {
+        GameObject player = GameObject.Find("Player");
         if (player)
         {
             //プレイヤーの位置によって自身の身体の向きを変えるだけ
@@ -66,7 +67,7 @@ public class Enemy : MonoBehaviour
     /// <summary> 単発の弾を連発する </summary>
     public void Single()
     {
-        if (m_bulletPrefab)
+        if (m_bulletPrefab[0])
         {
             // 一定間隔で弾を発射する
             m_timer += Time.deltaTime;
@@ -77,14 +78,20 @@ public class Enemy : MonoBehaviour
                 // 各 muzzle から弾を発射する
                 foreach (Transform t in m_muzzles)
                 {
-                    Instantiate(m_bulletPrefab, t.position, Quaternion.identity);
+                    Instantiate(m_bulletPrefab[0], t.position, Quaternion.identity);
                 }
             }
         }
     }
 
-    public void Way(GameObject player)
+    /// <summary>
+    /// 角度とway数を元にNway弾を撃つ
+    /// </summary>
+    /// <param name="muzzleNum">この弾を撃ちたいmuzzleの配列番号</param>
+    /// <param name="prefabNum">どのプレハブの弾を撃つか</param>
+    public void Way(int muzzleNum, int prefabNum)
     {
+        GameObject player = GameObject.Find("Player");
         if (player)
         {
             m_timer += Time.deltaTime;
@@ -95,10 +102,10 @@ public class Enemy : MonoBehaviour
                 {
                     Vector2 v = player.transform.position - this.transform.position;
                     v.Normalize();
-                    v = Quaternion.Euler(0, 0, m_angle / m_wayNum * i) * v;
-                    Vector2 _v = v * m_bulletSpeed;
-                    var t = Instantiate(m_bulletPrefab, m_muzzles[0].position, Quaternion.identity);
-                    t.GetComponent<Rigidbody2D>().velocity = _v;
+                    v = Quaternion.Euler(0, 0, m_angle / (m_wayNum - 1) * i - m_angle / 2) * v;
+                    v *= m_bulletSpeed;
+                    var t = Instantiate(m_bulletPrefab[prefabNum], m_muzzles[muzzleNum].position, Quaternion.identity);
+                    t.GetComponent<Rigidbody2D>().velocity = v;
                 }
             }
         }

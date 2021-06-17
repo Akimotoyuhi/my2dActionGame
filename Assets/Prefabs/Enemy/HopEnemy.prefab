@@ -157,7 +157,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.59, y: 2.83}
+  m_Size: {x: 1.434375, y: 0.884375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -217,7 +217,10 @@ MonoBehaviour:
   m_move: 1
   m_speed: 1
   m_fire: 0
+  m_bulletSpeed: 1
   m_fireInterval: 1
+  m_angle: 45
+  m_wayNum: 3
   m_jumpPower: 5
   m_moveinterval: 3
   m_muzzles:
