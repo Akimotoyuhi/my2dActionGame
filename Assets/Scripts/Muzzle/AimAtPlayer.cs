@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Muzzle : MonoBehaviour
+public class AimAtPlayer : Muzzle
 {
-
+    void Update()
+    {
+        Single();
+    }
 }
