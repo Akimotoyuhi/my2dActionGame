@@ -8,6 +8,7 @@ public class HopEnemy : Enemy
     Rigidbody2D m_rb = null;
     bool m_isMove = false;
     [SerializeField] float m_sideJump = 0.5f;
+    float timer;
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
@@ -18,41 +19,36 @@ public class HopEnemy : Enemy
     void Update()
     {
         AtPlayer();
-        if (m_fire)
+        if (m_player)
         {
-            Way(0, 0);
-        }
-        if (m_player && m_move)
-        {
-            StartCoroutine("Move");
+            timer += Time.deltaTime;
+            if (timer > m_moveinterval)
+            {
+                timer = 0;
+                Move();
+            }
         }
     }
 
-    IEnumerator Move()
+    private void Move()
     {
         if (m_isMove)
         {
-            yield break;
+            return;
         }
-
         m_isMove = true;
-        //float xSpeed = 0f;
 
-        if (m_player.transform.position.x < this.gameObject.transform.position.x)
+        if (m_player.transform.position.x < this.transform.position.x)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            //transform.localScale = new Vector3(-1, 1, 1);
             Vector2 jump = new Vector2(-m_sideJump, 1);
             m_rb.AddForce(jump * m_jumpPower, ForceMode2D.Impulse);
-            //xSpeed = -m_speed;
-            yield return new WaitForSeconds(m_moveinterval);
         }
-        else if (m_player.transform.position.x > this.gameObject.transform.position.x)
+        else if (m_player.transform.position.x > this.transform.position.x)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            //transform.localScale = new Vector3(1, 1, 1);
             Vector2 jump = new Vector2(m_sideJump, 1);
             m_rb.AddForce(jump * m_jumpPower, ForceMode2D.Impulse);
-            //xSpeed = m_speed;
-            yield return new WaitForSeconds(m_moveinterval);
         }
 
         m_isMove = false;

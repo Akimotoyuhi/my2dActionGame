@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class NormalBullet : BulletClass
 {
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(this.gameObject);
-    }
+    
 }
