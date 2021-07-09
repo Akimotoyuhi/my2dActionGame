@@ -1,8 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class NormalBullet : BulletClass
+public class NormalBullet : BulletBase
 {
-    
+    //private Rigidbody2D m_rb;
+    private void Start()
+    {
+        InitialVelocity();
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(this.gameObject);
+    }
 }

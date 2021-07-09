@@ -2,19 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-enum PtternState
+public enum PatternState
 {
-    Normal,
-
+    A,
+    B,
+    C,
+    D
 }
+
 public class BossTest : Enemy
 {
-    float _moveTimer;
-    GameObject _player;
-    Rigidbody2D _rb;
-    Slider _slider;
-    GameObject _canvas;
-    
+    private float _moveTimer;
+    private GameObject _player;
+    private Rigidbody2D _rb;
+    private Slider _slider;
+    private GameObject _canvas;
+    [SerializeField] private GameObject _muzzle1;
+    [SerializeField] private GameObject _muzzle2;
+    [SerializeField] private GameObject _muzzle3;
+    [SerializeField] private GameObject _muzzle4;
+    [SerializeField] private Transform _anchorA;
+    [SerializeField] private Transform _anchorB;
+    public PatternState _patternState = PatternState.A;
+    private bool _isBullet = false;
+    private bool _nowTransform = false;
+
     void Start()
     {
         _player = GameObject.Find("Player");
@@ -29,7 +41,37 @@ public class BossTest : Enemy
     {
         _slider.value = m_life;
         AtPlayer();
-        HumanMove();
+        PatternStateChanged();
+        if (_patternState == PatternState.A)
+        {
+            HumanMove();
+            _muzzle1.SetActive(true);
+            _muzzle2.SetActive(false);
+            _muzzle3.SetActive(false);
+            _muzzle4.SetActive(false);
+        }
+        if (_patternState == PatternState.B)
+        {
+            if (!_isBullet) { StartCoroutine("PatternB"); }
+            _muzzle1.SetActive(false);
+            _muzzle2.SetActive(true);
+            _muzzle3.SetActive(false);
+            _muzzle4.SetActive(false);
+        }
+        if (_patternState == PatternState.C)
+        {
+            _muzzle1.SetActive(false);
+            _muzzle2.SetActive(false);
+            _muzzle3.SetActive(true);
+            _muzzle4.SetActive(false);
+        }
+        if (_patternState == PatternState.D)
+        {
+            _muzzle1.SetActive(false);
+            _muzzle2.SetActive(false);
+            _muzzle3.SetActive(false);
+            _muzzle4.SetActive(true);
+        }
     }
 
     public void HumanMove()
@@ -57,4 +99,43 @@ public class BossTest : Enemy
             }
         }
     }
+
+    IEnumerator PatternB()
+    {
+        _isBullet = true;
+        if (_nowTransform) 
+        { 
+            transform.position = new Vector2(_anchorB.position.x, _anchorB.position.y);
+            _nowTransform = false;
+        }
+        else
+        {
+            transform.position = new Vector2(_anchorA.position.x, _anchorA.position.y);
+            _nowTransform = true;
+        }
+        yield return new WaitForSeconds(m_moveinterval);
+        _isBullet = false;
+    }
+
+    private void PatternStateChanged()
+    {
+        if (75 < Percent(m_life, m_maxLife))
+        {
+            _patternState = PatternState.A;
+        }
+        else if (50 < Percent(m_life, m_maxLife))
+        {
+            _patternState = PatternState.B;
+        }
+        else if (25 < Percent(m_life, m_maxLife))
+        {
+            _patternState = PatternState.C;
+        }
+        else
+        {
+            _patternState = PatternState.D;
+        }
+    }
+
+    private float Percent(float now, float max) { return (now / max) * 100; }
 }

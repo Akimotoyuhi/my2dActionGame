@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int m_life = 10;
     /// <summary> 弾のプレハブ</summary>
     [SerializeField] GameObject m_bulletPrefab = null;
+    /// <summary> 弾の速度</summary>
     [SerializeField] float m_bulletSpeed = 15;
     Rigidbody2D m_rb = null;
     Animator m_anim = null;
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 {
                     return;
                 }
-                BulletClass bullet = collision.GetComponent<BulletClass>();
+                BulletBase bullet = collision.GetComponent<BulletBase>();
                 m_life -= bullet.m_power;
                 StartCoroutine("DamageTimer");
             }

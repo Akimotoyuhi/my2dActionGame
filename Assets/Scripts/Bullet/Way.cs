@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Way : BulletClass
+public class Way : BulletBase
 {
     GameObject m_player;
-    Rigidbody2D m_rb = null;
+    private Rigidbody2D m_rb = null;
     void Start()
     {
         m_player = GameObject.Find("Player");

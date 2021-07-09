@@ -83,10 +83,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bulletSpeed: 10
+  m_minSpeed: 1
   m_fireInterval: 0.1
+  m_vector: {x: 0, y: -1}
   m_angle: 45
   m_wayNum: 3
-  m_bulletPrefab: {fileID: 7731191898902509555, guid: 92464bcd1f5314d4ebb39b48baf2f3b2,
+  m_bulletPrefab: {fileID: 5001137990051095853, guid: c31dd507c70c2e247a00fa00b0926570,
     type: 3}
-  m_color: {r: 0, g: 0, b: 0, a: 0}
-  _minSpeed: 5
+  m_color: {r: 0, g: 0.5737934, b: 1, a: 1}
+  _pattenName: 1

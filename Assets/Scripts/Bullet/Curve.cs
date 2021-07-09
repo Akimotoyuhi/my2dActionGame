@@ -2,29 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Curve : BulletClass
+public class Curve : BulletBase
 {
     float x;
     float y;
-    Vector2 defPos;
+    float timer = 0f;
     /// <summary>円の大きさ</summary>
     [SerializeField] float radius = 1f;
+    Vector2 m_defPos;
 
     private void Start()
     {
-        defPos = transform.position;
+        //m_defPos = transform.position;
     }
 
     private void Update()
     {
-        x = radius * Mathf.Sin(Time.time * m_speed);
-        y = radius * Mathf.Cos(Time.time * m_speed);
+        x = radius * Mathf.Sin(timer * m_maxSpeed);
+        y = radius * Mathf.Cos(timer * m_maxSpeed);
 
-        transform.position = new Vector2(x + defPos.x, y + defPos.y);
-    }
+        timer += Time.deltaTime;
+        radius += 0.01f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(this.gameObject);
+        transform.position = new Vector2(x + m_defPos.x, y + m_defPos.y);
     }
 }

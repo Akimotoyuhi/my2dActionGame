@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag == "PlayerBullet")
         {
-            BulletClass bullet = collision.GetComponent<BulletClass>();
+            BulletBase bullet = collision.GetComponent<BulletBase>();
             m_life -= bullet.m_power;
         }
 

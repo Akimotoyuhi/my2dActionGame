@@ -14,11 +14,13 @@ public class kaitenSample : MonoBehaviour
     /// <summary> 移動速度 </summary>
     [SerializeField] float speed = 10f;
     /// <summary> 円の大きさ </summary>
-    float radius = 3f;
+    float radius = 1f;
 
     float x = 0;
     float y = 0;
     Vector2 defPos;
+    float timer = 0f;
+    float d = 0.1f;
     //[SerializeField] float delayTime = 0;
 
     private void Start()
@@ -33,7 +35,12 @@ public class kaitenSample : MonoBehaviour
 
         x = radius * Mathf.Sin(Time.time * speed);
         y = radius * Mathf.Cos(Time.time * speed);
-
+        timer += Time.deltaTime;
+        if (timer > d)
+        {
+            timer = 0;
+            radius += 0.01f;
+        }
         transform.position = new Vector2(x + defPos.x, y + defPos.y);
         
     }
