@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class HopEnemy : Enemy
 {
-    GameObject m_player = null;
-    Rigidbody2D m_rb = null;
-    bool m_isMove = false;
     [SerializeField] float m_sideJump = 0.5f;
     float timer;
-    void Start()
-    {
-        m_rb = GetComponent<Rigidbody2D>();
-        m_player = GameObject.Find("Player");
-    }
-
 
     void Update()
     {
@@ -32,7 +23,7 @@ public class HopEnemy : Enemy
 
     private void Move()
     {
-        if (m_isMove)
+        if (m_isMove || !m_move)
         {
             return;
         }

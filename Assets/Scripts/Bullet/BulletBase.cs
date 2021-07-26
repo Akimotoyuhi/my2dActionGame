@@ -13,7 +13,7 @@ public class BulletBase : MonoBehaviour
     [System.NonSerialized] public int m_power;
     /// <summary>進行方向</summary>
     [System.NonSerialized] public Vector2 m_velo;
-    public Rigidbody2D m_rb;
+    [System.NonSerialized] public Rigidbody2D m_rb;
 
     public void InitialVelocity()
     {

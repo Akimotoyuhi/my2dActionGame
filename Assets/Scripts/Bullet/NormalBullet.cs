@@ -2,7 +2,6 @@
 
 public class NormalBullet : BulletBase
 {
-    //private Rigidbody2D m_rb;
     private void Start()
     {
         InitialVelocity();

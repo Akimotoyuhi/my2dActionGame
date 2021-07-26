@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +17,23 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float m_jumpPower = 5;
     /// <summary>移動間隔</summary>
     [SerializeField] public float m_moveinterval = 3;
+    /// <summary>移動するか</summary>
+    [SerializeField] public bool m_move = true;
+    /// <summary>移動間隔用タイマー</summary>
+    [System.NonSerialized] public float m_moveTimer;
+    /// <summary>現在移動中か</summary>
+    [System.NonSerialized] public bool m_isMove = false;
+    /// <summary>ダメージ表示用キャンバス</summary>
+    [SerializeField] private GameObject m_damagePrefab;
+    [System.NonSerialized] public GameObject m_player = null;
+    [System.NonSerialized] public Rigidbody2D m_rb = null;
+
+
+    void Start()
+    {
+        m_rb = GetComponent<Rigidbody2D>();
+        m_player = GameObject.Find("Player");
+    }
 
     /// <summary>
     /// プレイヤーの位置によって自身の身体の向きを変える
@@ -27,11 +45,11 @@ public class Enemy : MonoBehaviour
         {
             if (player.transform.position.x < this.gameObject.transform.position.x)
             {
-                transform.localScale = new Vector2(-1, 1);
+                transform.localScale = new Vector2(1, 1);
             }
             else
             {
-                transform.localScale = new Vector2(1, 1);
+                transform.localScale = new Vector2(-1, 1);
             }
         }
     }
@@ -42,6 +60,10 @@ public class Enemy : MonoBehaviour
         {
             BulletBase bullet = collision.GetComponent<BulletBase>();
             m_life -= bullet.m_power;
+            Vector2 v = new Vector2(this.transform.position.x + Random.Range(-1f, 1f), this.transform.position.y + Random.Range(-1f, 1f));
+            var inst = Instantiate(m_damagePrefab, v, Quaternion.identity);
+            Text text = inst.transform.GetChild(0).GetComponent<Text>();
+            text.text = $"{bullet.m_power}";
         }
 
         if (m_life <= 0)

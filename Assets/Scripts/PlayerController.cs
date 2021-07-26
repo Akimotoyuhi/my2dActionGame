@@ -2,41 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
+    /// <summary> 攻撃力 </summary>
+    [SerializeField] private int m_power = 2;
     /// <summary> 移動速度 </summary>
-    [SerializeField] float m_moveSpeed = 5f;
+    [SerializeField] private float m_moveSpeed = 5f;
     /// <summary> ジャンプ速度 </summary>
-    [SerializeField] float m_jumpPower = 10f;
+    [SerializeField] private float m_jumpPower = 10f;
     /// <summary> 弾を発射する間隔（秒）</summary>
-    [SerializeField] float m_fireInterval = 0.5f;
+    [SerializeField] private float m_fireInterval = 0.5f;
     /// <summary> 最大体力 </summary>
-    [SerializeField] int m_maxLife = 10;
+    [SerializeField] private int m_maxLife = 10;
     /// <summary> 体力 </summary>
-    [SerializeField] int m_life = 10;
+    [SerializeField] private int m_life = 10;
     /// <summary> 弾のプレハブ</summary>
-    [SerializeField] GameObject m_bulletPrefab = null;
+    [SerializeField] private GameObject m_bulletPrefab = null;
     /// <summary> 弾の速度</summary>
-    [SerializeField] float m_bulletSpeed = 15;
-    Rigidbody2D m_rb = null;
-    Animator m_anim = null;
-    Slider m_slider = null;
-    GameObject m_canvas = null;
-    SpriteRenderer m_spriteRenderer = null;
-    [SerializeField] IsGrounded ground = null;
-    [SerializeField] bool godMode = false;
-    bool m_isGround = false;
-    bool m_isJump = false;
-    bool m_damage = false;
-    float m_timer = 0;
-    float m_bulletTimer = 1;
-    bool m_isrelease = false;
+    [SerializeField] private float m_bulletSpeed = 15;
+    private Rigidbody2D m_rb = null;
+    private Animator m_anim = null;
+    private Slider m_slider = null;
+    private GameObject m_canvas = null;
+    private CinemachineConfiner m_vcam = null;
+    private SpriteRenderer m_spriteRenderer = null;
+    [SerializeField] private IsGrounded ground = null;
+    [SerializeField] private bool godMode = false;
+    private bool m_isGround = false;
+    //private bool m_isJump = false;
+    private bool m_damage = false;
+    private float m_timer = 0;
+    private float m_bulletTimer = 1;
+    private bool m_isrelease = false;
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
+        m_vcam = gameObject.transform.Find("CM vcam").GetComponent<CinemachineConfiner>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_canvas = GameObject.Find("Canvas");
         m_slider = m_canvas.transform.Find("PlayerHPgage").GetComponent<Slider>();
@@ -51,13 +56,13 @@ public class PlayerController : MonoBehaviour
 
         if (horizontalKey > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector2(1, 1);
             m_anim.SetBool("Run", true);
             xSpeed = m_moveSpeed;
         }
         else if (horizontalKey < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector2(-1, 1);
             m_anim.SetBool("Run", true);
             xSpeed = -m_moveSpeed;
         }
@@ -113,6 +118,11 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (collision.tag == "CameraCollider")
+        {
+            m_vcam.m_BoundingShape2D = collision;
+        }
     }
 
     /// <summary>
@@ -140,7 +150,7 @@ public class PlayerController : MonoBehaviour
         if (m_isGround)
         {
             // 入力の最大値を超えたら強制的に飛ぶ
-            if (m_timer > 0.2 && !m_isrelease)
+            if (m_timer > 0.1 && !m_isrelease)
             {
                 m_rb.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
                 m_anim.SetTrigger("Jump");
@@ -173,9 +183,14 @@ public class PlayerController : MonoBehaviour
                     v = Vector2.left;
                 }
                 v.Normalize();
-                v *= m_bulletSpeed;
                 var t = Instantiate(m_bulletPrefab, this.transform.position, Quaternion.identity);
-                t.GetComponent<Rigidbody2D>().velocity = v;
+                BulletBase bullet = t.GetComponent<BulletBase>();
+                if (bullet)
+                {
+                    bullet.m_minSpeed = m_bulletSpeed;
+                    bullet.m_power = m_power;
+                    bullet.m_velo = v;
+                }
             }
         }
     }
