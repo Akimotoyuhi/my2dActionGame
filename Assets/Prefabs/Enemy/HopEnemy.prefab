@@ -212,19 +212,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c040a18d355704f99b59b065afd43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_maxLife: 10
   m_life: 10
   m_power: 2
-  m_move: 1
   m_speed: 1
-  m_fire: 0
-  m_bulletSpeed: 1
-  m_fireInterval: 1
-  m_angle: 45
-  m_wayNum: 3
   m_jumpPower: 5
   m_moveinterval: 3
-  m_muzzles:
-  - {fileID: 5376809332889138041}
-  m_bulletPrefab: {fileID: 4786128848228696647, guid: 2fb65aa91669d894dab331c331b16979,
+  m_move: 1
+  m_damagePrefab: {fileID: 6271182398904386778, guid: 15e871c6ab9372d438104922c58c637f,
     type: 3}
   m_sideJump: 0.5
