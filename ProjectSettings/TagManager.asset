@@ -9,6 +9,7 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - CameraCollider
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

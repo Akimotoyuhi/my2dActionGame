@@ -6,6 +6,11 @@ using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
+    enum Wepon
+    {
+        Normal = 0,
+        Blast = 1
+    }
     /// <summary> 攻撃力 </summary>
     [SerializeField] private int m_power = 2;
     /// <summary> 移動速度 </summary>
@@ -22,12 +27,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject m_bulletPrefab = null;
     /// <summary> 弾の速度</summary>
     [SerializeField] private float m_bulletSpeed = 15;
+    private bool[] m_weponFlag = {false, false};
     private Rigidbody2D m_rb = null;
     private Animator m_anim = null;
     private Slider m_slider = null;
     private GameObject m_canvas = null;
     private CinemachineConfiner m_vcam = null;
     private SpriteRenderer m_spriteRenderer = null;
+    private GameManager m_gamemanager = null;
     [SerializeField] private IsGrounded ground = null;
     [SerializeField] private bool godMode = false;
     private bool m_isGround = false;
@@ -41,11 +48,14 @@ public class PlayerController : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
-        m_vcam = gameObject.transform.Find("CM vcam").GetComponent<CinemachineConfiner>();
+        //m_vcam = gameObject.transform.Find("CM vcam").GetComponent<CinemachineConfiner>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_canvas = GameObject.Find("Canvas");
         m_slider = m_canvas.transform.Find("PlayerHPgage").GetComponent<Slider>();
         m_slider.maxValue = m_maxLife;
+        m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        m_weponFlag[0] = true;
     }
     void Update()
     {
@@ -114,14 +124,30 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+        //死亡時の処理
         if (m_life <= 0)
         {
+            m_gamemanager.PlayerDead();
             Destroy(gameObject);
         }
 
+        //Cinemachineのカメラ制御
         if (collision.tag == "CameraCollider")
         {
-            m_vcam.m_BoundingShape2D = collision;
+            if (m_vcam)
+            {
+                m_vcam.m_BoundingShape2D = collision;
+            }
+            else
+            {
+                m_vcam = gameObject.transform.Find("CM vcam").GetComponent<CinemachineConfiner>();
+            }
+        }
+
+        //チェックポイント変更
+        if (collision.tag == "Checkpoint")
+        {
+            m_gamemanager.m_spawnPoint = collision.transform.position;
         }
     }
 
