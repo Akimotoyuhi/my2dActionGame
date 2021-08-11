@@ -1,24 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private GameObject m_player = null;
-    private Transform[] m_spawnPoint;
+    [SerializeField] private GameObject m_player = null;
+    [System.NonSerialized] public Vector2 m_spawnPoint = new Vector2(-11f, -2.5f);
     void Start()
     {
         GameObject spawnPoint = GameObject.Find("Spawnpoint");
-        m_spawnPoint = new Transform[spawnPoint.transform.childCount];
-        for (int i = 0; i < spawnPoint.transform.childCount; i++)
-        {
-            m_spawnPoint[i] = spawnPoint.transform.GetChild(i);
-        }
+
+        PlayerSpawn();
     }
 
     void Update()
     {
         
+    }
+
+    public void PlayerDead()
+    {
+        Invoke("PlayerSpawn", 3f);
+    }
+
+    public void PlayerSpawn()
+    {
+        Instantiate(m_player, m_spawnPoint, Quaternion.identity);
     }
 }
