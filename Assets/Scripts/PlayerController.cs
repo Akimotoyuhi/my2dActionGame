@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 
+public enum Wepon
+{
+    Normal = 0,
+    Blast = 1
+}
+
 public class PlayerController : MonoBehaviour
 {
-    enum Wepon
-    {
-        Normal = 0,
-        Blast = 1
-    }
     /// <summary> 攻撃力 </summary>
     [SerializeField] private int m_power = 2;
     /// <summary> 移動速度 </summary>
@@ -27,7 +28,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject m_bulletPrefab = null;
     /// <summary> 弾の速度</summary>
     [SerializeField] private float m_bulletSpeed = 15;
-    private bool[] m_weponFlag = {false, false};
+    /// <summary> 攻撃の切り替え用</summary>
+    [System.NonSerialized] public bool[] m_weponFlag = {true, false};
     private Rigidbody2D m_rb = null;
     private Animator m_anim = null;
     private Slider m_slider = null;
@@ -48,7 +50,6 @@ public class PlayerController : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
-        //m_vcam = gameObject.transform.Find("CM vcam").GetComponent<CinemachineConfiner>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_canvas = GameObject.Find("Canvas");
         m_slider = m_canvas.transform.Find("PlayerHPgage").GetComponent<Slider>();
@@ -141,6 +142,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 m_vcam = gameObject.transform.Find("CM vcam").GetComponent<CinemachineConfiner>();
+                m_vcam.m_BoundingShape2D = collision;
             }
         }
 
