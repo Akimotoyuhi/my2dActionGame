@@ -10,6 +10,13 @@ public enum Wepon
     Blast = 1
 }
 
+public enum StatusItems
+{
+    Life = 0,
+    Mana = 1,
+    Power = 2
+}
+
 public class PlayerController : MonoBehaviour
 {
     /// <summary> 攻撃力 </summary>
@@ -22,17 +29,29 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_fireInterval = 0.5f;
     /// <summary> 最大体力 </summary>
     [SerializeField] private int m_maxLife = 10;
-    /// <summary> 体力 </summary>
+    /// <summary> 現在体力 </summary>
     [SerializeField] private int m_life = 10;
+    /// <summary> 最大マナ </summary>
+    [SerializeField] private int m_maxMana = 10;
+    /// <summary> 現在マナ </summary>
+    [SerializeField] private int m_mana = 10;
     /// <summary> 弾のプレハブ</summary>
-    [SerializeField] private GameObject m_bulletPrefab = null;
+    [SerializeField] private GameObject[] m_bulletPrefab;
     /// <summary> 弾の速度</summary>
     [SerializeField] private float m_bulletSpeed = 15;
     /// <summary> 攻撃の切り替え用</summary>
-    [System.NonSerialized] public bool[] m_weponFlag = {true, false};
+    [System.NonSerialized] public bool[] m_weponFlag = { true, false };
+    /// <summary> 現在所持している武器の数(デフォは１)</summary>
+    private int m_haveBullet = 1;
+    /// <summary> 選択中の攻撃(配列要素)</summary>
+    private int m_selectBulletIndex = 0;
+    /// <summary> ステータスアップアイテム用</summary>
+    [System.NonSerialized] public int[] m_haveItem = { 0, 0, 0 };
+    private GameObject m_playerUI = null;
     private Rigidbody2D m_rb = null;
     private Animator m_anim = null;
-    private Slider m_slider = null;
+    private Slider m_hpSlider = null;
+    private Slider m_mpSlider = null;
     private GameObject m_canvas = null;
     private CinemachineConfiner m_vcam = null;
     private SpriteRenderer m_spriteRenderer = null;
@@ -52,15 +71,16 @@ public class PlayerController : MonoBehaviour
         m_anim = GetComponent<Animator>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_canvas = GameObject.Find("Canvas");
-        m_slider = m_canvas.transform.Find("PlayerHPgage").GetComponent<Slider>();
-        m_slider.maxValue = m_maxLife;
+        m_playerUI = m_canvas.transform.Find("PlayerStateUI").gameObject;
+        m_hpSlider = m_playerUI.transform.Find("HPgage").GetComponent<Slider>();
+        m_hpSlider.maxValue = m_maxLife;
+        m_mpSlider = m_playerUI.transform.Find("MPgage").GetComponent<Slider>();
+        m_mpSlider.maxValue = m_maxMana;
         m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        m_weponFlag[0] = true;
     }
     void Update()
     {
-        m_slider.value = m_life;
+        m_hpSlider.value = m_life;
         float horizontalKey = Input.GetAxisRaw("Horizontal");
         float xSpeed = 0f;
         m_isGround = ground.IsGrouded();
@@ -86,6 +106,8 @@ public class PlayerController : MonoBehaviour
         Jump();
 
         Fire();
+
+        AttackChanged();
 
         // 落下速度を上げたい
         //if (m_isJump)
@@ -193,6 +215,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// 攻撃
+    /// </summary>
     private void Fire()
     {
         m_bulletTimer += Time.deltaTime;
@@ -211,7 +236,7 @@ public class PlayerController : MonoBehaviour
                     v = Vector2.left;
                 }
                 v.Normalize();
-                var t = Instantiate(m_bulletPrefab, this.transform.position, Quaternion.identity);
+                var t = Instantiate(m_bulletPrefab[m_selectBulletIndex], this.transform.position, Quaternion.identity);
                 BulletBase bullet = t.GetComponent<BulletBase>();
                 if (bullet)
                 {
@@ -222,6 +247,27 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// 攻撃の切り替え
+    /// </summary>
+    private void AttackChanged()
+    {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            m_selectBulletIndex++;
+        }
+
+        if (m_selectBulletIndex > m_haveBullet)
+        {
+            m_selectBulletIndex = 0;
+        }
+        if (m_selectBulletIndex < 0)
+        {
+            m_selectBulletIndex = m_haveBullet;
+        }
+    }
+
     /// <summary>
     /// ダメージを受けた時の無敵時間
     /// </summary>

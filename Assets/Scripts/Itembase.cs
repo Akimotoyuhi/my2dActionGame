@@ -9,25 +9,9 @@ public class Itembase : MonoBehaviour
         Wepon,
         Status
     }
-    enum StatusItems
-    {
-        Life,
-        Mana,
-        Power
-    }
     [SerializeField] private ItemType m_itemType = ItemType.Status;
     private Wepon m_wepon = Wepon.Blast;
     [SerializeField] private StatusItems m_statusItems = StatusItems.Life;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -41,18 +25,7 @@ public class Itembase : MonoBehaviour
             }
             else if (m_itemType == ItemType.Status)
             {
-                if (m_statusItems == StatusItems.Life)
-                {
-
-                }
-                else if (m_statusItems == StatusItems.Mana)
-                {
-
-                }
-                else if (m_statusItems == StatusItems.Power)
-                {
-
-                }
+                player.m_haveItem[(int)m_statusItems] += 1;
             }
         }
     }
