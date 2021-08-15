@@ -256,7 +256,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             m_selectBulletIndex++;
-            Debug.Log($"現在選択中{ m_selectBulletIndex }, 所持武器{ m_haveBullet }");
         }
 
         if (m_selectBulletIndex >= m_haveBullet)

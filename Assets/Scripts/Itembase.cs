@@ -22,12 +22,13 @@ public class Itembase : MonoBehaviour
             if (m_itemType == ItemType.Wepon)
             {
                 player.m_haveBullet++;
-                //player.m_weponFlag[(int)m_wepon] = true;
             }
             else if (m_itemType == ItemType.Status)
             {
                 player.m_haveItem[(int)m_statusItems]++;
             }
+
+            Destroy(this.gameObject);
         }
     }
 }
