@@ -40,9 +40,9 @@ public class PlayerController : MonoBehaviour
     /// <summary> 弾の速度</summary>
     [SerializeField] private float m_bulletSpeed = 15;
     /// <summary> 攻撃の切り替え用</summary>
-    [System.NonSerialized] public bool[] m_weponFlag = { true, false };
-    /// <summary> 現在所持している武器の数(デフォは１)</summary>
-    private int m_haveBullet = 1;
+    //[System.NonSerialized] public bool[] m_weponFlag = { true, false };
+    /// <summary> 現在所持している武器の数</summary>
+    public int m_haveBullet = 0;
     /// <summary> 選択中の攻撃(配列要素)</summary>
     private int m_selectBulletIndex = 0;
     /// <summary> ステータスアップアイテム用</summary>
@@ -256,9 +256,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             m_selectBulletIndex++;
+            Debug.Log($"現在選択中{ m_selectBulletIndex }, 所持武器{ m_haveBullet }");
         }
 
-        if (m_selectBulletIndex > m_haveBullet)
+        if (m_selectBulletIndex >= m_haveBullet)
         {
             m_selectBulletIndex = 0;
         }

@@ -10,7 +10,7 @@ public class Itembase : MonoBehaviour
         Status
     }
     [SerializeField] private ItemType m_itemType = ItemType.Status;
-    private Wepon m_wepon = Wepon.Blast;
+    [SerializeField] private Wepon m_wepon = Wepon.Blast;
     [SerializeField] private StatusItems m_statusItems = StatusItems.Life;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,11 +21,12 @@ public class Itembase : MonoBehaviour
 
             if (m_itemType == ItemType.Wepon)
             {
-                player.m_weponFlag[(int)m_wepon] = true;
+                player.m_haveBullet++;
+                //player.m_weponFlag[(int)m_wepon] = true;
             }
             else if (m_itemType == ItemType.Status)
             {
-                player.m_haveItem[(int)m_statusItems] += 1;
+                player.m_haveItem[(int)m_statusItems]++;
             }
         }
     }
