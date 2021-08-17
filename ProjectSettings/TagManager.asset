@@ -10,6 +10,7 @@ TagManager:
   - EnemyBullet
   - CameraCollider
   - Checkpoint
+  - Blast
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - EnemyBullet
   - Managment
   - Gimmick
-  - 
+  - Box
   - 
   - 
   - 

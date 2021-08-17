@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject spawnPoint = GameObject.Find("Spawnpoint");
 
-        if (isTest)
+        if (!isTest)
         {
             PlayerSpawn();
         }

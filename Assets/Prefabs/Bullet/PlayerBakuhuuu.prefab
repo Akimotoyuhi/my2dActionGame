@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4511158725654849720}
   m_Layer: 11
   m_Name: PlayerBakuhuuu
-  m_TagString: PlayerBullet
+  m_TagString: Blast
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

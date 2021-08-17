@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "PlayerBullet")
+        if (collision.tag == "PlayerBullet" || collision.tag == "Blast")
         {
             BulletBase bullet = collision.GetComponent<BulletBase>();
             m_life -= bullet.m_power;

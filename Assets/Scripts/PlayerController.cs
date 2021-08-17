@@ -256,9 +256,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             m_selectBulletIndex++;
+            Debug.Log($"Index{m_selectBulletIndex}:Have{m_haveBullet}");
         }
 
-        if (m_selectBulletIndex >= m_haveBullet)
+        if (m_selectBulletIndex > m_haveBullet)
         {
             m_selectBulletIndex = 0;
         }
