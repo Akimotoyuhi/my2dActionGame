@@ -47,7 +47,8 @@ public class PlayerController : MonoBehaviour
     private int m_selectBulletIndex = 0;
     /// <summary> ステータスアップアイテム用</summary>
     [System.NonSerialized] public int[] m_haveItem = { 0, 0, 0 };
-    private GameObject m_playerUI = null;
+    private GameObject m_playerUi = null;
+    private GameObject[] m_bulletSprites;
     private Rigidbody2D m_rb = null;
     private Animator m_anim = null;
     private Slider m_hpSlider = null;
@@ -71,12 +72,20 @@ public class PlayerController : MonoBehaviour
         m_anim = GetComponent<Animator>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_canvas = GameObject.Find("Canvas");
-        m_playerUI = m_canvas.transform.Find("PlayerStateUI").gameObject;
-        m_hpSlider = m_playerUI.transform.Find("HPgage").GetComponent<Slider>();
+        m_playerUi = m_canvas.transform.Find("PlayerStateUI").gameObject;
+        m_hpSlider = m_playerUi.transform.Find("HPgage").GetComponent<Slider>();
         m_hpSlider.maxValue = m_maxLife;
-        m_mpSlider = m_playerUI.transform.Find("MPgage").GetComponent<Slider>();
+        m_mpSlider = m_playerUi.transform.Find("MPgage").GetComponent<Slider>();
         m_mpSlider.maxValue = m_maxMana;
+        GameObject BulletType = m_playerUi.transform.Find("BulletType").gameObject;
+        m_bulletSprites = new GameObject[BulletType.transform.childCount];
+        for (int i = 0; i < BulletType.transform.childCount; i++)
+        {
+            m_bulletSprites[i] = BulletType.transform.GetChild(i).gameObject;
+        }
         m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        BulletSpriteActiveChanged();
     }
     void Update()
     {
@@ -183,17 +192,20 @@ public class PlayerController : MonoBehaviour
         bool isrel = false;
         if (Input.GetButtonDown("Jump"))
         {
+            // 押されたと同時にタイマーとフラグをリセット
             m_timer = 0;
             m_isrelease = false;
         }
         if (Input.GetButtonUp("Jump"))
         {
+            // 途中でジャンプボタンから手を離した
             if (m_isrelease) return; ;
             isrel = true;
             m_isrelease = true;
         }
         if (Input.GetButton("Jump")) 
         { 
+            // ジャンプボタンが押されている時間を数える
             m_timer += Time.deltaTime; 
         }
 
@@ -256,7 +268,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             m_selectBulletIndex++;
-            Debug.Log($"Index{m_selectBulletIndex}:Have{m_haveBullet}");
         }
 
         if (m_selectBulletIndex > m_haveBullet)
@@ -266,6 +277,23 @@ public class PlayerController : MonoBehaviour
         if (m_selectBulletIndex < 0)
         {
             m_selectBulletIndex = m_haveBullet;
+        }
+
+        BulletSpriteActiveChanged();
+    }
+
+    private void BulletSpriteActiveChanged()
+    {
+        for (int i = 0; i < m_bulletSprites.Length; i++)
+        {
+            if (m_selectBulletIndex == i)
+            {
+                m_bulletSprites[i].SetActive(true);
+            }
+            else
+            {
+                m_bulletSprites[i].SetActive(false);
+            }
         }
     }
 
