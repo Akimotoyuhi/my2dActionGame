@@ -32,9 +32,11 @@ public class PlayerController : MonoBehaviour
     /// <summary> 現在体力 </summary>
     [SerializeField] private int m_life = 10;
     /// <summary> 最大マナ </summary>
-    [SerializeField] private int m_maxMana = 10;
+    [SerializeField] private int m_maxMana = 50;
     /// <summary> 現在マナ </summary>
-    [SerializeField] private int m_mana = 10;
+    [SerializeField] private int m_mana = 50;
+    /// <summary> マナが回復するまでの時間 </summary>
+    [SerializeField] private float m_manaRegeneTime = 0.5f;
     /// <summary> 弾のプレハブ</summary>
     [SerializeField] private GameObject[] m_bulletPrefab;
     /// <summary> 弾の速度</summary>
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
     private bool m_damage = false;
     private float m_timer = 0;
     private float m_bulletTimer = 1;
+    private float m_mpTimer = 0;
     private bool m_isrelease = false;
 
     void Start()
@@ -85,6 +88,8 @@ public class PlayerController : MonoBehaviour
         }
         m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
+        m_hpSlider.value = m_life;
+        m_mpSlider.value = m_mana;
         BulletSpriteActiveChanged();
     }
     void Update()
@@ -118,6 +123,8 @@ public class PlayerController : MonoBehaviour
 
         AttackChanged();
 
+        ManaRegene();
+
         // 落下速度を上げたい
         //if (m_isJump)
         //{
@@ -142,6 +149,7 @@ public class PlayerController : MonoBehaviour
                 }
                 BulletBase bullet = collision.GetComponent<BulletBase>();
                 m_life -= bullet.m_power;
+                m_hpSlider.value = m_life;
                 StartCoroutine("DamageTimer");
             }
             if (collision.tag == "Enemy")
@@ -152,6 +160,7 @@ public class PlayerController : MonoBehaviour
                     return;
                 }
                 m_life -= enemy.m_power;
+                m_hpSlider.value = m_life;
                 StartCoroutine("DamageTimer");
             }
         }
@@ -233,7 +242,7 @@ public class PlayerController : MonoBehaviour
     private void Fire()
     {
         m_bulletTimer += Time.deltaTime;
-        if (m_bulletTimer > m_fireInterval)
+        if (m_bulletTimer > m_fireInterval && m_mana > 0)
         {
             if (Input.GetButtonDown("Fire1"))
             {
@@ -249,6 +258,7 @@ public class PlayerController : MonoBehaviour
                 }
                 v.Normalize();
                 var t = Instantiate(m_bulletPrefab[m_selectBulletIndex], this.transform.position, Quaternion.identity);
+                ManaPointSub();
                 BulletBase bullet = t.GetComponent<BulletBase>();
                 if (bullet)
                 {
@@ -257,6 +267,35 @@ public class PlayerController : MonoBehaviour
                     bullet.m_velo = v;
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// 攻撃によってMPが減る処理
+    /// </summary>
+    private void ManaPointSub()
+    {
+        if (m_selectBulletIndex == (int)Wepon.Normal)
+        {
+            m_mana -= 2;
+        }
+        if (m_selectBulletIndex == (int)Wepon.Blast)
+        {
+            m_mana -= 10;
+        }
+    }
+
+    /// <summary>
+    /// 時間経過でマナが自然回復する処理
+    /// </summary>
+    private void ManaRegene()
+    {
+        m_mpTimer += Time.deltaTime;
+        if (m_mpTimer > m_manaRegeneTime && m_mana < m_maxMana)
+        {
+            m_mpTimer = 0;
+            m_mana++;
+            m_mpSlider.value = m_mana;
         }
     }
 
