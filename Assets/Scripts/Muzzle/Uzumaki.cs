@@ -38,7 +38,7 @@ public class Uzumaki : Nway
             v = Quaternion.Euler(0, 0, m_angle / m_wayNum * i) * v;
             v *= m_maxSpeed;
             InstantiateAndColor(v);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(m_fireInterval);
         }
     }
 
@@ -52,7 +52,7 @@ public class Uzumaki : Nway
             v = Quaternion.Euler(0, 0, m_angle / m_wayNum * -i) * v;
             v *= m_maxSpeed;
             InstantiateAndColor(v);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(m_fireInterval);
         }
         m_isBullet = false;
     }

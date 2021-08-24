@@ -41,8 +41,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject[] m_bulletPrefab;
     /// <summary> 弾の速度</summary>
     [SerializeField] private float m_bulletSpeed = 15;
-    /// <summary> 攻撃の切り替え用</summary>
-    //[System.NonSerialized] public bool[] m_weponFlag = { true, false };
     /// <summary> 現在所持している武器の数</summary>
     public int m_haveBullet = 0;
     /// <summary> 選択中の攻撃(配列要素)</summary>
@@ -68,6 +66,12 @@ public class PlayerController : MonoBehaviour
     private float m_bulletTimer = 1;
     private float m_mpTimer = 0;
     private bool m_isrelease = false;
+
+    enum AttackMana
+    {
+        Normal = 2,
+        Blast = 10
+    }
 
     void Start()
     {
@@ -277,11 +281,11 @@ public class PlayerController : MonoBehaviour
     {
         if (m_selectBulletIndex == (int)Wepon.Normal)
         {
-            m_mana -= 2;
+            m_mana -= (int)AttackMana.Normal;
         }
         if (m_selectBulletIndex == (int)Wepon.Blast)
         {
-            m_mana -= 10;
+            m_mana -= (int)AttackMana.Blast;
         }
     }
 

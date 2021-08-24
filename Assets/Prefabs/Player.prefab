@@ -304,8 +304,9 @@ MonoBehaviour:
   m_fireInterval: 0.2
   m_maxLife: 10
   m_life: 10
-  m_maxMana: 10
-  m_mana: 10
+  m_maxMana: 50
+  m_mana: 50
+  m_manaRegeneTime: 0.5
   m_bulletPrefab:
   - {fileID: 7731191898902509555, guid: f564e35666a32394f83bf4f7d1c89dfa, type: 3}
   - {fileID: 1741373068483117381, guid: a1821b94f2e97c44f8c714ad542a14f5, type: 3}

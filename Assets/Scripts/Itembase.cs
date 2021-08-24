@@ -10,8 +10,8 @@ public class Itembase : MonoBehaviour
         Status
     }
     [SerializeField] private ItemType m_itemType = ItemType.Status;
-    //[SerializeField] private Wepon m_wepon = Wepon.Blast;
     [SerializeField] private StatusItems m_statusItems = StatusItems.Life;
+    [SerializeField] private GameObject m_textPrefabs;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,7 +27,7 @@ public class Itembase : MonoBehaviour
             {
                 player.m_haveItem[(int)m_statusItems]++;
             }
-
+            Instantiate(m_textPrefabs, gameObject.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
