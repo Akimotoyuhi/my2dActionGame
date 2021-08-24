@@ -188,6 +188,8 @@ public class PlayerController : MonoBehaviour
                 m_vcam = gameObject.transform.Find("CM vcam").GetComponent<CinemachineConfiner>();
                 m_vcam.m_BoundingShape2D = collision;
             }
+            //コライダーに入ったらGameManagerに入った事を伝えて、敵を出現させる。
+            m_gamemanager.EnemySpawning();
         }
 
         //チェックポイント変更

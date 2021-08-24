@@ -456,6 +456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_itemType: 0
   m_statusItems: 0
+  m_textPrefabs: {fileID: 8262522323689573925, guid: 4a4b5f852e1aaef4593401dba80fbc92,
+    type: 3}
 --- !u!212 &269834600
 SpriteRenderer:
   m_ObjectHideFlags: 0
