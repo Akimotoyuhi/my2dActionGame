@@ -67,11 +67,6 @@ public class PlayerController : MonoBehaviour
     private float m_mpTimer = 0;
     private bool m_isrelease = false;
 
-    private void Awake()
-    {
-        
-    }
-
     enum AttackMana
     {
         Normal = 2,
@@ -259,10 +254,30 @@ public class PlayerController : MonoBehaviour
     private void Fire()
     {
         m_bulletTimer += Time.deltaTime;
-        if (m_bulletTimer > m_fireInterval && m_mana > 0)
+        if (m_bulletTimer > m_fireInterval)
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                // 撃った後MPが０以下にならなければ続行
+                if (m_selectBulletIndex == (int)Wepon.Normal)
+                {
+                    if (m_mana < (int)AttackMana.Normal)
+                    {
+                        return;
+                    }
+                    m_mana -= (int)AttackMana.Normal;
+
+                }
+                if (m_selectBulletIndex == (int)Wepon.Blast)
+                {
+                    if (m_mana < (int)AttackMana.Blast)
+                    {
+                        return;
+                    }
+                    m_mana -= (int)AttackMana.Blast;
+                }
+                m_mpSlider.value = m_mana;
+
                 m_bulletTimer = 0;
                 Vector2 v;
                 if (this.transform.localScale.x > 0)
@@ -274,9 +289,8 @@ public class PlayerController : MonoBehaviour
                     v = Vector2.left;
                 }
                 v.Normalize();
-                var t = Instantiate(m_bulletPrefab[m_selectBulletIndex], this.transform.position, Quaternion.identity);
-                ManaPointSub();
-                BulletBase bullet = t.GetComponent<BulletBase>();
+
+                var t = Instantiate(m_bulletPrefab[m_selectBulletIndex], this.transform.position, Quaternion.identity);                BulletBase bullet = t.GetComponent<BulletBase>();
                 if (bullet)
                 {
                     bullet.m_minSpeed = m_bulletSpeed;
@@ -284,21 +298,6 @@ public class PlayerController : MonoBehaviour
                     bullet.m_velo = v;
                 }
             }
-        }
-    }
-
-    /// <summary>
-    /// 攻撃によってMPが減る処理
-    /// </summary>
-    private void ManaPointSub()
-    {
-        if (m_selectBulletIndex == (int)Wepon.Normal)
-        {
-            m_mana -= (int)AttackMana.Normal;
-        }
-        if (m_selectBulletIndex == (int)Wepon.Blast)
-        {
-            m_mana -= (int)AttackMana.Blast;
         }
     }
 
