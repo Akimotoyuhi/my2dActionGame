@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
         {
             EnemySpawnPoint e = m_enemySpawnpoint.transform.GetChild(i).GetComponent<EnemySpawnPoint>();
             e.EnemySpawn();
-            Debug.Log("");
         }
     }
 

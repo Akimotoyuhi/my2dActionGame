@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     private int m_selectBulletIndex = 0;
     /// <summary> ステータスアップアイテム用</summary>
     [System.NonSerialized] public int[] m_haveItem = { 0, 0, 0 };
+    private string m_nidozukeKinsi;
     private GameObject m_playerUi = null;
     private GameObject[] m_bulletSprites;
     private Rigidbody2D m_rb = null;
@@ -183,7 +184,12 @@ public class PlayerController : MonoBehaviour
                 m_vcam.m_BoundingShape2D = collision;
                 if (m_gamemanager)
                 {
+                    if (collision.gameObject.name == m_nidozukeKinsi)
+                    {
+                        return;
+                    }
                     m_gamemanager.EnemySpawning();
+                    m_nidozukeKinsi = collision.gameObject.name;
                 }
                 else
                 {
