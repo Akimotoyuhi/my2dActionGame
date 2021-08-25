@@ -10,7 +10,7 @@ public enum PatternState
     D
 }
 
-public class BossTest : Enemy
+public class BossTest : BossEnemyBase
 {
     private float _moveTimer;
     private GameObject _player;

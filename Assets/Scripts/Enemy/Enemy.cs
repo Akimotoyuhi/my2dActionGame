@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     /// <summary>最大体力</summary>
     [SerializeField] public int m_maxLife = 10;
@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour
             m_life -= bullet.m_power;
             Vector2 v = new Vector2(this.transform.position.x + Random.Range(-1f, 1f), this.transform.position.y + Random.Range(-1f, 1f));
             var inst = Instantiate(m_damagePrefab, v, Quaternion.identity);
+            inst.GetComponent<DamageText>().m_vec = v;
             Text text = inst.transform.GetChild(0).GetComponent<Text>();
             text.text = $"{bullet.m_power}";
         }
@@ -71,4 +72,6 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public abstract void Move();
 }

@@ -2208,6 +2208,7 @@ MonoBehaviour:
   m_player: {fileID: 4491234211938195057, guid: a2905ffc65d65674a9100bd3bbaa0c09,
     type: 3}
   isTest: 1
+  m_enemySpawnpoint: {fileID: 0}
 --- !u!4 &1718044024
 Transform:
   m_ObjectHideFlags: 0
@@ -2261,7 +2262,7 @@ MonoBehaviour:
   m_vector: {x: -1, y: 0}
   m_bulletPrefab: {fileID: 5001137990051095853, guid: c31dd507c70c2e247a00fa00b0926570,
     type: 3}
-  m_color: {r: 0.37254906, g: 0.83411586, b: 1, a: 1}
+  m_color: {r: 0.21003917, g: 0.61173916, b: 0.754717, a: 1}
   _pattenName: 1
   m_timer: 0
   m_angle: 360
@@ -2875,7 +2876,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_bulletPrefab.Array.data[0]
       value: 
-      objectReference: {fileID: 7731191898902509555, guid: f564e35666a32394f83bf4f7d1c89dfa,
+      objectReference: {fileID: 4822195777118888771, guid: 0821f3bf23c0626469c13d00282fb91c,
         type: 3}
     - target: {fileID: 4491234211938195067, guid: a2905ffc65d65674a9100bd3bbaa0c09,
         type: 3}

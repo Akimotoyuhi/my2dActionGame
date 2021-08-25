@@ -21,7 +21,7 @@ public class HopEnemy : Enemy
         }
     }
 
-    private void Move()
+    public override void Move()
     {
         if (m_isMove || !m_move)
         {
@@ -31,13 +31,11 @@ public class HopEnemy : Enemy
 
         if (m_player.transform.position.x < this.transform.position.x)
         {
-            //transform.localScale = new Vector3(-1, 1, 1);
             Vector2 jump = new Vector2(-m_sideJump, 1);
             m_rb.AddForce(jump * m_jumpPower, ForceMode2D.Impulse);
         }
         else if (m_player.transform.position.x > this.transform.position.x)
         {
-            //transform.localScale = new Vector3(1, 1, 1);
             Vector2 jump = new Vector2(m_sideJump, 1);
             m_rb.AddForce(jump * m_jumpPower, ForceMode2D.Impulse);
         }

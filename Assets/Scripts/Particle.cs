@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossEnemyBase : Enemy
+public class Particle : MonoBehaviour
 {
     void Start()
     {
@@ -12,10 +12,5 @@ public class BossEnemyBase : Enemy
     void Update()
     {
         
-    }
-
-    public override void Move()
-    {
-        throw new System.NotImplementedException();
     }
 }

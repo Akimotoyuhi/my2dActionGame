@@ -11,7 +11,7 @@ public class AngryPig : Enemy
         Move();
     }
 
-    private void Move()
+    public override void Move()
     {
         if (m_player)
         {

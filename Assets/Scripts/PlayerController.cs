@@ -67,6 +67,11 @@ public class PlayerController : MonoBehaviour
     private float m_mpTimer = 0;
     private bool m_isrelease = false;
 
+    private void Awake()
+    {
+        
+    }
+
     enum AttackMana
     {
         Normal = 2,
