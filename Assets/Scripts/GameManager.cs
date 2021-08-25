@@ -19,10 +19,11 @@ public class GameManager : MonoBehaviour
 
     public void EnemySpawning()
     {
-        for (int i = 0; i < m_enemySpawnpoint.transform.childCount; i++)
+        for (int i = 0; i < 1; i++)
         {
             EnemySpawnPoint e = m_enemySpawnpoint.transform.GetChild(i).GetComponent<EnemySpawnPoint>();
             e.EnemySpawn();
+            Debug.Log("");
         }
     }
 

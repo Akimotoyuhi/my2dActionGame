@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour
         {
             m_bulletSprites[i] = BulletType.transform.GetChild(i).gameObject;
         }
-        m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         m_hpSlider.value = m_life;
         m_mpSlider.value = m_mana;
@@ -182,14 +181,21 @@ public class PlayerController : MonoBehaviour
             if (m_vcam)
             {
                 m_vcam.m_BoundingShape2D = collision;
+                if (m_gamemanager)
+                {
+                    m_gamemanager.EnemySpawning();
+                }
+                else
+                {
+                    m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
+                }
+                
             }
             else
             {
                 m_vcam = gameObject.transform.Find("CM vcam").GetComponent<CinemachineConfiner>();
                 m_vcam.m_BoundingShape2D = collision;
             }
-            //コライダーに入ったらGameManagerに入った事を伝えて、敵を出現させる。
-            m_gamemanager.EnemySpawning();
         }
 
         //チェックポイント変更
