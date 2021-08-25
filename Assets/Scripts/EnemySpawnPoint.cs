@@ -15,6 +15,10 @@ public class EnemySpawnPoint : MonoBehaviour
     /// </summary>
     public void EnemySpawn()
     {
-        Instantiate(m_enemyPrefab, this.gameObject.transform.position, Quaternion.identity);
+        if (gameObject.transform.childCount > 0)
+        {
+            Destroy(gameObject.transform.GetChild(0).gameObject);
+        }
+        GameObject g = Instantiate(m_enemyPrefab, this.gameObject.transform.position, Quaternion.identity, this.transform);
     }
 }
