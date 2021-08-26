@@ -42,11 +42,13 @@ public class PlayerController : MonoBehaviour
     /// <summary> 弾の速度</summary>
     [SerializeField] private float m_bulletSpeed = 15;
     /// <summary> 現在所持している武器の数</summary>
-    public int m_haveBullet = 0;
+    [System.NonSerialized] public int m_haveBullet = 0;
     /// <summary> 選択中の攻撃(配列要素)</summary>
     private int m_selectBulletIndex = 0;
     /// <summary> ステータスアップアイテム用</summary>
     [System.NonSerialized] public int[] m_haveItem = { 0, 0, 0 };
+    /// <summary> 被ダメ表示用</summary>
+    [SerializeField] private GameObject m_damageText;
     private string m_nidozukeKinsi;
     private GameObject m_playerUi = null;
     private GameObject[] m_bulletSprites;
@@ -67,12 +69,10 @@ public class PlayerController : MonoBehaviour
     private float m_bulletTimer = 1;
     private float m_mpTimer = 0;
     private bool m_isrelease = false;
-
-    enum AttackMana
-    {
-        Normal = 2,
-        Blast = 10
-    }
+    /// <summary> 消費ｍｐ</summary>
+    private int[] m_attackMana = new int[] { 2, 10 };
+    /// <summary> 攻撃のダメージ倍率</summary>
+    private int[] m_attackDamage = new int[] { 1, 3 };
 
     void Start()
     {
@@ -154,17 +154,25 @@ public class PlayerController : MonoBehaviour
                 BulletBase bullet = collision.GetComponent<BulletBase>();
                 m_life -= bullet.m_power;
                 m_hpSlider.value = m_life;
+                var inst = Instantiate(m_damageText, this.gameObject.transform.position, Quaternion.identity);
+                Text text = inst.transform.GetChild(0).GetComponent<Text>();
+                text.text = $"{bullet.m_power}";
+
                 StartCoroutine("DamageTimer");
             }
             if (collision.tag == "Enemy")
             {
-                Enemy enemy = collision.GetComponent<Enemy>();
                 if (m_damage)
                 {
                     return;
                 }
+                Enemy enemy = collision.GetComponent<Enemy>();
                 m_life -= enemy.m_power;
                 m_hpSlider.value = m_life;
+                var inst = Instantiate(m_damageText, this.gameObject.transform.position, Quaternion.identity);
+                Text text = inst.transform.GetChild(0).GetComponent<Text>();
+                text.text = $"{enemy.m_power}";
+
                 StartCoroutine("DamageTimer");
             }
         }
@@ -264,24 +272,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                // 撃った後MPが０以下にならなければ続行
-                if (m_selectBulletIndex == (int)Wepon.Normal)
+                // 撃った後MPが０以下にならなければ発射
+                if (m_mana < m_attackMana[m_selectBulletIndex])
                 {
-                    if (m_mana < (int)AttackMana.Normal)
-                    {
-                        return;
-                    }
-                    m_mana -= (int)AttackMana.Normal;
-
+                    return;
                 }
-                if (m_selectBulletIndex == (int)Wepon.Blast)
-                {
-                    if (m_mana < (int)AttackMana.Blast)
-                    {
-                        return;
-                    }
-                    m_mana -= (int)AttackMana.Blast;
-                }
+                m_mana -= m_attackMana[m_selectBulletIndex];
                 m_mpSlider.value = m_mana;
 
                 m_bulletTimer = 0;
@@ -300,7 +296,7 @@ public class PlayerController : MonoBehaviour
                 if (bullet)
                 {
                     bullet.m_minSpeed = m_bulletSpeed;
-                    bullet.m_power = m_power;
+                    bullet.m_power = SetDamage(m_power);
                     bullet.m_velo = v;
                 }
             }
@@ -319,6 +315,11 @@ public class PlayerController : MonoBehaviour
             m_mana++;
             m_mpSlider.value = m_mana;
         }
+    }
+
+    private int SetDamage(int damage)
+    {
+        return damage * m_attackDamage[m_selectBulletIndex];
     }
 
     /// <summary>
@@ -343,6 +344,9 @@ public class PlayerController : MonoBehaviour
         BulletSpriteActiveChanged();
     }
 
+    /// <summary>
+    /// 現在アクティブな弾を画面に表示する
+    /// </summary>
     private void BulletSpriteActiveChanged()
     {
         for (int i = 0; i < m_bulletSprites.Length; i++)

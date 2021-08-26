@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: level up
+  m_Text: ItemGet
 --- !u!95 &8262522322345847121
 Animator:
   serializedVersion: 3

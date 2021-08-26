@@ -350,8 +350,8 @@ MonoBehaviour:
   m_moveSpeed: 5
   m_jumpPower: 7
   m_fireInterval: 0.2
-  m_maxLife: 10
-  m_life: 10
+  m_maxLife: 50
+  m_life: 50
   m_maxMana: 50
   m_mana: 50
   m_manaRegeneTime: 0.5
@@ -359,7 +359,8 @@ MonoBehaviour:
   - {fileID: 4822195777118888771, guid: 0821f3bf23c0626469c13d00282fb91c, type: 3}
   - {fileID: 1741373068483117381, guid: a1821b94f2e97c44f8c714ad542a14f5, type: 3}
   m_bulletSpeed: 15
-  m_haveBullet: 0
+  m_damageText: {fileID: 4010514509476805378, guid: fdf5d5f516c1af54ca96a6109b599bbb,
+    type: 3}
   ground: {fileID: 4491234211038491085}
   godMode: 0
 --- !u!58 &4491234211938195069
