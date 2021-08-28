@@ -26,14 +26,31 @@ public class Muzzle : MonoBehaviour
     [SerializeField] public Pattern _pattenName = Pattern.Aim_at_Player;
     /// <summary>発射間隔に使うタイマー</summary>
     [SerializeField] public float m_timer = 0;
+    /// <summary>プレイヤーの位置によって発射向きを変更するかどうか</summary>
+    [SerializeField] public bool m_changeDirection = false;
+    /// <summary>着弾点を指定したい時にどうぞ</summary>
+    //[SerializeField] public bool m_selectTarget = false;
     /// <summary>現在が弾幕中かを判定する</summary>
     [System.NonSerialized] public bool m_isBullet = false;
+    [System.NonSerialized] public GameObject m_player;
     private BulletBase m_bullet;
 
     public enum Pattern
     {
         Aim_at_Player,
         Designation
+    }
+
+    public Vector2 SetDirection()
+    {
+        if (m_player.transform.position.x < this.gameObject.transform.position.x)
+        {
+            return Vector2.left;
+        }
+        else
+        {
+            return Vector2.right;
+        }
     }
 
     public void InstantiateAndColor(Vector2 v)

@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxLife: 20
   m_life: 20
-  m_power: 5
+  m_power: 10
   m_speed: 1
   m_jumpPower: 5
   m_moveinterval: 3

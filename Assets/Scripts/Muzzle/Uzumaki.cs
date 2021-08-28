@@ -31,6 +31,7 @@ public class Uzumaki : Nway
 
     public IEnumerator RightUzumaki(Vector2 vec)
     {
+        m_isBullet = true;
         for (int i = 0; i < m_wayNum; i++)
         {
             Vector2 v = vec;
@@ -40,6 +41,7 @@ public class Uzumaki : Nway
             InstantiateAndColor(v);
             yield return new WaitForSeconds(m_fireInterval);
         }
+        m_isBullet = false;
     }
 
     public IEnumerator LeftUzumaki(Vector2 vec)

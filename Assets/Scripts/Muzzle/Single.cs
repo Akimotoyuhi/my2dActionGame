@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Single : Muzzle
 {
+    private void Start()
+    {
+        m_player = GameObject.Find("Player");
+    }
     void Update()
     {
         if (_pattenName == Pattern.Aim_at_Player)
@@ -19,8 +23,7 @@ public class Single : Muzzle
     /// <summary> 単発の自機狙い弾を撃つ </summary>
     private IEnumerator Tanpatu()
     {
-        GameObject player = GameObject.Find("Player");
-        if (player)
+        if (m_player)
         {
             if (!m_isBullet)
             {
@@ -28,7 +31,7 @@ public class Single : Muzzle
                 yield return new WaitForSeconds(m_fireInterval);
                 for (int i = 0; i < m_barrage; i++)
                 {
-                    Vector2 v = player.transform.position - this.transform.position;
+                    Vector2 v = m_player.transform.position - this.transform.position;
                     v.Normalize();
                     //v *= m_maxSpeed;
                     InstantiateAndColor(v);
@@ -53,7 +56,16 @@ public class Single : Muzzle
 
             for (int i = 0; i < m_barrage; i++)
             {
-                Vector2 v = vec;
+                //プレイヤーがいる方向によって撃つ方向を変える
+                Vector2 v;
+                if (!m_changeDirection)
+                {
+                    v = vec;
+                }
+                else
+                {
+                    v = SetDirection();
+                }
                 v.Normalize();
                 v *= m_maxSpeed;
                 InstantiateAndColor(v);

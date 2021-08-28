@@ -7,6 +7,12 @@ public class HopEnemy : Enemy
     [SerializeField] float m_sideJump = 0.5f;
     float timer;
 
+
+    private void Start()
+    {
+        SetUp();
+    }
+
     void Update()
     {
         AtPlayer();
@@ -23,12 +29,8 @@ public class HopEnemy : Enemy
 
     public override void Move()
     {
-        if (m_isMove || !m_move)
-        {
-            return;
-        }
+        base.Move();
         m_isMove = true;
-
         if (m_player.transform.position.x < this.transform.position.x)
         {
             Vector2 jump = new Vector2(-m_sideJump, 1);
@@ -39,7 +41,6 @@ public class HopEnemy : Enemy
             Vector2 jump = new Vector2(m_sideJump, 1);
             m_rb.AddForce(jump * m_jumpPower, ForceMode2D.Impulse);
         }
-
         m_isMove = false;
     }
 }

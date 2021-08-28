@@ -27,12 +27,19 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private GameObject m_damagePrefab;
     [System.NonSerialized] public GameObject m_player = null;
     [System.NonSerialized] public Rigidbody2D m_rb = null;
+    [System.NonSerialized] public Animator m_anim = null;
 
-
-    void Start()
+    public void SetUp()
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_player = GameObject.Find("Player");
+    }
+
+    public void FullSetUp()
+    {
+        m_rb = GetComponent<Rigidbody2D>();
+        m_player = GameObject.Find("Player");
+        m_anim = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -40,10 +47,9 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     public void AtPlayer()
     {
-        GameObject player = GameObject.Find("Player");
-        if (player)
+        if (m_player)
         {
-            if (player.transform.position.x < this.gameObject.transform.position.x)
+            if (m_player.transform.position.x < this.gameObject.transform.position.x)
             {
                 transform.localScale = new Vector2(1, 1);
             }
@@ -73,5 +79,11 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public abstract void Move();
+    public virtual void Move()
+    {
+        if (m_isMove || !m_move)
+        {
+            return;
+        }
+    }
 }

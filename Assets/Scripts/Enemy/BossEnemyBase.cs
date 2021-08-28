@@ -16,6 +16,6 @@ public class BossEnemyBase : Enemy
 
     public override void Move()
     {
-        throw new System.NotImplementedException();
+        base.Move();
     }
 }
