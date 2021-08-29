@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Single : Muzzle
 {
+    private GameObject m_player;
+
     private void Start()
     {
-        m_player = GameObject.Find("Player");
+        m_player = GameObject.FindWithTag("Player");
     }
+
     void Update()
     {
         if (_pattenName == Pattern.Aim_at_Player)
@@ -71,6 +74,18 @@ public class Single : Muzzle
                 InstantiateAndColor(v);
                 yield return new WaitForSeconds(m_barrageTime);
             }
+        }
+    }
+
+    public Vector2 SetDirection()
+    {
+        if (m_player.transform.position.x < this.gameObject.transform.position.x)
+        {
+            return Vector2.left;
+        }
+        else
+        {
+            return Vector2.right;
         }
     }
 }

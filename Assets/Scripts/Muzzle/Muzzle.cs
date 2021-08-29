@@ -32,25 +32,13 @@ public class Muzzle : MonoBehaviour
     //[SerializeField] public bool m_selectTarget = false;
     /// <summary>現在が弾幕中かを判定する</summary>
     [System.NonSerialized] public bool m_isBullet = false;
-    [System.NonSerialized] public GameObject m_player;
+    //[System.NonSerialized] public GameObject m_player;
     private BulletBase m_bullet;
 
     public enum Pattern
     {
         Aim_at_Player,
         Designation
-    }
-
-    public Vector2 SetDirection()
-    {
-        if (m_player.transform.position.x < this.gameObject.transform.position.x)
-        {
-            return Vector2.left;
-        }
-        else
-        {
-            return Vector2.right;
-        }
     }
 
     public void InstantiateAndColor(Vector2 v)

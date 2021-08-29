@@ -247,7 +247,7 @@ public class PlayerController : MonoBehaviour
         if (m_isGround)
         {
             // 入力の最大値を超えたら強制的に飛ぶ
-            if (m_timer > 0.1 && !m_isrelease)
+            if (m_timer > 0.05 && !m_isrelease)
             {
                 m_rb.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
                 m_anim.SetTrigger("Jump");
