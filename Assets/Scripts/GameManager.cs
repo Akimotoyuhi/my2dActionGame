@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized] public Vector2 m_spawnPoint = new Vector2(-11f, -2.5f);
     [SerializeField] private bool isTest = false;
     [SerializeField] private GameObject m_enemySpawnpoint;
-    private GameObject m_tutorial;
-    private GameObject m_tutorialText;
+
     void Start()
     {
         m_enemySpawnpoint = GameObject.Find("EnemiesSpawnpoints");

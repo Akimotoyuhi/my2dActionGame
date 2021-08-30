@@ -32,13 +32,13 @@ public abstract class Enemy : MonoBehaviour
     public void SetUp()
     {
         m_rb = GetComponent<Rigidbody2D>();
-        m_player = GameObject.Find("Player");
+        m_player = GameObject.FindWithTag("Player");
     }
 
     public void FullSetUp()
     {
         m_rb = GetComponent<Rigidbody2D>();
-        m_player = GameObject.Find("Player");
+        m_player = GameObject.FindWithTag("Player");
         m_anim = GetComponent<Animator>();
     }
 
