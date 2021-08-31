@@ -34,6 +34,12 @@ public class Muzzle : MonoBehaviour
     [System.NonSerialized] public bool m_isBullet = false;
     //[System.NonSerialized] public GameObject m_player;
     private BulletBase m_bullet;
+    public GameObject m_player;
+
+    private void Start()
+    {
+        m_player = GameObject.FindWithTag("Player");
+    }
 
     public enum Pattern
     {
@@ -55,6 +61,22 @@ public class Muzzle : MonoBehaviour
             m_bullet.m_minSpeed = m_minSpeed;
             m_bullet.m_power = m_bulletPower;
             m_bullet.m_velo = v;
+        }
+    }
+
+    /// <summary>
+    /// この敵から見たプレイヤーの位置によって弾を撃つ場所を変える
+    /// </summary>
+    /// <returns>発射方向</returns>
+    public Vector2 SetDirection()
+    {
+        if (m_player.transform.position.x < this.gameObject.transform.position.x)
+        {
+            return Vector2.left;
+        }
+        else
+        {
+            return Vector2.right;
         }
     }
 

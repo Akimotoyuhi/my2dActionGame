@@ -5,20 +5,28 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour
 {
     [SerializeField] private GameObject m_enemyPrefab;
-    void Start()
-    {
-
-    }
 
     /// <summary>
-    /// このオブジェクトに設定された敵を出現させる
+    /// インスペクターで設定された敵を出現させる
     /// </summary>
     public void EnemySpawn()
     {
         if (gameObject.transform.childCount > 0)
         {
-            Destroy(gameObject.transform.GetChild(0).gameObject);
+            EnemyDestroy();
         }
         GameObject g = Instantiate(m_enemyPrefab, this.gameObject.transform.position, Quaternion.identity, this.transform);
+    }
+
+    /// <summary>
+    /// 現在出現中の敵を削除する
+    /// </summary>
+    public void EnemyDestroy()
+    {
+        if (gameObject.transform.childCount == 0)
+        {
+            return;
+        }
+        Destroy(gameObject.transform.GetChild(0).gameObject);
     }
 }

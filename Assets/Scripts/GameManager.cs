@@ -18,8 +18,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// プレイヤーがCameraColliderに入った事を受け取ったら全てのEnemySpawnointから敵を出させる
+    /// </summary>
     public void EnemySpawning()
     {
+        if (!m_enemySpawnpoint)
+        {
+            Debug.LogWarning("(GameManager.cs)EnemySoawnpoint is null");
+            return;
+        }
+
         for (int i = 0; i < m_enemySpawnpoint.transform.childCount; i++)
         {
             EnemySpawnPoint e = m_enemySpawnpoint.transform.GetChild(i).GetComponent<EnemySpawnPoint>();
@@ -27,11 +36,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void EnemyDestroy()
+    {
+        for (int i = 0; i < m_enemySpawnpoint.transform.childCount; i++)
+        {
+            EnemySpawnPoint e = m_enemySpawnpoint.transform.GetChild(i).GetComponent<EnemySpawnPoint>();
+            e.EnemyDestroy();
+        }
+    }
+
+    /// <summary>
+    /// プレイヤーが死んだ
+    /// </summary>
     public void PlayerDead()
     {
         Invoke("PlayerSpawn", 3f);
     }
 
+    /// <summary>
+    /// プレイヤーのスポーン処理
+    /// </summary>
     public void PlayerSpawn()
     {
         Instantiate(m_player, m_spawnPoint, Quaternion.identity);

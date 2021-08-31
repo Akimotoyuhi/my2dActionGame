@@ -203,7 +203,6 @@ public class PlayerController : MonoBehaviour
                 {
                     m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
                 }
-                
             }
             else
             {
