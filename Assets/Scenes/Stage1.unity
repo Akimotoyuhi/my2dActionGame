@@ -8740,6 +8740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 4491234211938195057, guid: a2905ffc65d65674a9100bd3bbaa0c09,
     type: 3}
+  m_testSpawnPos: {fileID: 0}
   isTest: 0
   m_enemySpawnpoint: {fileID: 0}
 --- !u!1 &248784090
@@ -64385,7 +64386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6099551342287093756
 Transform:
   m_ObjectHideFlags: 0

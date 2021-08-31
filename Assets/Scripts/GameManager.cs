@@ -6,16 +6,18 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject m_player = null;
     [System.NonSerialized] public Vector2 m_spawnPoint = new Vector2(-11f, -2.5f);
+    [SerializeField] private Transform m_testSpawnPos;
     [SerializeField] private bool isTest = false;
     [SerializeField] private GameObject m_enemySpawnpoint;
 
     void Start()
     {
         m_enemySpawnpoint = GameObject.Find("EnemiesSpawnpoints");
-        if (!isTest)
+        if (isTest)
         {
-            PlayerSpawn();
+            m_spawnPoint = new Vector2(m_testSpawnPos.position.x, m_testSpawnPos.position.y);
         }
+        PlayerSpawn();
     }
 
     /// <summary>
@@ -46,7 +48,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// プレイヤーが死んだ
+    /// プレイヤーが死んだ事を受け取って数秒待ってからスポーンさせる
     /// </summary>
     public void PlayerDead()
     {
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// プレイヤーのスポーン処理
+    /// プレイヤーのスポーン
     /// </summary>
     public void PlayerSpawn()
     {

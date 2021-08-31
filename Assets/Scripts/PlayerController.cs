@@ -20,7 +20,7 @@ public enum StatusItems
 public class PlayerController : MonoBehaviour
 {
     /// <summary> 攻撃力 </summary>
-    [SerializeField] private int m_power = 2;
+    [SerializeField] public int m_power = 2;
     /// <summary> 移動速度 </summary>
     [SerializeField] private float m_moveSpeed = 5f;
     /// <summary> ジャンプ速度 </summary>
@@ -28,13 +28,13 @@ public class PlayerController : MonoBehaviour
     /// <summary> 弾を発射する間隔（秒）</summary>
     [SerializeField] private float m_fireInterval = 0.5f;
     /// <summary> 最大体力 </summary>
-    [SerializeField] private int m_maxLife = 10;
+    [SerializeField] public int m_maxLife = 10;
     /// <summary> 現在体力 </summary>
-    [SerializeField] private int m_life = 10;
+    private int m_life = 10;
     /// <summary> 最大マナ </summary>
-    [SerializeField] private int m_maxMana = 50;
+    [SerializeField] public int m_maxMana = 50;
     /// <summary> 現在マナ </summary>
-    [SerializeField] private int m_mana = 50;
+    private int m_mana = 50;
     /// <summary> マナが回復するまでの時間 </summary>
     [SerializeField] private float m_manaRegeneTime = 0.5f;
     /// <summary> 弾のプレハブ</summary>
@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
         m_hpSlider.value = m_life;
         m_mpSlider.value = m_mana;
         BulletSpriteActiveChanged();
+        SetState();
     }
     void Update()
     {
@@ -359,6 +360,25 @@ public class PlayerController : MonoBehaviour
                 m_bulletSprites[i].SetActive(false);
             }
         }
+    }
+
+    /// <summary>
+    /// ステータスアップアイテムを取った時に何のアイテムを取ったかを受け取って自分の所持アイテムを増やす
+    /// </summary>
+    /// <param name="getItem">取得したアイテム</param>
+    public void GetStatusItem(StatusItems getItem)
+    {
+        m_haveItem[(int)getItem]++;
+        SetState();
+    }
+
+    /// <summary>
+    /// 現在所持しているステータスアップアイテムの所持数に基づいて自分の最大体力、最大マナ、攻撃力を設定する
+    /// </summary>
+    private void SetState()
+    {
+        m_maxLife = m_haveItem[(int)StatusItems.Life] * 10;
+        m_life = m_maxLife;
     }
 
     /// <summary>

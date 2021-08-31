@@ -23,9 +23,10 @@ public class Itembase : MonoBehaviour
             {
                 player.m_haveBullet++;
             }
-            else if (m_itemType == ItemType.Status)
+
+            if (m_itemType == ItemType.Status)
             {
-                player.m_haveItem[(int)m_statusItems]++;
+                player.GetStatusItem(m_statusItems);
             }
             Instantiate(m_textPrefabs, gameObject.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
