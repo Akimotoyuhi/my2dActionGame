@@ -20,4 +20,19 @@ public class Single_RandomSpeed : Muzzle
     {
         Destroy(this.gameObject);
     }
+
+    public override void OnShot()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IEnumerator Shot()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IEnumerator Shot(Vector2 vec)
+    {
+        throw new System.NotImplementedException();
+    }
 }

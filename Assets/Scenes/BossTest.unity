@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &252886257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 252886258}
+  m_Layer: 0
+  m_Name: BossSpawnpos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &252886258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252886257}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.16, y: -1.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6994456525432688064}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &278708856
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423879232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17, y: -3.5, z: 0}
+  m_LocalPosition: {x: -6.68, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -208,13 +238,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467985881}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: InvisibleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &467985881
 Transform:
   m_ObjectHideFlags: 0
@@ -286,7 +316,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -310,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709719677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -3.95, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -440,7 +470,7 @@ GameObject:
   - component: {fileID: 1308705920}
   m_Layer: 10
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -995,9 +1025,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1350234595}
   - component: {fileID: 1350234596}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1052,9 +1082,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1819043072}
   - component: {fileID: 1819043073}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1109,9 +1139,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2001004240}
   - component: {fileID: 2001004241}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2106,6 +2136,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 467985881}
+  - {fileID: 252886258}
   m_Father: {fileID: 870442360}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2224,6 +2255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1414be1f4314e9546a21539a11106c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_bossPrefab: {fileID: 3839887303002869116, guid: 9e5bd6318a2a6074fb501444975d41cb,
+    type: 3}
+  m_bossPos: {fileID: 252886258}
 --- !u!1 &8005585952248027672
 GameObject:
   m_ObjectHideFlags: 0

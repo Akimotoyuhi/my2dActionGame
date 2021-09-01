@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Single : Muzzle
 {
-    void Update()
+    public override void OnShot()
     {
         if (_pattenName == Pattern.Aim_at_Player)
         {
-            StartCoroutine(Tanpatu());
+            StartCoroutine(Shot());
         }
         if (_pattenName == Pattern.Designation)
         {
-            StartCoroutine(Tanpatu(m_vector));
+            StartCoroutine(Shot(m_vector));
         }
     }
 
     /// <summary> 単発の自機狙い弾を撃つ </summary>
-    private IEnumerator Tanpatu()
+    public override IEnumerator Shot()
     {
         if (m_player)
         {
@@ -42,9 +42,8 @@ public class Single : Muzzle
     /// 単発の弾を撃つ
     /// </summary>
     /// <param name="v">射出方向</param>
-    private IEnumerator Tanpatu(Vector2 vec)
+    public override IEnumerator Shot(Vector2 vec)
     {
-        // 一定間隔で弾を発射する
         m_timer += Time.deltaTime;
         if (m_timer > m_fireInterval)
         {

@@ -13,4 +13,19 @@ public class Installation : Muzzle
     {
         Installation();
     }
+
+    public override void OnShot()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IEnumerator Shot()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IEnumerator Shot(Vector2 vec)
+    {
+        throw new System.NotImplementedException();
+    }
 }

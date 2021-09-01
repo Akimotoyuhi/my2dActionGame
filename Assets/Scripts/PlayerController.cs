@@ -245,7 +245,7 @@ public class PlayerController : MonoBehaviour
         if (m_isGround)
         {
             // 入力の最大値を超えたら強制的に飛ぶ
-            if (m_timer > 0.05 && !m_isrelease)
+            if (m_timer > 0.1 && !m_isrelease)
             {
                 m_rb.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
                 m_anim.SetTrigger("Jump");
@@ -377,9 +377,11 @@ public class PlayerController : MonoBehaviour
     {
         m_maxLife = m_haveItem[(int)StatusItems.Life] * 10;
         m_life = m_maxLife;
+        m_hpSlider.maxValue = m_maxLife;
         m_hpSlider.value = m_life;
         m_maxMana = m_haveItem[(int)StatusItems.Mana] * 10;
         m_mana = m_maxMana;
+        m_mpSlider.maxValue = m_maxMana;
         m_mpSlider.value = m_mana;
         m_power = m_haveItem[(int)StatusItems.Power] * 5;
         Debug.Log($"最大体力{m_maxLife}: 最大マナ{m_maxMana}: 攻撃力{m_power}");

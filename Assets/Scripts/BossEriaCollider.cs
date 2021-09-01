@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossEriaCollider : MonoBehaviour
 {
     private GameObject m_invisibleWall;
+    [SerializeField] private GameObject m_bossPrefab;
+    [SerializeField] private Transform m_bossPos;
     private bool m_isBoss = false;
 
     void Start()
@@ -15,15 +17,24 @@ public class BossEriaCollider : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            m_invisibleWall.SetActive(true);
-            m_isBoss = true;
+            if (!m_isBoss)
+            {
+                IsBoss();
+            }
         }
+    }
+
+    private void IsBoss()
+    {
+        m_isBoss = true;
+        m_invisibleWall.SetActive(true);
+        Instantiate(m_bossPrefab, m_bossPos.position, Quaternion.identity);
     }
 }

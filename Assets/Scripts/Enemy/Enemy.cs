@@ -24,10 +24,10 @@ public abstract class Enemy : MonoBehaviour
     /// <summary>現在移動中か</summary>
     [System.NonSerialized] public bool m_isMove = false;
     /// <summary>ダメージ表示用キャンバス</summary>
-    [SerializeField] private GameObject m_damagePrefab;
-    [System.NonSerialized] public GameObject m_player = null;
-    [System.NonSerialized] public Rigidbody2D m_rb = null;
-    [System.NonSerialized] public Animator m_anim = null;
+    [SerializeField] public GameObject m_damagePrefab;
+    [System.NonSerialized] public GameObject m_player;
+    [System.NonSerialized] public Rigidbody2D m_rb;
+    [System.NonSerialized] public Animator m_anim;
 
     public void SetUp()
     {

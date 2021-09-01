@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Mashroom : Enemy
 {
+    [SerializeField] public Nway m_muzzleClass;
+
     void Start()
     {
         FullSetUp();
@@ -12,6 +14,7 @@ public class Mashroom : Enemy
     void Update()
     {
         AtPlayer();
+        m_muzzleClass.OnShot();
         if (m_player)
         {
             m_moveTimer += Time.deltaTime;

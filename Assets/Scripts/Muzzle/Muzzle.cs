@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Muzzle : MonoBehaviour
+public abstract class Muzzle : MonoBehaviour
 {
     /// <summary>発射する弾の速度(最大速度)</summary>
     [SerializeField] public float m_maxSpeed = 1f;
@@ -18,6 +18,10 @@ public class Muzzle : MonoBehaviour
     [SerializeField] public float m_barrageTime = 1f;
     /// <summary>弾の発射方向</summary>
     [SerializeField] public Vector2 m_vector = Vector2.zero;
+    /// <summary>最初の弾の射出を遅延させるか</summary>
+    [SerializeField] public float m_direyTime = 0;
+    /// <summary>最初の弾の判断用</summary>
+    [System.NonSerialized] public bool m_direyFlag = false;
     /// <summary>弾のプレハブ</summary>
     [SerializeField] private GameObject m_bulletPrefab = null;
     /// <summary>弾の色</summary>
@@ -25,16 +29,15 @@ public class Muzzle : MonoBehaviour
     /// <summary>弾幕の性質</summary>
     [SerializeField] public Pattern _pattenName = Pattern.Aim_at_Player;
     /// <summary>発射間隔に使うタイマー</summary>
-    [SerializeField] public float m_timer = 0;
+    [System.NonSerialized] public float m_timer = 0;
     /// <summary>プレイヤーの位置によって発射向きを変更するかどうか</summary>
     [SerializeField] public bool m_changeDirection = false;
     /// <summary>着弾点を指定したい時にどうぞ</summary>
     //[SerializeField] public bool m_selectTarget = false;
     /// <summary>現在が弾幕中かを判定する</summary>
     [System.NonSerialized] public bool m_isBullet = false;
-    //[System.NonSerialized] public GameObject m_player;
+    [System.NonSerialized] public GameObject m_player;
     private BulletBase m_bullet;
-    public GameObject m_player;
 
     private void Start()
     {
@@ -123,4 +126,10 @@ public class Muzzle : MonoBehaviour
             InstantiateAndColor(Vector2.zero);
         }
     }
+
+    public abstract void OnShot();
+
+    public abstract IEnumerator Shot();
+
+    public abstract IEnumerator Shot(Vector2 vec);
 }
