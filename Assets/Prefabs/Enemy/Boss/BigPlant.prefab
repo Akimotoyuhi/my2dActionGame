@@ -332,7 +332,7 @@ MonoBehaviour:
   m_barrageTime: 0.1
   m_vector: {x: 0, y: 0}
   m_direyTime: 0
-  m_bulletPrefab: {fileID: 1918992205269183470, guid: 5b5735b3981f60140a96dace9d453297,
+  m_bulletPrefab: {fileID: 5001137990051095853, guid: c31dd507c70c2e247a00fa00b0926570,
     type: 3}
   m_color: {r: 0.5540879, g: 1, b: 0, a: 1}
   _pattenName: 0

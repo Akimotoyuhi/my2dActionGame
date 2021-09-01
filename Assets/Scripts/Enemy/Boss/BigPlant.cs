@@ -52,6 +52,7 @@ public class BigPlant : BossEnemyBase
         }
         else if (m_faze == Faze.two)
         {
+            Debug.Log("Faze2");
             int i = Random.Range((int)Pattern.uzumaki, m_actions.Length);
             StartCoroutine(Action(i));
         }
@@ -100,7 +101,8 @@ public class BigPlant : BossEnemyBase
     {
         if (Percent(m_life ,m_maxLife) < 50)
         {
-            m_faze++;
+            m_faze = Faze.two;
+            NumberSet();
         }
     }
 
