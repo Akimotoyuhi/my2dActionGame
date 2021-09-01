@@ -10,7 +10,8 @@ public class Uzumaki : Nway
         Right,
         Left
     }
-    void Update()
+
+    public override void OnShot()
     {
         if (directionRotation == DirectionOfRotation.Right)
         {
@@ -19,7 +20,7 @@ public class Uzumaki : Nway
                 StartCoroutine(RightUzumaki(m_vector));
             }
         }
-        if (directionRotation == DirectionOfRotation.Left) 
+        if (directionRotation == DirectionOfRotation.Left)
         {
             if (!m_isBullet)
             {

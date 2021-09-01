@@ -9,24 +9,31 @@ public class BigPlant : BossEnemyBase
 
     enum Faze
     {
-        zero = 0,
         one = 1,
+        two = 2,
     }
 
     enum Pattern
     {
-        way,
+        way = 0,
+        single = 1,
+        uzumaki = 2
     }
 
-    private Faze m_faze = Faze.zero;
-    private Pattern m_pattern = Pattern.way;
+    private Faze m_faze = Faze.one;
     private Actions[] m_actions;
-    private Transform m_muzzle;
     [Header("パターン１")]
     [SerializeField] private Nway m_nway1;
     [SerializeField] private Nway m_nway2;
+    [SerializeField] private Nway m_nway3;
     [Header("パターン２")]
     [SerializeField] private Single m_single1;
+    [Header("パターン３")]
+    [SerializeField] private Uzumaki m_uzumaki1;
+    [SerializeField] private Uzumaki m_uzumaki2;
+    [SerializeField] private Uzumaki m_uzumaki3;
+    [SerializeField] private Uzumaki m_uzumaki4;
+
 
     void Start()
     {
@@ -37,15 +44,25 @@ public class BigPlant : BossEnemyBase
 
     private void NumberSet()
     {
-        int i = Random.Range(0, m_actions.Length);
-        StartCoroutine(Action(i));
+        Debug.Log("スタート");
+        if (m_faze == Faze.one)
+        {
+            int i = Random.Range((int)Pattern.way, (int)Pattern.uzumaki);
+            StartCoroutine(Action(i));
+        }
+        else if (m_faze == Faze.two)
+        {
+            int i = Random.Range((int)Pattern.uzumaki, m_actions.Length);
+            StartCoroutine(Action(i));
+        }
     }
 
     private void ActionSet()
     {
-        m_actions = new Actions[2];
+        m_actions = new Actions[3];
         m_actions[0] = Pattern1;
         m_actions[1] = Pattern2;
+        m_actions[2] = Pattern3;
     }
 
     private void Pattern1()
@@ -57,6 +74,14 @@ public class BigPlant : BossEnemyBase
     private void Pattern2()
     {
         m_single1.OnShot();
+    }
+
+    private void Pattern3()
+    {
+        m_uzumaki1.OnShot();
+        m_uzumaki2.OnShot();
+        m_uzumaki3.OnShot();
+        m_uzumaki4.OnShot();
     }
 
     /// <summary>
@@ -73,7 +98,10 @@ public class BigPlant : BossEnemyBase
 
     private void FazeChanger()
     {
-        
+        if (Percent(m_life ,m_maxLife) < 50)
+        {
+            m_faze++;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -92,6 +120,11 @@ public class BigPlant : BossEnemyBase
         if (m_life <= 0)
         {
             Destroy(this.gameObject);
+        }
+        else
+        {
+            FazeChanger();
+            Debug.Log($"敵体力{Percent(m_life, m_maxLife)}%");
         }
     }
 }

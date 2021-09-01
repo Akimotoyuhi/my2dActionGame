@@ -27,7 +27,7 @@ public class Single : Muzzle
                 yield return new WaitForSeconds(m_fireInterval);
                 for (int i = 0; i < m_barrage; i++)
                 {
-                    Vector2 v = m_player.transform.position - this.transform.position;
+                    Vector2 v = m_player.transform.position - m_muzzle.position;
                     v.Normalize();
                     //v *= m_maxSpeed;
                     InstantiateAndColor(v);

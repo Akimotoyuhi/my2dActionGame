@@ -13,4 +13,12 @@ public class BossEnemyBase : Enemy
     {
         
     }
+
+    /// <summary>
+    /// 二つの数値の割合(%)を返す
+    /// </summary>
+    /// <param name="now">現在の数値</param>
+    /// <param name="max">最大の数値</param>
+    /// <returns>二つの数値の割合</returns>
+    public float Percent(float now, float max) { return (now / max) * 100; }
 }

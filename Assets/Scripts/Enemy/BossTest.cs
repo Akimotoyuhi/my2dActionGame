@@ -136,6 +136,4 @@ public class BossTest : BossEnemyBase
             _patternState = PatternState.D;
         }
     }
-
-    private float Percent(float now, float max) { return (now / max) * 100; }
 }

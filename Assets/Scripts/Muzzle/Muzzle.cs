@@ -38,6 +38,7 @@ public abstract class Muzzle : MonoBehaviour
     [System.NonSerialized] public bool m_isBullet = false;
     [System.NonSerialized] public GameObject m_player;
     private BulletBase m_bullet;
+    [SerializeField] public Transform m_muzzle;
 
     private void Start()
     {
@@ -52,7 +53,7 @@ public abstract class Muzzle : MonoBehaviour
 
     public void InstantiateAndColor(Vector2 v)
     {
-        var t = Instantiate(m_bulletPrefab, this.transform.position, Quaternion.identity);
+        var t = Instantiate(m_bulletPrefab, m_muzzle.position, Quaternion.identity);
         if (t.GetComponent<SpriteRenderer>())
         {
             t.GetComponent<SpriteRenderer>().color = m_color;
