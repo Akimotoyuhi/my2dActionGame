@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     /// <summary> 選択中の攻撃(配列要素)</summary>
     private int m_selectBulletIndex = 0;
     /// <summary> ステータスアップアイテム用</summary>
-    [System.NonSerialized] public int[] m_haveItem = { 0, 0, 0 };
+    [System.NonSerialized] public int[] m_haveItem = { 1, 1, 1 };
     /// <summary> 被ダメ表示用</summary>
     [SerializeField] private GameObject m_damageText;
     private string m_nidozukeKinsi;
@@ -70,9 +70,9 @@ public class PlayerController : MonoBehaviour
     private float m_mpTimer = 0;
     private bool m_isrelease = false;
     /// <summary> 消費ｍｐ</summary>
-    private int[] m_attackMana = new int[] { 2, 10 };
+    static private int[] m_attackMana = new int[] { 2, 10 };
     /// <summary> 攻撃のダメージ倍率</summary>
-    private int[] m_attackDamage = new int[] { 1, 3 };
+    static private int[] m_attackDamage = new int[] { 1, 3 };
 
     void Start()
     {
@@ -92,14 +92,12 @@ public class PlayerController : MonoBehaviour
             m_bulletSprites[i] = BulletType.transform.GetChild(i).gameObject;
         }
 
-        m_hpSlider.value = m_life;
-        m_mpSlider.value = m_mana;
         BulletSpriteActiveChanged();
         SetState();
     }
     void Update()
     {
-        m_hpSlider.value = m_life;
+        //m_hpSlider.value = m_life;
         float horizontalKey = Input.GetAxisRaw("Horizontal");
         float xSpeed = 0f;
         m_isGround = ground.IsGrouded();
@@ -379,6 +377,12 @@ public class PlayerController : MonoBehaviour
     {
         m_maxLife = m_haveItem[(int)StatusItems.Life] * 10;
         m_life = m_maxLife;
+        m_hpSlider.value = m_life;
+        m_maxMana = m_haveItem[(int)StatusItems.Mana] * 10;
+        m_mana = m_maxMana;
+        m_mpSlider.value = m_mana;
+        m_power = m_haveItem[(int)StatusItems.Power] * 5;
+        Debug.Log($"最大体力{m_maxLife}: 最大マナ{m_maxMana}: 攻撃力{m_power}");
     }
 
     /// <summary>
