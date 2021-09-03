@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     /// <summary> 選択中の攻撃(配列要素)</summary>
     private int m_selectBulletIndex = 0;
     /// <summary> ステータスアップアイテム用</summary>
-    [System.NonSerialized] public int[] m_haveItem = { 1, 1, 1 };
+    [System.NonSerialized] public int[] m_haveItem = { 0, 0, 0 };
     /// <summary> 被ダメ表示用</summary>
     [SerializeField] private GameObject m_damageText;
     private string m_nidozukeKinsi;
@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
     static private int[] m_attackMana = new int[] { 2, 10 };
     /// <summary> 攻撃のダメージ倍率</summary>
     static private int[] m_attackDamage = new int[] { 1, 3 };
+    /// <summary> 各アイテムのステータス上昇幅</summary>
+    static private int[] m_itembuff = new int[] { 10, 10, 5 };
 
     void Start()
     {
@@ -97,7 +99,6 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        //m_hpSlider.value = m_life;
         float horizontalKey = Input.GetAxisRaw("Horizontal");
         float xSpeed = 0f;
         m_isGround = ground.IsGrouded();
@@ -375,15 +376,15 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void SetState()
     {
-        m_maxLife = m_haveItem[(int)StatusItems.Life] * 10;
+        m_maxLife = m_maxLife + m_haveItem[(int)StatusItems.Life] * m_itembuff[(int)StatusItems.Life];
         m_life = m_maxLife;
         m_hpSlider.maxValue = m_maxLife;
         m_hpSlider.value = m_life;
-        m_maxMana = m_haveItem[(int)StatusItems.Mana] * 10;
+        m_maxMana = m_maxMana + m_haveItem[(int)StatusItems.Mana] * m_itembuff[(int)StatusItems.Mana];
         m_mana = m_maxMana;
         m_mpSlider.maxValue = m_maxMana;
         m_mpSlider.value = m_mana;
-        m_power = m_haveItem[(int)StatusItems.Power] * 5;
+        m_power = m_power + m_haveItem[(int)StatusItems.Power] * m_itembuff[(int)StatusItems.Power];
         Debug.Log($"最大体力{m_maxLife}: 最大マナ{m_maxMana}: 攻撃力{m_power}");
     }
 

@@ -12,13 +12,15 @@ public abstract class Muzzle : MonoBehaviour
     [SerializeField] public int m_bulletPower = 1;
     /// <summary>弾を発射する間隔（秒）</summary>
     [SerializeField] public float m_fireInterval = 1f;
+    /// <summary>発射回数</summary>
+    [SerializeField] public int m_shotnum = 1;
     /// <summary>連射回数</summary>
     [SerializeField] public int m_barrage = 1;
     /// <summary>連射間隔</summary>
     [SerializeField] public float m_barrageTime = 1f;
     /// <summary>弾の発射方向</summary>
     [SerializeField] public Vector2 m_vector = Vector2.zero;
-    /// <summary>最初の弾の射出を遅延させるか</summary>
+    /// <summary>最初の弾の遅延</summary>
     [SerializeField] public float m_direyTime = 0;
     /// <summary>最初の弾の判断用</summary>
     [System.NonSerialized] public bool m_direyFlag = false;
@@ -38,6 +40,7 @@ public abstract class Muzzle : MonoBehaviour
     [System.NonSerialized] public bool m_isBullet = false;
     [System.NonSerialized] public GameObject m_player;
     private BulletBase m_bullet;
+    /// <summary>射出位置</summary>
     [SerializeField] public Transform m_muzzle;
 
     private void Start()
@@ -53,7 +56,7 @@ public abstract class Muzzle : MonoBehaviour
 
     public void InstantiateAndColor(Vector2 v)
     {
-        var t = Instantiate(m_bulletPrefab, m_muzzle.position, Quaternion.identity);
+        var t = Instantiate(m_bulletPrefab, SetPos(), Quaternion.identity);
         if (t.GetComponent<SpriteRenderer>())
         {
             t.GetComponent<SpriteRenderer>().color = m_color;
@@ -68,8 +71,18 @@ public abstract class Muzzle : MonoBehaviour
         }
     }
 
+    /// <summary>発射位置変更用 Muzzleがnullなら自分の位置から発射</summary>
+    public Vector3 SetPos()
+    {
+        if (m_muzzle == null)
+        {
+            return this.transform.position;
+        }
+        return m_muzzle.position;
+    }
+
     /// <summary>
-    /// この敵から見たプレイヤーの位置によって弾を撃つ場所を変える
+    /// この敵から見たプレイヤーの位置によって弾を撃つ方向を変える
     /// </summary>
     /// <returns>発射方向</returns>
     public Vector2 SetDirection()
@@ -81,39 +94,6 @@ public abstract class Muzzle : MonoBehaviour
         else
         {
             return Vector2.right;
-        }
-    }
-
-    /// <summary>
-    /// 自機狙いの単発の弾をランダムな速度で撃つ
-    /// </summary>
-    public void Single_RandomSpeed()
-    {
-        m_timer += Time.deltaTime;
-        if (m_timer > m_fireInterval)
-        {
-            m_timer = 0f;
-
-            Vector2 v = Vector2.down;
-            v.Normalize();
-            float speed = Random.Range(m_minSpeed, m_maxSpeed);
-            v *= speed;
-            InstantiateAndColor(v);
-        }
-    }
-
-    public void Single_RandomSpeed(Vector2 vec)
-    {
-        m_timer += Time.deltaTime;
-        if (m_timer > m_fireInterval)
-        {
-            m_timer = 0f;
-
-            Vector2 v = vec;
-            v.Normalize();
-            float speed = Random.Range(m_minSpeed, m_maxSpeed);
-            v *= speed;
-            InstantiateAndColor(v);
         }
     }
 

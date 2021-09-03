@@ -63,12 +63,12 @@ GameObject:
   - component: {fileID: 1982071887180976729}
   - component: {fileID: 1604805812958368703}
   - component: {fileID: 5402726492857123132}
-  - component: {fileID: 6520874474199234429}
   - component: {fileID: 6824026888642252908}
   - component: {fileID: 5465024805741388701}
   - component: {fileID: 6812829411445105280}
   - component: {fileID: 4680180373742533201}
   - component: {fileID: 8988868273353970665}
+  - component: {fileID: 1733192381642108543}
   m_Layer: 9
   m_Name: BigPlant
   m_TagString: Enemy
@@ -215,19 +215,31 @@ MonoBehaviour:
   m_life: 100
   m_power: 10
   m_speed: 1
-  m_jumpPower: 5
-  m_moveinterval: 3
+  m_jumpPower: 1
+  m_moveinterval: 1
   m_move: 1
   m_damagePrefab: {fileID: 6271182398904386778, guid: 15e871c6ab9372d438104922c58c637f,
     type: 3}
-  m_nway1: {fileID: 1604805812958368703}
-  m_nway2: {fileID: 5402726492857123132}
-  m_nway3: {fileID: 6520874474199234429}
-  m_single1: {fileID: 6824026888642252908}
-  m_uzumaki1: {fileID: 5465024805741388701}
-  m_uzumaki2: {fileID: 6812829411445105280}
-  m_uzumaki3: {fileID: 4680180373742533201}
-  m_uzumaki4: {fileID: 8988868273353970665}
+  m_singles1: []
+  m_nways1:
+  - {fileID: 1604805812958368703}
+  - {fileID: 5402726492857123132}
+  uzumakis1: []
+  m_singles2:
+  - {fileID: 6824026888642252908}
+  m_nways2: []
+  uzumakis2: []
+  m_singles3: []
+  m_nways3: []
+  uzumakis3:
+  - {fileID: 5465024805741388701}
+  - {fileID: 6812829411445105280}
+  - {fileID: 4680180373742533201}
+  - {fileID: 8988868273353970665}
+  m_singles4:
+  - {fileID: 1733192381642108543}
+  m_nways4: []
+  uzumakis4: []
 --- !u!114 &1604805812958368703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +256,7 @@ MonoBehaviour:
   m_minSpeed: 7
   m_bulletPower: 1
   m_fireInterval: 0.5
+  m_shotnum: 2
   m_barrage: 1
   m_barrageTime: 1
   m_vector: {x: -1, y: 0}
@@ -272,6 +285,7 @@ MonoBehaviour:
   m_minSpeed: 7
   m_bulletPower: 1
   m_fireInterval: 0.5
+  m_shotnum: 2
   m_barrage: 1
   m_barrageTime: 1
   m_vector: {x: -1, y: 0}
@@ -284,34 +298,6 @@ MonoBehaviour:
   m_muzzle: {fileID: 7668786654341159906}
   m_angle: 130
   m_wayNum: 13
---- !u!114 &6520874474199234429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839887303002869116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bf55527e87fca949bd53a444d968fc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 1
-  m_minSpeed: 7
-  m_bulletPower: 1
-  m_fireInterval: 0.5
-  m_barrage: 1
-  m_barrageTime: 1
-  m_vector: {x: -1, y: 0}
-  m_direyTime: 1
-  m_bulletPrefab: {fileID: 5001137990051095853, guid: c31dd507c70c2e247a00fa00b0926570,
-    type: 3}
-  m_color: {r: 0.77254903, g: 0.42745098, b: 0, a: 1}
-  _pattenName: 1
-  m_changeDirection: 0
-  m_muzzle: {fileID: 7668786654341159906}
-  m_angle: 130
-  m_wayNum: 10
 --- !u!114 &6824026888642252908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +314,7 @@ MonoBehaviour:
   m_minSpeed: 9
   m_bulletPower: 1
   m_fireInterval: 1
+  m_shotnum: 1
   m_barrage: 5
   m_barrageTime: 0.1
   m_vector: {x: 0, y: 0}
@@ -354,6 +341,7 @@ MonoBehaviour:
   m_minSpeed: 5
   m_bulletPower: 1
   m_fireInterval: 0.1
+  m_shotnum: 1
   m_barrage: 1
   m_barrageTime: 1
   m_vector: {x: -1, y: 0}
@@ -383,6 +371,7 @@ MonoBehaviour:
   m_minSpeed: 5
   m_bulletPower: 1
   m_fireInterval: 0.1
+  m_shotnum: 1
   m_barrage: 1
   m_barrageTime: 1
   m_vector: {x: -1, y: 0}
@@ -394,7 +383,7 @@ MonoBehaviour:
   m_changeDirection: 0
   m_muzzle: {fileID: 7668786654341159906}
   m_angle: 130
-  m_wayNum: 15
+  m_wayNum: 20
   directionRotation: 0
 --- !u!114 &4680180373742533201
 MonoBehaviour:
@@ -412,6 +401,7 @@ MonoBehaviour:
   m_minSpeed: 7
   m_bulletPower: 1
   m_fireInterval: 0.1
+  m_shotnum: 1
   m_barrage: 1
   m_barrageTime: 1
   m_vector: {x: -1, y: 0}
@@ -423,7 +413,7 @@ MonoBehaviour:
   m_changeDirection: 0
   m_muzzle: {fileID: 7668786654341159906}
   m_angle: 130
-  m_wayNum: 18
+  m_wayNum: 17
   directionRotation: 1
 --- !u!114 &8988868273353970665
 MonoBehaviour:
@@ -441,6 +431,7 @@ MonoBehaviour:
   m_minSpeed: 7
   m_bulletPower: 1
   m_fireInterval: 0.1
+  m_shotnum: 1
   m_barrage: 1
   m_barrageTime: 1
   m_vector: {x: -1, y: 0}
@@ -452,8 +443,35 @@ MonoBehaviour:
   m_changeDirection: 0
   m_muzzle: {fileID: 7668786654341159906}
   m_angle: 130
-  m_wayNum: 13
+  m_wayNum: 17
   directionRotation: 0
+--- !u!114 &1733192381642108543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839887303002869116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137aa92fc8c62c1469156bf510525e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxSpeed: 1
+  m_minSpeed: 5
+  m_bulletPower: 1
+  m_fireInterval: 1
+  m_shotnum: 1
+  m_barrage: 1
+  m_barrageTime: 1
+  m_vector: {x: -1, y: 0}
+  m_direyTime: 0
+  m_bulletPrefab: {fileID: 312266209638629580, guid: ca24c09729c04204daf0d34a14632a8c,
+    type: 3}
+  m_color: {r: 0.0023497343, g: 1, b: 0, a: 1}
+  _pattenName: 1
+  m_changeDirection: 0
+  m_muzzle: {fileID: 7668786654341159906}
 --- !u!1 &4324932887615718038
 GameObject:
   m_ObjectHideFlags: 0

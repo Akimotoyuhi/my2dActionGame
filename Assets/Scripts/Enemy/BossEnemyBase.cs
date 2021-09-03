@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossEnemyBase : Enemy
 {
+    public delegate void Actions();
     void Start()
     {
         
@@ -12,6 +13,22 @@ public class BossEnemyBase : Enemy
     void Update()
     {
         
+    }
+
+    public void SetOnShot(Single[] singles, Nway[] nways, Uzumaki[] uzumakis)
+    {
+        for (int i = 0; i < singles.Length; i++)
+        {
+            singles[i].OnShot();
+        }
+        for (int i = 0; i < nways.Length; i++)
+        {
+            nways[i].OnShot();
+        }
+        for (int i = 0; i < uzumakis.Length; i++)
+        {
+            uzumakis[i].OnShot();
+        }
     }
 
     /// <summary>

@@ -14,9 +14,8 @@ public class BulletBase : MonoBehaviour
     /// <summary>進行方向</summary>
     [System.NonSerialized] public Vector2 m_velo;
     [System.NonSerialized] public Rigidbody2D m_rb;
-    //[SerializeField] public GameObject m_particle;
 
-    public void InitialVelocity()
+    public void SetState()
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_velo *= m_minSpeed;

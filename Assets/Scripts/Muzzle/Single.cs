@@ -19,22 +19,22 @@ public class Single : Muzzle
     /// <summary> 単発の自機狙い弾を撃つ </summary>
     public override IEnumerator Shot()
     {
-        if (m_player)
+        if (!m_isBullet)
         {
-            if (!m_isBullet)
+            m_isBullet = true;
+            for (int i = 0; i < m_barrage; i++)
             {
-                m_isBullet = true;
-                yield return new WaitForSeconds(m_fireInterval);
-                for (int i = 0; i < m_barrage; i++)
+                if (!m_player)
                 {
-                    Vector2 v = m_player.transform.position - m_muzzle.position;
-                    v.Normalize();
-                    //v *= m_maxSpeed;
-                    InstantiateAndColor(v);
-                    yield return new WaitForSeconds(m_barrageTime);
+                    m_player = GameObject.FindWithTag("Player");
                 }
-                m_isBullet = false;
+                Vector2 v = m_player.transform.position - SetPos();
+                v.Normalize();
+                InstantiateAndColor(v);
+                yield return new WaitForSeconds(m_barrageTime);
             }
+            yield return new WaitForSeconds(m_fireInterval);
+            m_isBullet = false;
         }
     }
 
@@ -44,11 +44,9 @@ public class Single : Muzzle
     /// <param name="v">射出方向</param>
     public override IEnumerator Shot(Vector2 vec)
     {
-        m_timer += Time.deltaTime;
-        if (m_timer > m_fireInterval)
+        if (!m_isBullet)
         {
-            m_timer = 0f;
-
+            m_isBullet = true;
             for (int i = 0; i < m_barrage; i++)
             {
                 //プレイヤーがいる方向によって撃つ方向を変える
@@ -66,6 +64,8 @@ public class Single : Muzzle
                 InstantiateAndColor(v);
                 yield return new WaitForSeconds(m_barrageTime);
             }
+            yield return new WaitForSeconds(m_fireInterval);
+            m_isBullet = false;
         }
     }
 }

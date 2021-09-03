@@ -15,48 +15,56 @@ public class Uzumaki : Nway
     {
         if (directionRotation == DirectionOfRotation.Right)
         {
-            if (!m_isBullet)
-            {
-                StartCoroutine(RightUzumaki(m_vector));
-            }
+            StartCoroutine(RightUzumaki(m_vector));
         }
         if (directionRotation == DirectionOfRotation.Left)
         {
-            if (!m_isBullet)
-            {
-                StartCoroutine(LeftUzumaki(m_vector));
-            }
+            StartCoroutine(LeftUzumaki(m_vector));
         }
     }
 
 
     public IEnumerator RightUzumaki(Vector2 vec)
     {
-        m_isBullet = true;
-        for (int i = 0; i < m_wayNum; i++)
+        if (!m_isBullet)
         {
-            Vector2 v = vec;
-            v.Normalize();
-            v = Quaternion.Euler(0, 0, m_angle / m_wayNum * i) * v;
-            v *= m_maxSpeed;
-            InstantiateAndColor(v);
-            yield return new WaitForSeconds(m_fireInterval);
+            m_isBullet = true;
+            yield return new WaitForSeconds(m_direyTime);
+            for (int i = 0; i < m_shotnum; i++)
+            {
+                for (int n = 0; n < m_wayNum; n++)
+                {
+                    Vector2 v = vec;
+                    v.Normalize();
+                    v = Quaternion.Euler(0, 0, m_angle / m_wayNum * n) * v;
+                    v *= m_maxSpeed;
+                    InstantiateAndColor(v);
+                    yield return new WaitForSeconds(m_fireInterval);
+                }
+            }
+            m_isBullet = false;
         }
-        m_isBullet = false;
     }
 
     public IEnumerator LeftUzumaki(Vector2 vec)
     {
-        m_isBullet = true;
-        for (int i = 0; i < m_wayNum; i++)
+        if (!m_isBullet)
         {
-            Vector2 v = vec;
-            v.Normalize();
-            v = Quaternion.Euler(0, 0, m_angle / m_wayNum * -i) * v;
-            v *= m_maxSpeed;
-            InstantiateAndColor(v);
-            yield return new WaitForSeconds(m_fireInterval);
+            m_isBullet = true;
+            yield return new WaitForSeconds(m_direyTime);
+            for (int i = 0; i < m_shotnum; i++)
+            {
+                for (int n = 0; n < m_wayNum; n++)
+                {
+                    Vector2 v = vec;
+                    v.Normalize();
+                    v = Quaternion.Euler(0, 0, m_angle / m_wayNum * -n) * v;
+                    v *= m_maxSpeed;
+                    InstantiateAndColor(v);
+                    yield return new WaitForSeconds(m_fireInterval);
+                }
+            }
+            m_isBullet = false;
         }
-        m_isBullet = false;
     }
 }

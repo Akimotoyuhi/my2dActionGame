@@ -6,6 +6,6 @@ public class NoCollider : BulletBase
 {
     void Start()
     {
-        InitialVelocity();
+        SetState();
     }
 }

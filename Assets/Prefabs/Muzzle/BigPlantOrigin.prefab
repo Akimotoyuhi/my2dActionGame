@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &312266209638629580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 312266209638629587}
+  - component: {fileID: 1235694293580214805}
+  - component: {fileID: 43463013343677621}
+  - component: {fileID: 312266209638629586}
+  - component: {fileID: 312266209638629591}
+  - component: {fileID: -6439365070055212792}
+  m_Layer: 0
+  m_Name: BigPlantOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &312266209638629587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312266209638629580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1235694293580214805
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312266209638629580}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &43463013343677621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312266209638629580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df70ebfae809e424ab774e9c3cc67c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_singles: []
+  m_nways: []
+  m_uzumakis:
+  - {fileID: 312266209638629586}
+  - {fileID: 312266209638629591}
+--- !u!114 &312266209638629586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312266209638629580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e702dcae69ee72444b736cd4ec641d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxSpeed: 1
+  m_minSpeed: 5
+  m_bulletPower: 1
+  m_fireInterval: 0.2
+  m_shotnum: 1
+  m_barrage: 1
+  m_barrageTime: 1
+  m_vector: {x: 0, y: 1}
+  m_direyTime: 0
+  m_bulletPrefab: {fileID: 5001137990051095853, guid: c31dd507c70c2e247a00fa00b0926570,
+    type: 3}
+  m_color: {r: 0.76933575, g: 1, b: 0, a: 1}
+  _pattenName: 1
+  m_changeDirection: 0
+  m_muzzle: {fileID: 0}
+  m_angle: 360
+  m_wayNum: 9
+  directionRotation: 1
+--- !u!114 &312266209638629591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312266209638629580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e702dcae69ee72444b736cd4ec641d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxSpeed: 1
+  m_minSpeed: 5
+  m_bulletPower: 1
+  m_fireInterval: 0.2
+  m_shotnum: 1
+  m_barrage: 1
+  m_barrageTime: 1
+  m_vector: {x: 0, y: -1}
+  m_direyTime: 0
+  m_bulletPrefab: {fileID: 5001137990051095853, guid: c31dd507c70c2e247a00fa00b0926570,
+    type: 3}
+  m_color: {r: 0.35072255, g: 1, b: 0, a: 1}
+  _pattenName: 1
+  m_changeDirection: 0
+  m_muzzle: {fileID: 0}
+  m_angle: 360
+  m_wayNum: 9
+  directionRotation: 1
+--- !u!114 &-6439365070055212792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312266209638629580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cff5fa61c3b7cb4faa232aba88fc2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_destroyTime: 10

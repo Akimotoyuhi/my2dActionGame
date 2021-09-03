@@ -29,23 +29,24 @@ public class Nway : Muzzle
         if (m_player && !m_isBullet)
         {
             m_isBullet = true;
-
             yield return new WaitForSeconds(m_direyTime);
-
-            for (int i = 0; i < m_barrage; i++)
+            for (int i = 0; i < m_shotnum; i++)
             {
-                for (int n = 0; n < m_wayNum; n++)
+                for (int n = 0; n < m_barrage; n++)
                 {
-                    Vector2 v = m_player.transform.position - m_muzzle.position;
-                    v.Normalize();
-                    //狙った座標が中心になるように発射角をズラす
-                    v = Quaternion.Euler(0, 0, m_angle / (m_wayNum - 1) * n - m_angle / 2) * v;
-                    v *= m_maxSpeed;
-                    InstantiateAndColor(v);
+                    for (int t = 0; t < m_wayNum; t++)
+                    {
+                        Vector2 v = m_player.transform.position - m_muzzle.position;
+                        v.Normalize();
+                        //狙った座標が中心になるように発射角をズラす
+                        v = Quaternion.Euler(0, 0, m_angle / (m_wayNum - 1) * t - m_angle / 2) * v;
+                        v *= m_maxSpeed;
+                        InstantiateAndColor(v);
+                    }
+                    yield return new WaitForSeconds(m_barrageTime);
                 }
-                yield return new WaitForSeconds(m_barrageTime);
+                yield return new WaitForSeconds(m_fireInterval);
             }
-            yield return new WaitForSeconds(m_fireInterval);
             m_isBullet = false;
         }
     }
@@ -59,23 +60,23 @@ public class Nway : Muzzle
         if (!m_isBullet)
         {
             m_isBullet = true;
-
             yield return new WaitForSeconds(m_direyTime);
-            //m_direyFlag = true;
-
-            for (int i = 0; i < m_barrage; i++)
+            for (int i = 0; i < m_shotnum; i++)
             {
-                for (int n = 0; n < m_wayNum; n++)
+                for (int n = 0; n < m_barrage; n++)
                 {
-                    Vector2 v = vec;
-                    v.Normalize();
-                    v = Quaternion.Euler(0, 0, m_angle / (m_wayNum - 1) * n - m_angle / 2) * v;
-                    v *= m_maxSpeed;
-                    InstantiateAndColor(v);
+                    for (int t = 0; t < m_wayNum; t++)
+                    {
+                        Vector2 v = vec;
+                        v.Normalize();
+                        v = Quaternion.Euler(0, 0, m_angle / (m_wayNum - 1) * t - m_angle / 2) * v;
+                        v *= m_maxSpeed;
+                        InstantiateAndColor(v);
+                    }
+                    yield return new WaitForSeconds(m_barrageTime);
                 }
-                yield return new WaitForSeconds(m_barrageTime);
+                yield return new WaitForSeconds(m_fireInterval);
             }
-            yield return new WaitForSeconds(m_fireInterval);
 
             m_isBullet = false;
         }

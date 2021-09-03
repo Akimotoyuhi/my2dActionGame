@@ -4,7 +4,7 @@ public class NormalBullet : BulletBase
 {
     private void Start()
     {
-        InitialVelocity();
+        SetState();
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {

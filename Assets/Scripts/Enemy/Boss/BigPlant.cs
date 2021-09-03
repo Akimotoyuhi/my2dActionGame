@@ -5,37 +5,33 @@ using UnityEngine.UI;
 
 public class BigPlant : BossEnemyBase
 {
-    private delegate void Actions();
-
     enum Faze
     {
         one = 1,
         two = 2,
     }
 
-    enum Pattern
-    {
-        way = 0,
-        single = 1,
-        uzumaki = 2
-    }
-
     private Faze m_faze = Faze.one;
     private Actions[] m_actions;
     [Header("パターン１")]
-    [SerializeField] private Nway m_nway1;
-    [SerializeField] private Nway m_nway2;
-    [SerializeField] private Nway m_nway3;
+    [SerializeField] private Single[] m_singles1;
+    [SerializeField] private Nway[] m_nways1;
+    [SerializeField] private Uzumaki[] uzumakis1;
     [Header("パターン２")]
-    [SerializeField] private Single m_single1;
+    [SerializeField] private Single[] m_singles2;
+    [SerializeField] private Nway[] m_nways2;
+    [SerializeField] private Uzumaki[] uzumakis2;
     [Header("パターン３")]
-    [SerializeField] private Uzumaki m_uzumaki1;
-    [SerializeField] private Uzumaki m_uzumaki2;
-    [SerializeField] private Uzumaki m_uzumaki3;
-    [SerializeField] private Uzumaki m_uzumaki4;
+    [SerializeField] private Single[] m_singles3;
+    [SerializeField] private Nway[] m_nways3;
+    [SerializeField] private Uzumaki[] uzumakis3;
+    [Header("パターン４")]
+    [SerializeField] private Single[] m_singles4;
+    [SerializeField] private Nway[] m_nways4;
+    [SerializeField] private Uzumaki[] uzumakis4;
 
 
-    void Start()
+    private void Start()
     {
         FullSetUp();
         ActionSet();
@@ -44,45 +40,45 @@ public class BigPlant : BossEnemyBase
 
     private void NumberSet()
     {
-        Debug.Log("スタート");
         if (m_faze == Faze.one)
         {
-            int i = Random.Range((int)Pattern.way, (int)Pattern.uzumaki);
+            int i = Random.Range(0, 2);
             StartCoroutine(Action(i));
         }
         else if (m_faze == Faze.two)
         {
-            Debug.Log("Faze2");
-            int i = Random.Range((int)Pattern.uzumaki, m_actions.Length);
+            int i = Random.Range(2, m_actions.Length);
             StartCoroutine(Action(i));
         }
     }
 
     private void ActionSet()
     {
-        m_actions = new Actions[3];
+        m_actions = new Actions[4];
         m_actions[0] = Pattern1;
         m_actions[1] = Pattern2;
         m_actions[2] = Pattern3;
+        m_actions[3] = Pattern4;
     }
 
     private void Pattern1()
     {
-        m_nway1.OnShot();
-        m_nway2.OnShot();
+        SetOnShot(m_singles1, m_nways1, uzumakis1);
     }
 
     private void Pattern2()
     {
-        m_single1.OnShot();
+        SetOnShot(m_singles2, m_nways2, uzumakis2);
     }
 
     private void Pattern3()
     {
-        m_uzumaki1.OnShot();
-        m_uzumaki2.OnShot();
-        m_uzumaki3.OnShot();
-        m_uzumaki4.OnShot();
+        SetOnShot(m_singles3, m_nways3, uzumakis3);
+    }
+
+    private void Pattern4()
+    {
+        SetOnShot(m_singles4, m_nways4, uzumakis4);
     }
 
     /// <summary>
@@ -97,11 +93,14 @@ public class BigPlant : BossEnemyBase
         NumberSet();
     }
 
+    /// <summary>
+    /// 体力が一定量以下になったら形態移行する
+    /// </summary>
     private void FazeChanger()
     {
-        if (Percent(m_life ,m_maxLife) < 50)
+        if (Percent(m_life ,m_maxLife) < 50 && m_faze == Faze.one)
         {
-            m_faze = Faze.two;
+            m_faze++;
             NumberSet();
         }
     }

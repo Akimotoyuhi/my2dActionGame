@@ -298,14 +298,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573248ab2c4c8484ba4da606e257bacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_power: 2
+  m_power: 5
   m_moveSpeed: 5
   m_jumpPower: 7
   m_fireInterval: 0.2
   m_maxLife: 50
-  m_life: 50
   m_maxMana: 50
-  m_mana: 50
   m_manaRegeneTime: 0.5
   m_bulletPrefab:
   - {fileID: 4822195777118888771, guid: 0821f3bf23c0626469c13d00282fb91c, type: 3}
