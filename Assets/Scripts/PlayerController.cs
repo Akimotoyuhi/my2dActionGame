@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
                 {
                     return;
                 }
-                BulletBase bullet = collision.GetComponent<BulletBase>();
+                NewBullet bullet = collision.GetComponent<NewBullet>();
                 m_life -= bullet.m_power;
                 m_hpSlider.value = m_life;
                 var inst = Instantiate(m_damageText, this.gameObject.transform.position, Quaternion.identity);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestBullet : MonoBehaviour
+public class NewBullet : MonoBehaviour
 {
     [System.NonSerialized] public float m_minSpeed;
     [System.NonSerialized] public int m_power;
@@ -15,7 +15,7 @@ public class TestBullet : MonoBehaviour
 
     void Update()
     {
-        Vector2 v = transform.localPosition;
+        Vector2 v = transform.rotation * Vector2.up;
         v.Normalize();
         m_rb.velocity = v * m_minSpeed;
     }
