@@ -6,25 +6,30 @@ using UnityEngine.UI;
 public abstract class Enemy : MonoBehaviour
 {
     /// <summary>最大体力</summary>
-    [SerializeField] public int m_maxLife = 10;
+    [SerializeField] public int m_maxLife = 1;
     /// <summary>体力</summary>
-    [SerializeField] public int m_life = 10;
+    [SerializeField] public int m_life = 1;
     /// <summary>攻撃力</summary>
-    [SerializeField] public int m_power = 2;
+    [SerializeField] public int m_power = 1;
     /// <summary>移動速度</summary>
     [SerializeField] public float m_speed = 1;
     /// <summary>ジャンプ力</summary>
-    [SerializeField] public float m_jumpPower = 5;
+    [SerializeField] public float m_jumpPower = 1;
     /// <summary>移動間隔</summary>
-    [SerializeField] public float m_moveinterval = 3;
-    /// <summary>移動するか</summary>
-    [SerializeField] public bool m_move = true;
+    [SerializeField] public float m_moveinterval = 1;
+    /// <summary>発射間隔</summary>
+    [SerializeField] public float m_shotinterval = 1;
     /// <summary>移動間隔用タイマー</summary>
     [System.NonSerialized] public float m_moveTimer;
+    /// <summary>発射間隔用タイマー</summary>
+    [System.NonSerialized] public float m_shotTimer;
     /// <summary>現在移動中か</summary>
     [System.NonSerialized] public bool m_isMove = false;
     /// <summary>ダメージ表示用キャンバス</summary>
     [SerializeField] public GameObject m_damagePrefab;
+    /// <summary>弾撃つとこ</summary>
+    [SerializeField] public GameObject[] m_muzzle;
+    //[SerializeField] public ShotFoword m_shot;
     [System.NonSerialized] public GameObject m_player;
     [System.NonSerialized] public Rigidbody2D m_rb;
     [System.NonSerialized] public Animator m_anim;
@@ -33,12 +38,15 @@ public abstract class Enemy : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_player = GameObject.FindWithTag("Player");
+        for (int i = 0; i < m_muzzle.Length; i++)
+        {
+            m_muzzle[i].SetActive(false);
+        }
     }
 
-    public void FullSetUp()
+    public void AnimSetUp()
     {
-        m_rb = GetComponent<Rigidbody2D>();
-        m_player = GameObject.FindWithTag("Player");
+        SetUp();
         m_anim = GetComponent<Animator>();
     }
 
@@ -81,7 +89,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Move()
     {
-        if (m_isMove || !m_move)
+        if (m_isMove)
         {
             return;
         }

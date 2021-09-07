@@ -61,8 +61,17 @@ public class ShotFoword : MonoBehaviour
     private void SetTypes()
     {
         m_types = new Types[3];
+        m_types[(int)ShotType.Single] = Single;
         m_types[(int)ShotType.Nway] = Nway;
         m_types[(int)ShotType.Spin] = Spin;
+    }
+
+    /// <summary>
+    /// 単発弾
+    /// </summary>
+    private void Single()
+    {
+        Shot();
     }
 
     /// <summary>
@@ -70,14 +79,13 @@ public class ShotFoword : MonoBehaviour
     /// </summary>
     private void Nway()
     {
+        transform.Rotate(new Vector3(0, 0, (m_angle / m_waynum) * (-m_waynum / 2)));
         for (int i = 0; i < m_waynum; i++)
         {
-            //transform.Rotate(new Vector3(0, 0, m_angle / (m_waynum - 1) * i - m_angle / 2) * transform.rotation.z);
-            Vector2 v = new Vector2(-1, 0);
-            //transform.Rotate(new Vector3(0, 0, m_angle / (m_waynum - 1) * i - m_angle / 2) * v);
-            transform .position = Quaternion.Euler(0, 0, m_angle / (m_waynum - 1) * i - m_angle / 2) * v;
-            MyInstantiate();
+            Shot();
+            transform.Rotate(new Vector3(0, 0, m_angle / m_waynum));
         }
+        transform.rotation = Quaternion.identity;
     }
 
     /// <summary>
@@ -88,11 +96,11 @@ public class ShotFoword : MonoBehaviour
         for (int i = 0; i < m_waynum; i++)
         {
             transform.Rotate(new Vector3(0, 0, m_spinSpeed));
-            MyInstantiate();
+            Shot();
         }
     }
 
-    private void MyInstantiate()
+    private void Shot()
     {
         var t = Instantiate(m_bulletPrefab, this.transform.position, this.transform.rotation);
         if (t.GetComponent<SpriteRenderer>())

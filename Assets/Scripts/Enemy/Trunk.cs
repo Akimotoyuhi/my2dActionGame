@@ -6,7 +6,7 @@ public class Trunk : Enemy
 {
     void Start()
     {
-        FullSetUp();
+        AnimSetUp();
     }
 
     void Update()

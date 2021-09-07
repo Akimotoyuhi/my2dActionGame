@@ -6,7 +6,7 @@ public class AngryPig : Enemy
 {
     private void Start()
     {
-        FullSetUp();
+        AnimSetUp();
     }
 
     void Update()
@@ -27,7 +27,7 @@ public class AngryPig : Enemy
         base.Move();
 
         m_isMove = true;
-        m_anim.SetBool("isMove", m_move);
+        m_anim.SetBool("isMove", m_isMove);
 
         AtPlayer();
         if (m_player.transform.position.x < this.transform.position.x)
@@ -46,6 +46,6 @@ public class AngryPig : Enemy
         }
 
         m_isMove = false;
-        m_anim.SetBool("isMove", m_move);
+        m_anim.SetBool("isMove", m_isMove);
     }
 }

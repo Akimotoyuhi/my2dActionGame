@@ -625,7 +625,7 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_spinSpeed: 3
   m_waynum: 5
-  m_angle: 45
+  m_angle: 180
 --- !u!1 &1308705916
 GameObject:
   m_ObjectHideFlags: 0

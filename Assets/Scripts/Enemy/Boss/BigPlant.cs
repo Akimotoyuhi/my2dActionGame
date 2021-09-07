@@ -33,7 +33,7 @@ public class BigPlant : BossEnemyBase
 
     private void Start()
     {
-        FullSetUp();
+        AnimSetUp();
         ActionSet();
         NumberSet();
     }
