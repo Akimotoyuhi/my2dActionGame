@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 11
 --- !u!95 &6271182398093304750
 Animator:
   serializedVersion: 3
@@ -128,7 +128,7 @@ RectTransform:
   m_GameObject: {fileID: 6271182398904386778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 6271182398093304751}
   m_Father: {fileID: 0}
@@ -137,7 +137,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 2}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6271182398904386783
 Canvas:
@@ -211,7 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f84dca9213c6a64388f7dea2afa960c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pos: {x: 0, y: 0}
 --- !u!114 &2115688881824246260
 MonoBehaviour:
   m_ObjectHideFlags: 0
