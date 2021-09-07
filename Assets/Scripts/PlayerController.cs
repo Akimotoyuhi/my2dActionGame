@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
+        m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
         m_canvas = GameObject.Find("Canvas");
         m_playerUi = m_canvas.transform.Find("PlayerStateUI").gameObject;
         m_hpSlider = m_playerUi.transform.Find("HPgage").GetComponent<Slider>();

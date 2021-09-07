@@ -20,23 +20,25 @@ public class ShotFoword : MonoBehaviour
     /// <summary>弾の色</summary>
     [SerializeField] private Color m_color;
     /// <summary>弾の最高速度</summary>
-    [SerializeField] private float m_maxSpeed;
+    [SerializeField] private float m_maxSpeed = 1;
     /// <summary>弾の最低速度（初速度）</summary>
-    [SerializeField] private float m_minSpeed;
+    [SerializeField] private float m_minSpeed = 1;
     /// <summary>弾の攻撃力</summary>
-    [SerializeField] private int m_bulletPower;
+    [SerializeField] private int m_bulletPower = 1;
     /// <summary>発射間隔</summary>
-    [SerializeField] private float m_fireInterval;
+    [SerializeField] private float m_fireInterval = 1;
+    /// <summary>弾のカーブのすごさ</summary>
+    [SerializeField] private float m_curve = 0;
     /// <summary>自機狙いかどうか</summary>
     [SerializeField] private bool m_isPlayer = false;
     /// <summary>自機狙いかどうか</summary>
     [SerializeField] private bool m_isSpeedChange = false;
-    /// <summary>Spinメソッドでの回転速度</summary>
-    [SerializeField] private float m_spinSpeed;
-    /// <summary>Nwayメソッドでの発射数</summary>
-    [SerializeField] private int m_waynum;
-    /// <summary>Nwayメソッドでの発射角度</summary>
-    [SerializeField] private float m_angle;
+    /// <summary>回転速度</summary>
+    [SerializeField] private float m_spinSpeed = 0;
+    /// <summary>Way発射数</summary>
+    [SerializeField] private int m_waynum = 0;
+    /// <summary>角度</summary>
+    [SerializeField] private float m_angle = 0;
     private bool now = false;
     private float timer = 0;
 
@@ -110,9 +112,7 @@ public class ShotFoword : MonoBehaviour
         NewBullet m_bullet = t.GetComponent<NewBullet>();
         if (m_bullet)
         {
-            //m_bullet.m_maxSpeed = m_maxSpeed;
-            m_bullet.m_minSpeed = m_minSpeed;
-            m_bullet.m_power = m_bulletPower;
+            m_bullet.SetParameter(m_maxSpeed, m_minSpeed, m_curve, m_bulletPower);
         }
     }
 }

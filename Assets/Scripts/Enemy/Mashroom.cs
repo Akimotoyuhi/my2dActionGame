@@ -7,11 +7,11 @@ public class Mashroom : Enemy
     void Start()
     {
         AnimSetUp();
+        m_muzzle[0].SetActive(true);
     }
 
     void Update()
     {
         AtPlayer();
-        m_muzzle[0].SetActive(true);
     }
 }
