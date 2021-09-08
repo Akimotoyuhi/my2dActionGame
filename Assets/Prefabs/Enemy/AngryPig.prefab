@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6099551342383464756}
   - component: {fileID: 6099551342383464757}
   - component: {fileID: 6099551342383464760}
-  - component: {fileID: 6099551342383464761}
   - component: {fileID: 6099551342383464758}
+  - component: {fileID: 6099551342383464761}
   m_Layer: 9
   m_Name: AngryPig
   m_TagString: Enemy
@@ -126,6 +126,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &6099551342383464758
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099551342383464754}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.41
 --- !u!114 &6099551342383464761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,22 +160,7 @@ MonoBehaviour:
   m_speed: 5
   m_jumpPower: 5
   m_moveinterval: 2
-  m_move: 1
+  m_shotinterval: 1
   m_damagePrefab: {fileID: 6271182398904386778, guid: 15e871c6ab9372d438104922c58c637f,
     type: 3}
---- !u!58 &6099551342383464758
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6099551342383464754}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.41
+  m_muzzle: []

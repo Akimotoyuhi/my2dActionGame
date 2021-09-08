@@ -133,5 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b386a527e6452b43be9bddb69918365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_effectPrefab: {fileID: 100000, guid: e39f7c3ab5cb6f0488ebdc0bd38a20a7, type: 3}
   m_damageEria: {fileID: 699680330976990217, guid: 5e7170966fc4e054589c78d48f3e7f15,
     type: 3}

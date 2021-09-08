@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NewBullet : MonoBehaviour
 {
+    //[SerializeField] private GameObject m_effectPrefab;
     [System.NonSerialized] private float m_maxSpeed;
     [System.NonSerialized] private float m_minSpeed;
     [System.NonSerialized] private float m_curve;

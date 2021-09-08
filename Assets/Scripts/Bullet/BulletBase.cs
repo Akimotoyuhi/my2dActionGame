@@ -14,6 +14,7 @@ public class BulletBase : MonoBehaviour
     /// <summary>進行方向</summary>
     [System.NonSerialized] public Vector2 m_velo;
     [System.NonSerialized] public Rigidbody2D m_rb;
+    [SerializeField] public GameObject m_effectPrefab;
 
     public void SetState()
     {

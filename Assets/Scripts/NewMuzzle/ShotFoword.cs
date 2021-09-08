@@ -29,21 +29,26 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] private float m_fireInterval = 1;
     /// <summary>弾のカーブのすごさ</summary>
     [SerializeField] private float m_curve = 0;
-    /// <summary>自機狙いかどうか</summary>
-    [SerializeField] private bool m_isPlayer = false;
-    /// <summary>自機狙いかどうか</summary>
-    [SerializeField] private bool m_isSpeedChange = false;
+    /// <summary>発射角度</summary>
+    [SerializeField] private float m_posz;
     /// <summary>回転速度</summary>
     [SerializeField] private float m_spinSpeed = 0;
     /// <summary>Way発射数</summary>
     [SerializeField] private int m_waynum = 0;
     /// <summary>角度</summary>
     [SerializeField] private float m_angle = 0;
+    /// <summary>自機狙いかどうか</summary>
+    [SerializeField] private bool m_isPlayer = false;
+    /// <summary>速度を変えるかどうか</summary>
+    [SerializeField] private bool m_isSpeedChange = false;
+    [SerializeField] private bool m_isSetPlayerXpos = false;
     private bool now = false;
-    private float timer = 0;
+    private float timer = 99;
+    private GameObject m_player;
 
     void Start()
     {
+        m_player = GameObject.FindWithTag("Player");
         SetTypes();
     }
 
@@ -104,6 +109,22 @@ public class ShotFoword : MonoBehaviour
 
     private void Shot()
     {
+        if (!m_player) { m_player = GameObject.FindWithTag("Player"); }
+        if (m_isSetPlayerXpos)
+        {
+            if (m_player.transform.position.x < this.gameObject.transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, m_posz);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, -m_posz);
+            }
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, m_posz);
+        }
         var t = Instantiate(m_bulletPrefab, this.transform.position, this.transform.rotation);
         if (t.GetComponent<SpriteRenderer>())
         {

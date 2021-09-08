@@ -70,11 +70,11 @@ public class PlayerController : MonoBehaviour
     private float m_mpTimer = 0;
     private bool m_isrelease = false;
     /// <summary> 消費ｍｐ</summary>
-    static private int[] m_attackMana = new int[] { 2, 10 };
+    static private int[] s_attackMana = new int[] { 2, 10 };
     /// <summary> 攻撃のダメージ倍率</summary>
-    static private int[] m_attackDamage = new int[] { 1, 3 };
+    static private int[] s_attackDamage = new int[] { 1, 3 };
     /// <summary> 各アイテムのステータス上昇幅</summary>
-    static private int[] m_itembuff = new int[] { 10, 10, 5 };
+    static private int[] s_itembuff = new int[] { 10, 10, 5 };
 
     void Start()
     {
@@ -273,11 +273,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 // 撃った後MPが０以下にならなければ発射
-                if (m_mana < m_attackMana[m_selectBulletIndex])
+                if (m_mana < s_attackMana[m_selectBulletIndex])
                 {
                     return;
                 }
-                m_mana -= m_attackMana[m_selectBulletIndex];
+                m_mana -= s_attackMana[m_selectBulletIndex];
                 m_mpSlider.value = m_mana;
 
                 m_bulletTimer = 0;
@@ -319,7 +319,7 @@ public class PlayerController : MonoBehaviour
 
     private int SetDamage(int damage)
     {
-        return damage * m_attackDamage[m_selectBulletIndex];
+        return damage * s_attackDamage[m_selectBulletIndex];
     }
 
     /// <summary>
@@ -377,15 +377,15 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void SetState()
     {
-        m_maxLife = m_maxLife + m_haveItem[(int)StatusItems.Life] * m_itembuff[(int)StatusItems.Life];
+        m_maxLife = m_maxLife + m_haveItem[(int)StatusItems.Life] * s_itembuff[(int)StatusItems.Life];
         m_life = m_maxLife;
         m_hpSlider.maxValue = m_maxLife;
         m_hpSlider.value = m_life;
-        m_maxMana = m_maxMana + m_haveItem[(int)StatusItems.Mana] * m_itembuff[(int)StatusItems.Mana];
+        m_maxMana = m_maxMana + m_haveItem[(int)StatusItems.Mana] * s_itembuff[(int)StatusItems.Mana];
         m_mana = m_maxMana;
         m_mpSlider.maxValue = m_maxMana;
         m_mpSlider.value = m_mana;
-        m_power = m_power + m_haveItem[(int)StatusItems.Power] * m_itembuff[(int)StatusItems.Power];
+        m_power = m_power + m_haveItem[(int)StatusItems.Power] * s_itembuff[(int)StatusItems.Power];
         Debug.Log($"最大体力{m_maxLife}: 最大マナ{m_maxMana}: 攻撃力{m_power}");
     }
 

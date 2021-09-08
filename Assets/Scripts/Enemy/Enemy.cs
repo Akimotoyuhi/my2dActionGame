@@ -55,6 +55,7 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     public void AtPlayer()
     {
+        if (!m_player) { m_player = GameObject.FindWithTag("Player"); }
         if (m_player)
         {
             if (m_player.transform.position.x < this.gameObject.transform.position.x)
