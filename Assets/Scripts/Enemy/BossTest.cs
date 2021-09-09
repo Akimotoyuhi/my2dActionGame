@@ -2,16 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public enum PatternState
-{
-    A,
-    B,
-    C,
-    D
-}
 
 public class BossTest : BossEnemyBase
 {
+    /*
     private float _moveTimer;
     private GameObject _player;
     private Rigidbody2D _rb;
@@ -136,4 +130,5 @@ public class BossTest : BossEnemyBase
             _patternState = PatternState.D;
         }
     }
+    */
 }

@@ -61,14 +61,6 @@ GameObject:
   - component: {fileID: 3839887303002869118}
   - component: {fileID: 3839887303002869119}
   - component: {fileID: 1982071887180976729}
-  - component: {fileID: 1604805812958368703}
-  - component: {fileID: 5402726492857123132}
-  - component: {fileID: 6824026888642252908}
-  - component: {fileID: 5465024805741388701}
-  - component: {fileID: 6812829411445105280}
-  - component: {fileID: 4680180373742533201}
-  - component: {fileID: 8988868273353970665}
-  - component: {fileID: 1733192381642108543}
   m_Layer: 9
   m_Name: BigPlant
   m_TagString: Enemy
@@ -84,7 +76,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3839887303002869116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.55, y: -0.68, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 3839887302309895792}
@@ -130,7 +122,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7059297670216363161, guid: 326dd6eeaa0ca144ca01194dbacf63fa,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -217,261 +209,13 @@ MonoBehaviour:
   m_speed: 1
   m_jumpPower: 1
   m_moveinterval: 1
-  m_move: 1
+  m_shotinterval: 1
   m_damagePrefab: {fileID: 6271182398904386778, guid: 15e871c6ab9372d438104922c58c637f,
     type: 3}
-  m_singles1: []
-  m_nways1:
-  - {fileID: 1604805812958368703}
-  - {fileID: 5402726492857123132}
-  uzumakis1: []
-  m_singles2:
-  - {fileID: 6824026888642252908}
-  m_nways2: []
-  uzumakis2: []
-  m_singles3: []
-  m_nways3: []
-  uzumakis3:
-  - {fileID: 5465024805741388701}
-  - {fileID: 6812829411445105280}
-  - {fileID: 4680180373742533201}
-  - {fileID: 8988868273353970665}
-  m_singles4:
-  - {fileID: 1733192381642108543}
-  m_nways4: []
-  uzumakis4: []
---- !u!114 &1604805812958368703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839887303002869116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bf55527e87fca949bd53a444d968fc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 1
-  m_minSpeed: 7
-  m_bulletPower: 1
-  m_fireInterval: 0.5
-  m_shotnum: 2
-  m_barrage: 1
-  m_barrageTime: 1
-  m_vector: {x: -1, y: 0}
-  m_direyTime: 0
-  m_bulletPrefab: {fileID: 5001137990051095853, guid: c31dd507c70c2e247a00fa00b0926570,
-    type: 3}
-  m_color: {r: 0.77254903, g: 0.42745098, b: 0, a: 1}
-  _pattenName: 1
-  m_changeDirection: 0
-  m_muzzle: {fileID: 7668786654341159906}
-  m_angle: 130
-  m_wayNum: 10
---- !u!114 &5402726492857123132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839887303002869116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bf55527e87fca949bd53a444d968fc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 1
-  m_minSpeed: 7
-  m_bulletPower: 1
-  m_fireInterval: 0.5
-  m_shotnum: 2
-  m_barrage: 1
-  m_barrageTime: 1
-  m_vector: {x: -1, y: 0}
-  m_direyTime: 0.5
-  m_bulletPrefab: {fileID: 5001137990051095853, guid: c31dd507c70c2e247a00fa00b0926570,
-    type: 3}
-  m_color: {r: 0.77254903, g: 0.42745098, b: 0, a: 1}
-  _pattenName: 1
-  m_changeDirection: 0
-  m_muzzle: {fileID: 7668786654341159906}
-  m_angle: 130
-  m_wayNum: 13
---- !u!114 &6824026888642252908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839887303002869116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137aa92fc8c62c1469156bf510525e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 1
-  m_minSpeed: 9
-  m_bulletPower: 1
-  m_fireInterval: 1
-  m_shotnum: 1
-  m_barrage: 5
-  m_barrageTime: 0.1
-  m_vector: {x: 0, y: 0}
-  m_direyTime: 0
-  m_bulletPrefab: {fileID: 5001137990051095853, guid: c31dd507c70c2e247a00fa00b0926570,
-    type: 3}
-  m_color: {r: 0.5540879, g: 1, b: 0, a: 1}
-  _pattenName: 0
-  m_changeDirection: 0
-  m_muzzle: {fileID: 7668786654341159906}
---- !u!114 &5465024805741388701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839887303002869116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e702dcae69ee72444b736cd4ec641d80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 1
-  m_minSpeed: 5
-  m_bulletPower: 1
-  m_fireInterval: 0.1
-  m_shotnum: 1
-  m_barrage: 1
-  m_barrageTime: 1
-  m_vector: {x: -1, y: 0}
-  m_direyTime: 0
-  m_bulletPrefab: {fileID: 7250486504375964138, guid: b26d0744285f3d64ea9ce611ee719c6e,
-    type: 3}
-  m_color: {r: 1, g: 0, b: 0, a: 1}
-  _pattenName: 1
-  m_changeDirection: 0
-  m_muzzle: {fileID: 7668786654341159906}
-  m_angle: 130
-  m_wayNum: 20
-  directionRotation: 1
---- !u!114 &6812829411445105280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839887303002869116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e702dcae69ee72444b736cd4ec641d80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 1
-  m_minSpeed: 5
-  m_bulletPower: 1
-  m_fireInterval: 0.1
-  m_shotnum: 1
-  m_barrage: 1
-  m_barrageTime: 1
-  m_vector: {x: -1, y: 0}
-  m_direyTime: 0
-  m_bulletPrefab: {fileID: 7250486504375964138, guid: b26d0744285f3d64ea9ce611ee719c6e,
-    type: 3}
-  m_color: {r: 1, g: 0, b: 0, a: 1}
-  _pattenName: 1
-  m_changeDirection: 0
-  m_muzzle: {fileID: 7668786654341159906}
-  m_angle: 130
-  m_wayNum: 20
-  directionRotation: 0
---- !u!114 &4680180373742533201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839887303002869116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e702dcae69ee72444b736cd4ec641d80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 1
-  m_minSpeed: 7
-  m_bulletPower: 1
-  m_fireInterval: 0.1
-  m_shotnum: 1
-  m_barrage: 1
-  m_barrageTime: 1
-  m_vector: {x: -1, y: 0}
-  m_direyTime: 0
-  m_bulletPrefab: {fileID: 7250486504375964138, guid: b26d0744285f3d64ea9ce611ee719c6e,
-    type: 3}
-  m_color: {r: 1, g: 0.7024758, b: 0, a: 1}
-  _pattenName: 1
-  m_changeDirection: 0
-  m_muzzle: {fileID: 7668786654341159906}
-  m_angle: 130
-  m_wayNum: 17
-  directionRotation: 1
---- !u!114 &8988868273353970665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839887303002869116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e702dcae69ee72444b736cd4ec641d80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 1
-  m_minSpeed: 7
-  m_bulletPower: 1
-  m_fireInterval: 0.1
-  m_shotnum: 1
-  m_barrage: 1
-  m_barrageTime: 1
-  m_vector: {x: -1, y: 0}
-  m_direyTime: 0
-  m_bulletPrefab: {fileID: 7250486504375964138, guid: b26d0744285f3d64ea9ce611ee719c6e,
-    type: 3}
-  m_color: {r: 1, g: 0.7024758, b: 0, a: 1}
-  _pattenName: 1
-  m_changeDirection: 0
-  m_muzzle: {fileID: 7668786654341159906}
-  m_angle: 130
-  m_wayNum: 17
-  directionRotation: 0
---- !u!114 &1733192381642108543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3839887303002869116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137aa92fc8c62c1469156bf510525e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxSpeed: 1
-  m_minSpeed: 5
-  m_bulletPower: 1
-  m_fireInterval: 1
-  m_shotnum: 1
-  m_barrage: 1
-  m_barrageTime: 1
-  m_vector: {x: -1, y: 0}
-  m_direyTime: 0
-  m_bulletPrefab: {fileID: 312266209638629580, guid: ca24c09729c04204daf0d34a14632a8c,
-    type: 3}
-  m_color: {r: 0.0023497343, g: 1, b: 0, a: 1}
-  _pattenName: 1
-  m_changeDirection: 0
-  m_muzzle: {fileID: 7668786654341159906}
+  m_shot1: []
+  m_shot2: []
+  m_shot3: []
+  m_shot4: []
 --- !u!1 &4324932887615718038
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7668786654341159906}
+  - component: {fileID: 4711251699670829305}
   m_Layer: 0
   m_Name: Muzzle
   m_TagString: Untagged
@@ -502,3 +247,33 @@ Transform:
   m_Father: {fileID: 3839887303002869059}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4711251699670829305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4324932887615718038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 0
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.4444495, g: 1, b: 0.25, a: 1}
+  m_maxSpeed: 0
+  m_minSpeed: 7
+  m_bulletPower: 0
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_posz: 90
+  m_spinSpeed: 0
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isTrigger: 0
+  m_tra: {fileID: 0}

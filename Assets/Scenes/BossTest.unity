@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &100246230
 Transform:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100246229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.365423, y: 0.5953957, z: 0}
+  m_LocalPosition: {x: -12.44, y: 0.5953957, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1225056746}
@@ -200,7 +200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &257772931
 Transform:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257772930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.365423, y: 0.5953957, z: 0}
+  m_LocalPosition: {x: -12.44, y: 0.5953957, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1039931600}
@@ -463,11 +463,13 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: 0.2
-  m_isPlayer: 0
-  m_isSpeedChange: 0
+  m_posz: -270
   m_spinSpeed: -3
   m_waynum: 1
   m_angle: 180
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
 --- !u!1 &467985880
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,11 +749,13 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: -0.2
-  m_isPlayer: 0
-  m_isSpeedChange: 0
+  m_posz: 0
   m_spinSpeed: 3
   m_waynum: 1
   m_angle: 180
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
 --- !u!1 &1046344263
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,11 +808,13 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: 0.2
-  m_isPlayer: 0
-  m_isSpeedChange: 0
+  m_posz: -90
   m_spinSpeed: -3
   m_waynum: 1
   m_angle: 180
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
 --- !u!1 &1225056745
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,11 +867,13 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: 0.2
-  m_isPlayer: 0
-  m_isSpeedChange: 0
+  m_posz: 0
   m_spinSpeed: -3
   m_waynum: 1
   m_angle: 180
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
 --- !u!1 &1308705916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,11 +1542,13 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: -0.2
-  m_isPlayer: 0
-  m_isSpeedChange: 0
+  m_posz: 180
   m_spinSpeed: 3
   m_waynum: 1
   m_angle: 180
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
 --- !u!1 &1537526831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,11 +1658,13 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: -0.2
-  m_isPlayer: 0
-  m_isSpeedChange: 0
+  m_posz: 270
   m_spinSpeed: 3
   m_waynum: 1
   m_angle: 180
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
 --- !u!1 &1819043071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,11 +1774,13 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: 0.2
-  m_isPlayer: 0
-  m_isSpeedChange: 0
+  m_posz: -180
   m_spinSpeed: -3
   m_waynum: 1
   m_angle: 180
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
 --- !u!1 &1927237756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,11 +1833,13 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: -0.2
-  m_isPlayer: 0
-  m_isSpeedChange: 0
+  m_posz: 90
   m_spinSpeed: 3
   m_waynum: 1
   m_angle: 180
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
 --- !u!1 &2001004239
 GameObject:
   m_ObjectHideFlags: 0

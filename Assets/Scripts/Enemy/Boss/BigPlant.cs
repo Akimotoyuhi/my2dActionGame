@@ -13,22 +13,10 @@ public class BigPlant : BossEnemyBase
 
     private Faze m_faze = Faze.one;
     private Actions[] m_actions;
-    [Header("パターン１")]
-    [SerializeField] private Single[] m_singles1;
-    [SerializeField] private Nway[] m_nways1;
-    [SerializeField] private Uzumaki[] uzumakis1;
-    [Header("パターン２")]
-    [SerializeField] private Single[] m_singles2;
-    [SerializeField] private Nway[] m_nways2;
-    [SerializeField] private Uzumaki[] uzumakis2;
-    [Header("パターン３")]
-    [SerializeField] private Single[] m_singles3;
-    [SerializeField] private Nway[] m_nways3;
-    [SerializeField] private Uzumaki[] uzumakis3;
-    [Header("パターン４")]
-    [SerializeField] private Single[] m_singles4;
-    [SerializeField] private Nway[] m_nways4;
-    [SerializeField] private Uzumaki[] uzumakis4;
+    [SerializeField] private ShotFoword[] m_shot1;
+    [SerializeField] private ShotFoword[] m_shot2;
+    [SerializeField] private ShotFoword[] m_shot3;
+    [SerializeField] private ShotFoword[] m_shot4;
 
 
     private void Start()
@@ -42,13 +30,14 @@ public class BigPlant : BossEnemyBase
     {
         if (m_faze == Faze.one)
         {
-            int i = Random.Range(0, 2);
-            StartCoroutine(Action(i));
+            int i = 0;
+            //int i = Random.Range(0, 2);
+            Action(i);
         }
         else if (m_faze == Faze.two)
         {
-            int i = Random.Range(2, m_actions.Length);
-            StartCoroutine(Action(i));
+            //int i = Random.Range(2, m_actions.Length);
+            //Action(i);
         }
     }
 
@@ -61,24 +50,26 @@ public class BigPlant : BossEnemyBase
         m_actions[3] = Pattern4;
     }
 
-    private void Pattern1()
+    private IEnumerator Pattern1()
     {
-        SetOnShot(m_singles1, m_nways1, uzumakis1);
+        StartCoroutine(AllShot(m_shot1, 1));
+        yield break;
     }
 
-    private void Pattern2()
+    private IEnumerator Pattern2()
     {
-        SetOnShot(m_singles2, m_nways2, uzumakis2);
+        yield return null;
     }
 
-    private void Pattern3()
+    private IEnumerator Pattern3()
     {
-        SetOnShot(m_singles3, m_nways3, uzumakis3);
+        yield return null;
     }
 
-    private void Pattern4()
+    private IEnumerator Pattern4()
     {
-        SetOnShot(m_singles4, m_nways4, uzumakis4);
+        yield return null;
+        //SetOnShot(m_singles4, m_nways4, uzumakis4);
     }
 
     /// <summary>
@@ -86,10 +77,9 @@ public class BigPlant : BossEnemyBase
     /// </summary>
     /// <param name="num">行動する関数</param>
     /// <returns></returns>
-    private IEnumerator Action(int num)
+    private void Action(int num)
     {
         m_actions[num]();
-        yield return new WaitForSeconds(m_moveinterval);
         NumberSet();
     }
 

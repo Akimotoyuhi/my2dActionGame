@@ -20,29 +20,34 @@ public class ShotFoword : MonoBehaviour
     /// <summary>弾の色</summary>
     [SerializeField] private Color m_color;
     /// <summary>弾の最高速度</summary>
-    [SerializeField] private float m_maxSpeed = 1;
+    [SerializeField] private float m_maxSpeed;
     /// <summary>弾の最低速度（初速度）</summary>
-    [SerializeField] private float m_minSpeed = 1;
+    [SerializeField] private float m_minSpeed;
     /// <summary>弾の攻撃力</summary>
     [SerializeField] private int m_bulletPower = 1;
     /// <summary>発射間隔</summary>
     [SerializeField] private float m_fireInterval = 1;
     /// <summary>弾のカーブのすごさ</summary>
-    [SerializeField] private float m_curve = 0;
+    [SerializeField] private float m_curve;
     /// <summary>発射角度</summary>
     [SerializeField] private float m_posz;
     /// <summary>回転速度</summary>
-    [SerializeField] private float m_spinSpeed = 0;
+    [SerializeField] private float m_spinSpeed;
     /// <summary>Way発射数</summary>
-    [SerializeField] private int m_waynum = 0;
+    [SerializeField] private int m_waynum = 1;
     /// <summary>角度</summary>
-    [SerializeField] private float m_angle = 0;
+    [SerializeField] private float m_angle;
     /// <summary>自機狙いかどうか</summary>
     [SerializeField] private bool m_isPlayer = false;
     /// <summary>速度を変えるかどうか</summary>
     [SerializeField] private bool m_isSpeedChange = false;
+    /// <summary>プレイヤーのｘ位置によって向きを逆にするか</summary>
     [SerializeField] private bool m_isSetPlayerXpos = false;
-    private bool now = false;
+    /// <summary>敵に複数のパターンを設定する時はこれをtrueにして敵側からfalseにしてくれ</summary>
+    [SerializeField] public bool m_isTrigger = false;
+    /// <summary>発射位置</summary>
+    [SerializeField] private Transform m_tra;
+    //private bool now = false;
     private float timer = 99;
     private GameObject m_player;
 
@@ -50,9 +55,18 @@ public class ShotFoword : MonoBehaviour
     {
         m_player = GameObject.FindWithTag("Player");
         SetTypes();
+        transform.rotation = Quaternion.Euler(0, 0, m_posz);
     }
 
     void Update()
+    {
+        if (!m_isTrigger)
+        {
+            ShotTrigger();
+        }
+    }
+
+    public void ShotTrigger()
     {
         timer += Time.deltaTime;
         if (timer > m_fireInterval)
@@ -121,11 +135,8 @@ public class ShotFoword : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, -m_posz);
             }
         }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 0, m_posz);
-        }
-        var t = Instantiate(m_bulletPrefab, this.transform.position, this.transform.rotation);
+        if (!m_tra) { m_tra = this.transform; }
+        var t = Instantiate(m_bulletPrefab, m_tra.position, this.transform.rotation);
         if (t.GetComponent<SpriteRenderer>())
         {
             t.GetComponent<SpriteRenderer>().color = m_color;

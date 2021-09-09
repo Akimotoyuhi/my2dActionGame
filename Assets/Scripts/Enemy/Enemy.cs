@@ -29,7 +29,6 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] public GameObject m_damagePrefab;
     /// <summary>弾撃つとこ</summary>
     [SerializeField] public GameObject[] m_muzzle;
-    //[SerializeField] public ShotFoword m_shot;
     [System.NonSerialized] public GameObject m_player;
     [System.NonSerialized] public Rigidbody2D m_rb;
     [System.NonSerialized] public Animator m_anim;

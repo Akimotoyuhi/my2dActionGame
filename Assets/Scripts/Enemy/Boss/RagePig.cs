@@ -13,9 +13,4 @@ public class RagePig : BossEnemyBase
     {
         
     }
-
-    public override void Move()
-    {
-        base.Move();
-    }
 }

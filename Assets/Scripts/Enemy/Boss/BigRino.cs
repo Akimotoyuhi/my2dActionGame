@@ -13,9 +13,4 @@ public class BigRino : BossEnemyBase
     {
         
     }
-
-    public override void Move()
-    {
-        base.Move();
-    }
 }
