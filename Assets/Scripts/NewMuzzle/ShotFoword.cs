@@ -47,6 +47,7 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] public bool m_isTrigger = false;
     /// <summary>発射位置</summary>
     [SerializeField] private Transform m_tra;
+    private Quaternion m_lookRotation;
     //private bool now = false;
     private float timer = 99;
     private GameObject m_player;
@@ -100,6 +101,15 @@ public class ShotFoword : MonoBehaviour
     /// </summary>
     private void Single()
     {
+        if (m_isPlayer)
+        {
+            //自機狙い ※参考サイト https://nekojara.city/unity-look-at
+            if (!m_player) { GameObject.FindWithTag("Player"); }
+            var v = m_player.transform.position - this.transform.position;
+            var rotation = Quaternion.LookRotation(v, Vector3.up);
+            var offset = Quaternion.FromToRotation(m_player.transform.position, Vector3.forward);
+            m_lookRotation = rotation * offset;
+        }
         Shot();
     }
 
@@ -134,6 +144,7 @@ public class ShotFoword : MonoBehaviour
         if (!m_player) { m_player = GameObject.FindWithTag("Player"); }
         if (m_isSetPlayerXpos)
         {
+            //自分から見てプレイヤーが左右どっちかにいるかを判別して自分の向く方向を変える
             if (m_player.transform.position.x < this.gameObject.transform.position.x)
             {
                 transform.rotation = Quaternion.Euler(0, 0, m_posz);
@@ -143,6 +154,7 @@ public class ShotFoword : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, -m_posz);
             }
         }
+
         if (!m_tra) { m_tra = this.transform; }
         var t = Instantiate(m_bulletPrefab, m_tra.position, this.transform.rotation);
         if (t.GetComponent<SpriteRenderer>())
