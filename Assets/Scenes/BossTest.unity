@@ -470,6 +470,8 @@ MonoBehaviour:
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
+  m_isTrigger: 0
+  m_tra: {fileID: 0}
 --- !u!1 &467985880
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +758,8 @@ MonoBehaviour:
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
+  m_isTrigger: 0
+  m_tra: {fileID: 0}
 --- !u!1 &1046344263
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,6 +819,8 @@ MonoBehaviour:
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
+  m_isTrigger: 0
+  m_tra: {fileID: 0}
 --- !u!1 &1225056745
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +880,8 @@ MonoBehaviour:
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
+  m_isTrigger: 0
+  m_tra: {fileID: 0}
 --- !u!1 &1308705916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,6 +1557,8 @@ MonoBehaviour:
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
+  m_isTrigger: 0
+  m_tra: {fileID: 0}
 --- !u!1 &1537526831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,6 +1675,8 @@ MonoBehaviour:
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
+  m_isTrigger: 0
+  m_tra: {fileID: 0}
 --- !u!1 &1819043071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,6 +1793,8 @@ MonoBehaviour:
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
+  m_isTrigger: 0
+  m_tra: {fileID: 0}
 --- !u!1 &1927237756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,6 +1854,8 @@ MonoBehaviour:
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
+  m_isTrigger: 0
+  m_tra: {fileID: 0}
 --- !u!1 &2001004239
 GameObject:
   m_ObjectHideFlags: 0

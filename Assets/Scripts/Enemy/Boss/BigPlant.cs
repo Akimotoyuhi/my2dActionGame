@@ -23,16 +23,23 @@ public class BigPlant : BossEnemyBase
     {
         AnimSetUp();
         ActionSet();
-        NumberSet();
     }
 
-    private void NumberSet()
+    private void Update()
+    {
+        if (!m_isMove)
+        {
+            m_isMove = true;
+            ActionStart();
+        }
+    }
+
+    private void ActionStart()
     {
         if (m_faze == Faze.one)
         {
-            int i = 0;
-            //int i = Random.Range(0, 2);
-            Action(i);
+            int i = Random.Range(0, 2);
+            StartCoroutine(Action(i));
         }
         else if (m_faze == Faze.two)
         {
@@ -50,15 +57,31 @@ public class BigPlant : BossEnemyBase
         m_actions[3] = Pattern4;
     }
 
+
+    /// <summary>
+    /// ランダムで決定した行動をする
+    /// </summary>
+    /// <param name="num">行動する関数</param>
+    /// <returns></returns>
+    private IEnumerator Action(int num)
+    {
+        yield return StartCoroutine(m_actions[num]());
+        yield return new WaitForSeconds(m_moveInterval);
+        m_isMove = false;
+    }
+
     private IEnumerator Pattern1()
     {
-        StartCoroutine(AllShot(m_shot1, 1));
-        yield break;
+        yield return StartCoroutine(AllShot(m_shot1, 1));
     }
 
     private IEnumerator Pattern2()
     {
-        yield return null;
+        m_shot2[0].OneShot();
+        yield return new WaitForSeconds(0.3f);
+        m_shot2[1].OneShot();
+        yield return new WaitForSeconds(0.3f);
+        m_shot2[2].OneShot();
     }
 
     private IEnumerator Pattern3()
@@ -73,17 +96,6 @@ public class BigPlant : BossEnemyBase
     }
 
     /// <summary>
-    /// ランダムで決定した行動をする
-    /// </summary>
-    /// <param name="num">行動する関数</param>
-    /// <returns></returns>
-    private void Action(int num)
-    {
-        m_actions[num]();
-        NumberSet();
-    }
-
-    /// <summary>
     /// 体力が一定量以下になったら形態移行する
     /// </summary>
     private void FazeChanger()
@@ -91,7 +103,7 @@ public class BigPlant : BossEnemyBase
         if (Percent(m_life ,m_maxLife) < 50 && m_faze == Faze.one)
         {
             m_faze++;
-            NumberSet();
+            ActionStart();
         }
     }
 

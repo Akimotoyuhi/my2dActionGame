@@ -15,7 +15,7 @@ public class BossEnemyBase : MonoBehaviour
     /// <summary>ジャンプ力</summary>
     [SerializeField] public float m_jumpPower = 1;
     /// <summary>移動間隔</summary>
-    [SerializeField] public float m_moveinterval = 1;
+    [SerializeField] public float m_moveInterval = 1;
     /// <summary>発射間隔</summary>
     [SerializeField] public float m_shotinterval = 1;
     /// <summary>移動間隔用タイマー</summary>
@@ -44,13 +44,21 @@ public class BossEnemyBase : MonoBehaviour
         m_anim = GetComponent<Animator>();
     }
 
-    public IEnumerator AllShot(ShotFoword[] shot ,float time)
+    public IEnumerator AllShot(ShotFoword[] shot, float sec)
     {
         for (int i = 0; i < shot.Length; i++)
         {
             shot[i].m_isTrigger = false;
         }
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(sec);
+        for (int i = 0; i < shot.Length; i++)
+        {
+            shot[i].m_isTrigger = true;
+        }
+    }
+
+    public void AllDiseble(ShotFoword[] shot)
+    {
         for (int i = 0; i < shot.Length; i++)
         {
             shot[i].m_isTrigger = true;
