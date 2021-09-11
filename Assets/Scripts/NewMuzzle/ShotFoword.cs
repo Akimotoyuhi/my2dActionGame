@@ -30,7 +30,7 @@ public class ShotFoword : MonoBehaviour
     /// <summary>弾のカーブのすごさ</summary>
     [SerializeField] private float m_curve;
     /// <summary>発射角度</summary>
-    [SerializeField] private float m_posz;
+    [SerializeField] private float m_zAngle;
     /// <summary>回転速度</summary>
     [SerializeField] private float m_spinSpeed;
     /// <summary>Way発射数</summary>
@@ -44,24 +44,24 @@ public class ShotFoword : MonoBehaviour
     /// <summary>プレイヤーのｘ位置によって向きを逆にするか</summary>
     [SerializeField] private bool m_isSetPlayerXpos = false;
     /// <summary>敵に複数のパターンを設定する時はこれをtrueにして敵側からfalseにしてくれ</summary>
-    [SerializeField] public bool m_isTrigger = false;
+    [SerializeField] private bool m_isStop = false;
     /// <summary>発射位置</summary>
     [SerializeField] private Transform m_tra;
-    private Quaternion m_lookRotation;
-    //private bool now = false;
-    private float timer = 99;
+    private float m_z;
+    private float m_timer = 99;
     private GameObject m_player;
 
     void Start()
     {
         m_player = GameObject.FindWithTag("Player");
         SetTypes();
-        transform.rotation = Quaternion.Euler(0, 0, m_posz);
+        transform.rotation = Quaternion.Euler(0, 0, m_zAngle);
+        m_z = m_zAngle;
     }
 
     void Update()
     {
-        if (!m_isTrigger)
+        if (!m_isStop)
         {
             ShotTrigger();
         }
@@ -69,10 +69,10 @@ public class ShotFoword : MonoBehaviour
 
     public void ShotTrigger()
     {
-        timer += Time.deltaTime;
-        if (timer > m_fireInterval)
+        m_timer += Time.deltaTime;
+        if (m_timer > m_fireInterval)
         {
-            timer = 0;
+            m_timer = 0;
             m_types[(int)m_shotType]();
         }
     }
@@ -97,6 +97,24 @@ public class ShotFoword : MonoBehaviour
     }
 
     /// <summary>
+    /// 弾の発射を止める時に呼ばれる
+    /// </summary>
+    public void StopEnable()
+    {
+        m_isStop = true;
+        m_zAngle = m_z;
+    }
+
+    /// <summary>
+    /// 弾の発射を始める時に呼ばれる
+    /// </summary>
+    public void StopDisable()
+    {
+        m_isStop = false;
+        m_z = m_zAngle;
+    }
+
+    /// <summary>
     /// 単発弾
     /// </summary>
     private void Single()
@@ -108,7 +126,8 @@ public class ShotFoword : MonoBehaviour
             var v = m_player.transform.position - this.transform.position;
             var rotation = Quaternion.LookRotation(v, Vector3.up);
             var offset = Quaternion.FromToRotation(m_player.transform.position, Vector3.forward);
-            m_lookRotation = rotation * offset;
+            var lookRotation = rotation * offset;
+            transform.rotation = lookRotation;
         }
         Shot();
     }
@@ -124,7 +143,7 @@ public class ShotFoword : MonoBehaviour
             Shot();
             transform.Rotate(new Vector3(0, 0, m_angle / m_waynum));
         }
-        transform.rotation = Quaternion.Euler(0, 0, m_posz);
+        transform.rotation = Quaternion.Euler(0, 0, m_zAngle);
     }
 
     /// <summary>
@@ -147,11 +166,11 @@ public class ShotFoword : MonoBehaviour
             //自分から見てプレイヤーが左右どっちかにいるかを判別して自分の向く方向を変える
             if (m_player.transform.position.x < this.gameObject.transform.position.x)
             {
-                transform.rotation = Quaternion.Euler(0, 0, m_posz);
+                transform.rotation = Quaternion.Euler(0, 0, m_zAngle);
             }
             else
             {
-                transform.rotation = Quaternion.Euler(0, 0, -m_posz);
+                transform.rotation = Quaternion.Euler(0, 0, -m_zAngle);
             }
         }
 

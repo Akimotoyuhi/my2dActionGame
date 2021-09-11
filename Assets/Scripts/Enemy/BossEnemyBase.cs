@@ -44,24 +44,75 @@ public class BossEnemyBase : MonoBehaviour
         m_anim = GetComponent<Animator>();
     }
 
-    public IEnumerator AllShot(ShotFoword[] shot, float sec)
+    /// <summary>
+    /// 配列に入っている全てのMuzzleから弾を発射する
+    /// </summary>
+    /// <param name="muzzle">発射する配列</param>
+    /// <param name="sec">発射秒数</param>
+    /// <returns></returns>
+    public IEnumerator AllShot(ShotFoword[] muzzle, float sec)
     {
-        for (int i = 0; i < shot.Length; i++)
+        for (int i = 0; i < muzzle.Length; i++)
         {
-            shot[i].m_isTrigger = false;
+            muzzle[i].StopDisable();
         }
         yield return new WaitForSeconds(sec);
-        for (int i = 0; i < shot.Length; i++)
+        for (int i = 0; i < muzzle.Length; i++)
         {
-            shot[i].m_isTrigger = true;
+            muzzle[i].StopEnable();
         }
     }
 
-    public void AllDiseble(ShotFoword[] shot)
+    /// <summary>
+    /// Muzzleからしばらくの間弾を発射する
+    /// </summary>
+    /// <param name="muzzle">発射するMuzzle</param>
+    /// <param name="sec">発射秒数</param>
+    /// <returns></returns>
+    public IEnumerator TyottoShot(ShotFoword muzzle, float sec)
+    {
+        muzzle.StopDisable();
+        yield return new WaitForSeconds(sec);
+        muzzle.StopEnable();
+    }
+
+    /// <summary>
+    /// Muzzleからしばらくの間弾を発射する
+    /// </summary>
+    /// <param name="muzzle">発射するMuzzle</param>
+    /// <param name="sec">発射秒数</param>
+    /// <returns></returns>
+    public IEnumerator TyottoShot(ShotFoword muzzle1, ShotFoword muzzle2, float sec)
+    {
+        muzzle1.StopDisable();
+        muzzle2.StopDisable();
+        yield return new WaitForSeconds(sec);
+        muzzle1.StopEnable();
+        muzzle2.StopEnable();
+    }
+
+    /// <summary>
+    /// Muzzleからしばらくの間弾を発射する
+    /// </summary>
+    /// <param name="muzzle">発射するMuzzle</param>
+    /// <param name="sec">発射秒数</param>
+    /// <returns></returns>
+    public IEnumerator TyottoShot(ShotFoword muzzle1, ShotFoword muzzle2, ShotFoword muzzle3, float sec)
+    {
+        muzzle1.StopDisable();
+        muzzle2.StopDisable();
+        muzzle2.StopDisable();
+        yield return new WaitForSeconds(sec);
+        muzzle1.StopEnable();
+        muzzle2.StopEnable();
+        muzzle3.StopEnable();
+    }
+
+    public void AllEnable(ShotFoword[] shot)
     {
         for (int i = 0; i < shot.Length; i++)
         {
-            shot[i].m_isTrigger = true;
+            shot[i].StopEnable();
         }
     }
 

@@ -324,6 +324,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &295694676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295694678}
+  - component: {fileID: 295694677}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &295694677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295694676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.7438973, g: 1, b: 0, a: 1}
+  m_maxSpeed: 0
+  m_minSpeed: 5
+  m_bulletPower: 1
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: 0
+  m_spinSpeed: 10
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
+--- !u!4 &295694678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295694676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417133454
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,14 +524,14 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: 0.2
-  m_posz: -270
+  m_zAngle: 0
   m_spinSpeed: -3
   m_waynum: 1
   m_angle: 180
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
-  m_isTrigger: 0
+  m_isStop: 0
   m_tra: {fileID: 0}
 --- !u!1 &467985880
 GameObject:
@@ -504,6 +565,67 @@ Transform:
   - {fileID: 2001004240}
   m_Father: {fileID: 6994456525432688064}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &602455563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 602455566}
+  - component: {fileID: 602455565}
+  m_Layer: 0
+  m_Name: Muzzle (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &602455565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602455563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0, g: 1, b: 0.5378077, a: 1}
+  m_maxSpeed: 0
+  m_minSpeed: 5
+  m_bulletPower: 1
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: 0
+  m_spinSpeed: -10
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
+--- !u!4 &602455566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602455563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &709719677
 GameObject:
@@ -751,14 +873,14 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: -0.2
-  m_posz: 0
+  m_zAngle: 0
   m_spinSpeed: 3
   m_waynum: 1
   m_angle: 180
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
-  m_isTrigger: 0
+  m_isStop: 0
   m_tra: {fileID: 0}
 --- !u!1 &1046344263
 GameObject:
@@ -812,14 +934,14 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: 0.2
-  m_posz: -90
+  m_zAngle: 0
   m_spinSpeed: -3
   m_waynum: 1
   m_angle: 180
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
-  m_isTrigger: 0
+  m_isStop: 0
   m_tra: {fileID: 0}
 --- !u!1 &1225056745
 GameObject:
@@ -873,14 +995,14 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: 0.2
-  m_posz: 0
+  m_zAngle: 0
   m_spinSpeed: -3
   m_waynum: 1
   m_angle: 180
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
-  m_isTrigger: 0
+  m_isStop: 0
   m_tra: {fileID: 0}
 --- !u!1 &1308705916
 GameObject:
@@ -1550,14 +1672,14 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: -0.2
-  m_posz: 180
+  m_zAngle: 0
   m_spinSpeed: 3
   m_waynum: 1
   m_angle: 180
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
-  m_isTrigger: 0
+  m_isStop: 0
   m_tra: {fileID: 0}
 --- !u!1 &1537526831
 GameObject:
@@ -1668,14 +1790,14 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: -0.2
-  m_posz: 270
+  m_zAngle: 0
   m_spinSpeed: 3
   m_waynum: 1
   m_angle: 180
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
-  m_isTrigger: 0
+  m_isStop: 0
   m_tra: {fileID: 0}
 --- !u!1 &1819043071
 GameObject:
@@ -1786,14 +1908,14 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: 0.2
-  m_posz: -180
+  m_zAngle: 0
   m_spinSpeed: -3
   m_waynum: 1
   m_angle: 180
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
-  m_isTrigger: 0
+  m_isStop: 0
   m_tra: {fileID: 0}
 --- !u!1 &1920162276
 GameObject:
@@ -1811,7 +1933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1920162277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,14 +1955,14 @@ MonoBehaviour:
   m_bulletPower: 1
   m_fireInterval: 0.1
   m_curve: 0
-  m_posz: 0
+  m_zAngle: 0
   m_spinSpeed: 0
   m_waynum: 1
   m_angle: 0
   m_isPlayer: 1
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
-  m_isTrigger: 0
+  m_isStop: 0
   m_tra: {fileID: 0}
 --- !u!4 &1920162278
 Transform:
@@ -1908,14 +2030,14 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.1
   m_curve: -0.2
-  m_posz: 90
+  m_zAngle: 0
   m_spinSpeed: 3
   m_waynum: 1
   m_angle: 180
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
-  m_isTrigger: 0
+  m_isStop: 0
   m_tra: {fileID: 0}
 --- !u!1 &2001004239
 GameObject:

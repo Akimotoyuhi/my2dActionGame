@@ -43,8 +43,9 @@ public class BigPlant : BossEnemyBase
         }
         else if (m_faze == Faze.two)
         {
-            //int i = Random.Range(2, m_actions.Length);
-            //Action(i);
+            int i = 2;
+            //int i = Random.Range(2, 4);
+            StartCoroutine(Action(i));
         }
     }
 
@@ -86,7 +87,8 @@ public class BigPlant : BossEnemyBase
 
     private IEnumerator Pattern3()
     {
-        yield return null;
+        yield return StartCoroutine(TyottoShot(m_shot3[0], m_shot3[1], 2));
+        yield return StartCoroutine(TyottoShot(m_shot3[2], m_shot3[3], 2));
     }
 
     private IEnumerator Pattern4()
