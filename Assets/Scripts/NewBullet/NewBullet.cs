@@ -21,6 +21,11 @@ public class NewBullet : MonoBehaviour
 
     void Update()
     {
+        Move();
+    }
+
+    public void Move()
+    {
         transform.Rotate(0, 0, m_curve);
         v = transform.rotation * Vector2.up;
         m_rb.velocity = v * m_startSpeed;

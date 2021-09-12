@@ -8,22 +8,14 @@ public class TimeDestroyAndInstantiete : NewBullet
     [SerializeField] float m_destroyTime;
     float m_timer = 0;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
+        Move();
         m_timer += Time.deltaTime;
         if (m_timer > m_destroyTime)
         {
+            Instantiate(m_muzzle, this.gameObject.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
-    }
-
-    private void OnDestroy()
-    {
-        Instantiate(m_muzzle, this.transform.position, Quaternion.identity);
     }
 }

@@ -1,0 +1,581 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7836816098928287192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836816098928287190}
+  - component: {fileID: 7836816098928287193}
+  m_Layer: 0
+  m_Name: Muzzle4-1-3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836816098928287190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816098928287192}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7836816099564840555}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836816098928287193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816098928287192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.09732066, g: 1, b: 0.033018887, a: 1}
+  m_endSpeed: 0
+  m_startSpeed: 15
+  m_bulletPower: 5
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: -40
+  m_spinSpeed: 9
+  m_zAngleTurn: 5
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
+--- !u!1 &7836816099190624178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836816099190624176}
+  - component: {fileID: 7836816099190624179}
+  m_Layer: 0
+  m_Name: Muzzle4-1-6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836816099190624176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099190624178}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7836816099564840555}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836816099190624179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099190624178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.031372547, g: 1, b: 0.6949904, a: 1}
+  m_endSpeed: 0
+  m_startSpeed: 2
+  m_bulletPower: 5
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: 90
+  m_spinSpeed: 50
+  m_zAngleTurn: 0
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
+--- !u!1 &7836816099498811633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836816099498811631}
+  - component: {fileID: 7836816099498811630}
+  m_Layer: 0
+  m_Name: Muzzle4-1-4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836816099498811631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099498811633}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7836816099564840555}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836816099498811630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099498811633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.09732066, g: 1, b: 0.033018887, a: 1}
+  m_endSpeed: 0
+  m_startSpeed: 15
+  m_bulletPower: 5
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: -80
+  m_spinSpeed: 9
+  m_zAngleTurn: 5
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
+--- !u!1 &7836816099563391059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836816099563391057}
+  - component: {fileID: 7836816099563391056}
+  m_Layer: 0
+  m_Name: Muzzle4-1-2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836816099563391057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099563391059}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7836816099564840555}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836816099563391056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099563391059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.09732066, g: 1, b: 0.033018887, a: 1}
+  m_endSpeed: 0
+  m_startSpeed: 15
+  m_bulletPower: 5
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: 0
+  m_spinSpeed: 9
+  m_zAngleTurn: 5
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
+--- !u!1 &7836816099564840554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836816099564840555}
+  - component: {fileID: 7836816099564840552}
+  m_Layer: 0
+  m_Name: Muzzle4-1-1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836816099564840555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099564840554}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.83, y: 0.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7836816100434850639}
+  - {fileID: 7836816099563391057}
+  - {fileID: 7836816098928287190}
+  - {fileID: 7836816099498811631}
+  - {fileID: 7836816100696481064}
+  - {fileID: 7836816099190624176}
+  - {fileID: 7836816099661042279}
+  - {fileID: 7836816100282426754}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836816099564840552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099564840554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cff5fa61c3b7cb4faa232aba88fc2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_destroyTime: 3
+--- !u!1 &7836816099661042281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836816099661042279}
+  - component: {fileID: 7836816099661042278}
+  m_Layer: 0
+  m_Name: Muzzle4-1-7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836816099661042279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099661042281}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7836816099564840555}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836816099661042278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816099661042281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.031372547, g: 1, b: 0.6949904, a: 1}
+  m_endSpeed: 0
+  m_startSpeed: 2
+  m_bulletPower: 5
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: 180
+  m_spinSpeed: 50
+  m_zAngleTurn: 0
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
+--- !u!1 &7836816100282426756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836816100282426754}
+  - component: {fileID: 7836816100282426757}
+  m_Layer: 0
+  m_Name: Muzzle4-1-8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836816100282426754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816100282426756}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7836816099564840555}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836816100282426757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816100282426756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.031372547, g: 1, b: 0.6949904, a: 1}
+  m_endSpeed: 0
+  m_startSpeed: 2
+  m_bulletPower: 5
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: 270
+  m_spinSpeed: 50
+  m_zAngleTurn: 0
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
+--- !u!1 &7836816100434850641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836816100434850639}
+  - component: {fileID: 7836816100434850638}
+  - component: {fileID: 7836816100434850636}
+  m_Layer: 0
+  m_Name: Muzzle4-1-1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836816100434850639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816100434850641}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7836816099564840555}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836816100434850638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816100434850641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.09732066, g: 1, b: 0.033018887, a: 1}
+  m_endSpeed: 0
+  m_startSpeed: 15
+  m_bulletPower: 5
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: 40
+  m_spinSpeed: 9
+  m_zAngleTurn: 5
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
+--- !u!114 &7836816100434850636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816100434850641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e702dcae69ee72444b736cd4ec641d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxSpeed: 1
+  m_minSpeed: 5
+  m_bulletPower: 1
+  m_fireInterval: 1
+  m_shotnum: 1
+  m_barrage: 1
+  m_barrageTime: 1
+  m_vector: {x: 0, y: 1}
+  m_direyTime: 0
+  m_bulletPrefab: {fileID: 6535373637718511975, guid: 6977bc3951cb9b4449187f3703bf4cd1,
+    type: 3}
+  m_color: {r: 0.71340454, g: 1, b: 0, a: 1}
+  _pattenName: 1
+  m_changeDirection: 0
+  m_muzzle: {fileID: 0}
+  m_angle: 360
+  m_wayNum: 50
+  directionRotation: 1
+--- !u!1 &7836816100696481066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836816100696481064}
+  - component: {fileID: 7836816100696481067}
+  m_Layer: 0
+  m_Name: Muzzle4-1-5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836816100696481064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816100696481066}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7836816099564840555}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7836816100696481067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836816100696481066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb864475a3797146b574de04c86a80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shotType: 2
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+    type: 3}
+  m_color: {r: 0.031372547, g: 1, b: 0.6949904, a: 1}
+  m_endSpeed: 0
+  m_startSpeed: 2
+  m_bulletPower: 5
+  m_fireInterval: 0.1
+  m_curve: 0
+  m_zAngle: 0
+  m_spinSpeed: 50
+  m_zAngleTurn: 0
+  m_waynum: 1
+  m_angle: 0
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}

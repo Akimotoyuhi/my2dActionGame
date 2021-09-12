@@ -49,11 +49,12 @@ MonoBehaviour:
   m_color: {r: 0.7438973, g: 1, b: 0, a: 1}
   m_endSpeed: 0
   m_startSpeed: 6
-  m_bulletPower: 1
+  m_bulletPower: 5
   m_fireInterval: 0.1
   m_curve: 0
   m_zAngle: 180
   m_spinSpeed: -10
+  m_zAngleTurn: 0
   m_waynum: 1
   m_angle: 0
   m_isPlayer: 0

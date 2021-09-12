@@ -94,9 +94,8 @@ public class BigPlant : BossEnemyBase
 
     private IEnumerator Pattern4()
     {
-        Debug.Log("おぎゃ！");
-        yield return null;
-        //SetOnShot(m_singles4, m_nways4, uzumakis4);
+        StartCoroutine(TyottoShot(m_shot4[0], m_position[0]));
+        yield return new WaitForSeconds(5f);
     }
 
     /// <summary>
