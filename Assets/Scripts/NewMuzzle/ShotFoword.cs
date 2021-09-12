@@ -19,10 +19,10 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] private GameObject m_bulletPrefab;
     /// <summary>弾の色</summary>
     [SerializeField] private Color m_color;
-    /// <summary>弾の最高速度</summary>
-    [SerializeField] private float m_maxSpeed;
-    /// <summary>弾の最低速度（初速度）</summary>
-    [SerializeField] private float m_minSpeed;
+    /// <summary>弾の最終速度</summary>
+    [SerializeField] private float m_endSpeed;
+    /// <summary>弾の初速</summary>
+    [SerializeField] private float m_startSpeed;
     /// <summary>弾の攻撃力</summary>
     [SerializeField] private int m_bulletPower = 1;
     /// <summary>発射間隔</summary>
@@ -33,6 +33,8 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] private float m_zAngle;
     /// <summary>回転速度</summary>
     [SerializeField] private float m_spinSpeed;
+    /// <summary>回転が逆になる弾数</summary>
+    [SerializeField] private int m_zAngleTurn;
     /// <summary>Way発射数</summary>
     [SerializeField] private int m_waynum = 1;
     /// <summary>角度</summary>
@@ -49,6 +51,8 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] private Transform m_tra;
     private float m_z;
     private float m_timer = 99;
+    private int m_shotCount = 0;
+    private bool m_isTurm = false;
     private GameObject m_player;
 
     void Start()
@@ -97,24 +101,6 @@ public class ShotFoword : MonoBehaviour
     }
 
     /// <summary>
-    /// 弾の発射を止める時に呼ばれる
-    /// </summary>
-    public void StopEnable()
-    {
-        m_isStop = true;
-        m_zAngle = m_z;
-    }
-
-    /// <summary>
-    /// 弾の発射を始める時に呼ばれる
-    /// </summary>
-    public void StopDisable()
-    {
-        m_isStop = false;
-        m_z = m_zAngle;
-    }
-
-    /// <summary>
     /// 単発弾
     /// </summary>
     private void Single()
@@ -153,8 +139,33 @@ public class ShotFoword : MonoBehaviour
     {
         for (int i = 0; i < m_waynum; i++)
         {
-            transform.Rotate(new Vector3(0, 0, m_spinSpeed));
-            Shot();
+            if (!m_isTurm)
+            {
+                transform.Rotate(new Vector3(0, 0, m_spinSpeed));
+                Shot();
+            }
+            else
+            {
+                transform.Rotate(new Vector3(0, 0, -m_spinSpeed));
+                Shot();
+            }
+        }
+        if (m_zAngleTurn == 0)
+        {
+            return;
+        }
+        m_shotCount++;
+        if (m_shotCount >= m_zAngleTurn)
+        {
+            m_shotCount = 0;
+            if (!m_isTurm)
+            {
+                m_isTurm = true;
+            }
+            else if (m_isTurm)
+            {
+                m_isTurm = false;
+            }
         }
     }
 
@@ -176,6 +187,7 @@ public class ShotFoword : MonoBehaviour
 
         if (!m_tra) { m_tra = this.transform; }
         var t = Instantiate(m_bulletPrefab, m_tra.position, this.transform.rotation);
+        //t.transform.parent = this.transform;
         if (t.GetComponent<SpriteRenderer>())
         {
             t.GetComponent<SpriteRenderer>().color = m_color;
@@ -183,7 +195,7 @@ public class ShotFoword : MonoBehaviour
         NewBullet m_bullet = t.GetComponent<NewBullet>();
         if (m_bullet)
         {
-            m_bullet.SetParameter(m_maxSpeed, m_minSpeed, m_curve, m_bulletPower);
+            m_bullet.SetParameter(m_endSpeed, m_startSpeed, m_curve, m_bulletPower);
         }
     }
 }

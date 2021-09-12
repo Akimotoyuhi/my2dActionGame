@@ -13,10 +13,10 @@ public class BigPlant : BossEnemyBase
 
     private Faze m_faze = Faze.one;
     private Actions[] m_actions;
-    [SerializeField] private ShotFoword[] m_shot1;
-    [SerializeField] private ShotFoword[] m_shot2;
-    [SerializeField] private ShotFoword[] m_shot3;
-    [SerializeField] private ShotFoword[] m_shot4;
+    [SerializeField] private GameObject[] m_shot1;
+    [SerializeField] private GameObject[] m_shot2;
+    [SerializeField] private GameObject[] m_shot3;
+    [SerializeField] private GameObject[] m_shot4;
 
 
     private void Start()
@@ -43,8 +43,7 @@ public class BigPlant : BossEnemyBase
         }
         else if (m_faze == Faze.two)
         {
-            int i = 2;
-            //int i = Random.Range(2, 4);
+            int i = Random.Range(2, 4);
             StartCoroutine(Action(i));
         }
     }
@@ -73,26 +72,29 @@ public class BigPlant : BossEnemyBase
 
     private IEnumerator Pattern1()
     {
-        yield return StartCoroutine(AllShot(m_shot1, 1));
+        yield return StartCoroutine(AllShot(m_shot1, m_position[0], 1));
     }
 
     private IEnumerator Pattern2()
     {
-        m_shot2[0].OneShot();
+        StartCoroutine(TyottoShot(m_shot2[0], m_position[0]));
         yield return new WaitForSeconds(0.3f);
-        m_shot2[1].OneShot();
+        StartCoroutine(TyottoShot(m_shot2[1], m_position[0]));
         yield return new WaitForSeconds(0.3f);
-        m_shot2[2].OneShot();
+        StartCoroutine(TyottoShot(m_shot2[2], m_position[0]));
     }
 
     private IEnumerator Pattern3()
     {
-        yield return StartCoroutine(TyottoShot(m_shot3[0], m_shot3[1], 2));
-        yield return StartCoroutine(TyottoShot(m_shot3[2], m_shot3[3], 2));
+        yield return StartCoroutine(TyottoShot(m_shot3[0], m_shot3[1], m_position[0], 2f));
+        yield return new WaitForSeconds(0.1f);
+        yield return StartCoroutine(TyottoShot(m_shot3[2], m_shot3[3], m_position[0], 2f));
+        yield return new WaitForSeconds(1f);
     }
 
     private IEnumerator Pattern4()
     {
+        Debug.Log("おぎゃ！");
         yield return null;
         //SetOnShot(m_singles4, m_nways4, uzumakis4);
     }

@@ -391,13 +391,15 @@ MonoBehaviour:
   m_bulletPower: 0
   m_fireInterval: 0.3
   m_curve: 0
-  m_posz: 0
+  m_zAngle: 0
   m_spinSpeed: 5
   m_waynum: 4
   m_angle: 360
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
 --- !u!4 &128715011
 Transform:
   m_ObjectHideFlags: 0
@@ -2633,7 +2635,7 @@ PrefabInstance:
     - target: {fileID: 5360335683803498704, guid: 92aca2695bdabd2459b015d6bddf1b4f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5360335683803498719, guid: 92aca2695bdabd2459b015d6bddf1b4f,
         type: 3}
