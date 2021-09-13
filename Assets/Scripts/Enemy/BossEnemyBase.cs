@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossEnemyBase : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class BossEnemyBase : MonoBehaviour
     [System.NonSerialized] public GameObject m_player;
     [System.NonSerialized] public Rigidbody2D m_rb;
     [System.NonSerialized] public Animator m_anim;
+    public GameObject m_canvas;
+    public Slider m_hpSlider;
 
     public delegate IEnumerator Actions();
 
@@ -38,6 +41,10 @@ public class BossEnemyBase : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_player = GameObject.FindWithTag("Player");
+        m_canvas = GameObject.Find("Canvas");
+        m_hpSlider = m_canvas.transform.Find("BossHPgage").GetComponent<Slider>();
+        m_hpSlider.maxValue = m_maxLife;
+        m_hpSlider.value = m_life;
     }
 
     public void AnimSetUp()

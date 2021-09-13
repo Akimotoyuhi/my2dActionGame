@@ -65,8 +65,11 @@ public class BigPlant : BossEnemyBase
     /// <returns></returns>
     private IEnumerator Action(int num)
     {
+        Debug.Log("shot");
         yield return StartCoroutine(m_actions[num]());
+        Debug.Log("wait");
         yield return new WaitForSeconds(m_moveInterval);
+        Debug.Log("end");
         m_isMove = false;
     }
 
@@ -121,6 +124,7 @@ public class BigPlant : BossEnemyBase
             inst.GetComponent<DamageText>().m_vec = v;
             Text text = inst.transform.GetChild(0).GetComponent<Text>();
             text.text = $"{bullet.m_power}";
+            m_hpSlider.value = m_life;
         }
 
         if (m_life <= 0)
@@ -130,7 +134,6 @@ public class BigPlant : BossEnemyBase
         else
         {
             FazeChanger();
-            Debug.Log($"敵体力{Percent(m_life, m_maxLife)}%");
         }
     }
 }

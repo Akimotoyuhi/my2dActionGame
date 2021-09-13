@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform m_testSpawnPos;
     [SerializeField] private bool isTest = false;
     [SerializeField] private GameObject m_enemySpawnpoint;
+    [SerializeField] private GameObject m_bossHpGage;
 
     void Start()
     {
-        m_enemySpawnpoint = GameObject.Find("EnemiesSpawnpoints");
+        m_bossHpGage.SetActive(false); ;
+        //m_enemySpawnpoint = GameObject.Find("EnemiesSpawnpoints");
         if (isTest)
         {
             m_spawnPoint = new Vector2(m_testSpawnPos.position.x, m_testSpawnPos.position.y);
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
         PlayerSpawn();
     }
 
+    /*
     /// <summary>
     /// プレイヤーがCameraColliderに入った事を受け取ったら全てのEnemySpawnointから敵を出させる
     /// </summary>
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
             e.EnemyDestroy();
         }
     }
+    */
 
     /// <summary>
     /// プレイヤーが死んだ事を受け取って数秒待ってからスポーンさせる
