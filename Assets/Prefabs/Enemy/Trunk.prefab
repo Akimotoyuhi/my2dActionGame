@@ -47,18 +47,21 @@ MonoBehaviour:
   m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
     type: 3}
   m_color: {r: 0.17572784, g: 1, b: 0, a: 1}
-  m_maxSpeed: 1
-  m_minSpeed: 5
+  m_endSpeed: 0
+  m_startSpeed: 7
   m_bulletPower: 3
   m_fireInterval: 1
   m_curve: 0
-  m_posz: 90
+  m_zAngle: 90
   m_spinSpeed: 0
-  m_waynum: 0
+  m_zAngleTurn: 0
+  m_waynum: 1
   m_angle: 0
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 1
+  m_isStop: 0
+  m_tra: {fileID: 0}
 --- !u!1 &5360335683803498704
 GameObject:
   m_ObjectHideFlags: 0

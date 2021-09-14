@@ -210,16 +210,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shotType: 1
-  m_bulletPrefab: {fileID: 25780117982408086, guid: a039cb42f2fb26240a8b1239e4d57c86,
+  m_bulletPrefab: {fileID: 25780117982408086, guid: 1e1d57a4b457c2f4dabd85ad5a168447,
     type: 3}
   m_color: {r: 1, g: 0.82073116, b: 0, a: 1}
-  m_maxSpeed: 0
-  m_minSpeed: 1
+  m_endSpeed: 0
+  m_startSpeed: 1
   m_bulletPower: 0
   m_fireInterval: 3
   m_curve: 0
-  m_isPlayer: 0
-  m_isSpeedChange: 0
+  m_zAngle: 0
   m_spinSpeed: 0
+  m_zAngleTurn: 0
   m_waynum: 30
   m_angle: 360
+  m_isPlayer: 0
+  m_isSpeedChange: 0
+  m_isSetPlayerXpos: 0
+  m_isStop: 0
+  m_tra: {fileID: 0}
