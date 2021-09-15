@@ -279,7 +279,6 @@ MonoBehaviour:
     type: 3}
   m_testSpawnPos: {fileID: 423879233}
   isTest: 1
-  m_enemySpawnpoint: {fileID: 0}
   m_bossHpGage: {fileID: 1346909987}
 --- !u!4 &278708858
 Transform:

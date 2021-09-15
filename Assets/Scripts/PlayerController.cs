@@ -49,7 +49,8 @@ public class PlayerController : MonoBehaviour
     [System.NonSerialized] public int[] m_haveItem = { 0, 0, 0 };
     /// <summary> 被ダメ表示用</summary>
     [SerializeField] private GameObject m_damageText;
-    private string m_nidozukeKinsi;
+    /// <summary> スポーン時エフェクト</summary>
+    [SerializeField] private GameObject m_spawnEffect;
     private GameObject m_playerUi = null;
     private GameObject[] m_bulletSprites;
     private Rigidbody2D m_rb = null;
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
             m_bulletSprites[i] = BulletType.transform.GetChild(i).gameObject;
         }
 
+        Instantiate(m_spawnEffect, this.gameObject.transform.position, Quaternion.identity);
         BulletSpriteActiveChanged();
         SetState();
     }

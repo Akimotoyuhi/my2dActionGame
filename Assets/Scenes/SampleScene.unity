@@ -369,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &128715010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1992,7 +1992,6 @@ MonoBehaviour:
     type: 3}
   m_testSpawnPos: {fileID: 866879415}
   isTest: 1
-  m_enemySpawnpoint: {fileID: 0}
   m_bossHpGage: {fileID: 284668795611268704}
 --- !u!4 &1718044024
 Transform:
