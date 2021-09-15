@@ -152,4 +152,9 @@ public class BossEnemyBase : MonoBehaviour
     /// <param name="max">最大の数値</param>
     /// <returns>二つの数値の割合</returns>
     public float Percent(float now, float max) { return (now / max) * 100; }
+
+    private void OnDestroy()
+    {
+        transform.parent.gameObject.GetComponent<BossEriaCollider>().EndBoss();
+    }
 }
