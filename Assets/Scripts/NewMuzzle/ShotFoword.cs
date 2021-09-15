@@ -105,13 +105,7 @@ public class ShotFoword : MonoBehaviour
     /// </summary>
     private void Single()
     {
-        if (m_isPlayer)
-        {
-            if (!m_player) { m_player = GameObject.FindWithTag("Player"); }
-            Vector2 v = m_player.transform.position - this.transform.position;
-            float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle - 90);
-        }
+        SetAngle();
         Shot();
     }
 
@@ -126,7 +120,7 @@ public class ShotFoword : MonoBehaviour
             Shot();
             transform.Rotate(new Vector3(0, 0, m_angle / m_waynum));
         }
-        transform.rotation = Quaternion.Euler(0, 0, m_zAngle);
+        SetAngle();
     }
 
     /// <summary>
@@ -193,6 +187,21 @@ public class ShotFoword : MonoBehaviour
         if (m_bullet)
         {
             m_bullet.SetParameter(m_endSpeed, m_startSpeed, m_curve, m_bulletPower);
+        }
+    }
+
+    private void SetAngle()
+    {
+        if (m_isPlayer)
+        {
+            if (!m_player) { m_player = GameObject.FindWithTag("Player"); }
+            Vector2 v = m_player.transform.position - this.transform.position;
+            float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, m_zAngle);
         }
     }
 }

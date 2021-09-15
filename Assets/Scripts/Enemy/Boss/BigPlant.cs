@@ -65,11 +65,8 @@ public class BigPlant : BossEnemyBase
     /// <returns></returns>
     private IEnumerator Action(int num)
     {
-        Debug.Log("shot");
         yield return StartCoroutine(m_actions[num]());
-        Debug.Log("wait");
         yield return new WaitForSeconds(m_moveInterval);
-        Debug.Log("end");
         m_isMove = false;
     }
 

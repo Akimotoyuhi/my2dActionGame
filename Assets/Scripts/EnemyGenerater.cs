@@ -12,7 +12,6 @@ public class EnemyGenerater : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Debug.Log("");
             if (m_seveObject)
             {
                 Destroy(m_seveObject);

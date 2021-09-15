@@ -54,9 +54,10 @@ MonoBehaviour:
   m_curve: 0
   m_zAngle: 90
   m_spinSpeed: 0
+  m_zAngleTurn: 0
   m_waynum: 1
   m_angle: 0
-  m_isPlayer: 0
+  m_isPlayer: 1
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
