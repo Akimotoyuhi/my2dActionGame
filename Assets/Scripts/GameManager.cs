@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        m_bossHpGage.SetActive(false); ;
-        //m_enemySpawnpoint = GameObject.Find("EnemiesSpawnpoints");
+        m_bossHpGage.SetActive(false);
         if (isTest)
         {
             m_spawnPoint = new Vector2(m_testSpawnPos.position.x, m_testSpawnPos.position.y);

@@ -109,7 +109,6 @@ public class BigPlant : BossEnemyBase
         if (Percent(m_life ,m_maxLife) < 50 && m_faze == Faze.one)
         {
             m_faze++;
-            ActionStart();
         }
     }
 

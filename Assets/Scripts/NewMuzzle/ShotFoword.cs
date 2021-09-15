@@ -107,13 +107,10 @@ public class ShotFoword : MonoBehaviour
     {
         if (m_isPlayer)
         {
-            //自機狙い ※参考サイト https://nekojara.city/unity-look-at
-            if (!m_player) { GameObject.FindWithTag("Player"); }
-            var v = m_player.transform.position - this.transform.position;
-            var rotation = Quaternion.LookRotation(v, Vector3.up);
-            var offset = Quaternion.FromToRotation(m_player.transform.position, Vector3.forward);
-            var lookRotation = rotation * offset;
-            transform.rotation = lookRotation;
+            if (!m_player) { m_player = GameObject.FindWithTag("Player"); }
+            Vector2 v = m_player.transform.position - this.transform.position;
+            float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         }
         Shot();
     }

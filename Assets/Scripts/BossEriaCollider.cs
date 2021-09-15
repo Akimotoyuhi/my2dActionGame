@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossEriaCollider : MonoBehaviour
 {
-    private GameObject m_invisibleWall;
+    [SerializeField] private GameObject m_invisibleWall;
     [SerializeField] private GameObject m_bossPrefab;
     [SerializeField] private Transform m_bossPos;
     [SerializeField] private GameObject m_bossHpGage;
@@ -12,7 +12,6 @@ public class BossEriaCollider : MonoBehaviour
 
     void Start()
     {
-        m_invisibleWall = gameObject.transform.Find("InvisibleWall").gameObject;
         m_invisibleWall.SetActive(false);
     }
 
