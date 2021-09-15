@@ -8,6 +8,7 @@ public class NewBullet : MonoBehaviour
     [System.NonSerialized] private float m_startSpeed;
     [System.NonSerialized] private float m_curve;
     [System.NonSerialized] public int m_power;
+    [SerializeField] private GameObject m_effect;
     Vector2 v;
     private Rigidbody2D m_rb;
 
@@ -42,5 +43,10 @@ public class NewBullet : MonoBehaviour
         m_startSpeed = minSpeed;
         m_curve = curve;
         m_power = power;
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(m_effect, this.transform.position, Quaternion.identity);
     }
 }

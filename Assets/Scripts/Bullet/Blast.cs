@@ -5,7 +5,6 @@ using UnityEngine;
 public class Blast : NormalBullet
 {
     [SerializeField] private GameObject m_damageEria;
-    [SerializeField] public GameObject m_effectPrefab;
 
     new public void OnTriggerEnter2D(Collider2D collision)
     {

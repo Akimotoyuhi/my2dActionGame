@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c065d7257f64de04dabcec3ccaece4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxLife: 100
-  m_life: 100
+  m_maxLife: 200
+  m_life: 200
   m_power: 10
   m_speed: 1
   m_jumpPower: 1
@@ -214,6 +214,8 @@ MonoBehaviour:
     type: 3}
   m_position:
   - {fileID: 2505551158545053627}
+  m_canvas: {fileID: 0}
+  m_hpSlider: {fileID: 0}
   m_shot1:
   - {fileID: 4956517413805081738, guid: a3d4cac5eb9195c49ae0bb4e8da3e03d, type: 3}
   m_shot2:

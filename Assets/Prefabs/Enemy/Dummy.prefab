@@ -123,9 +123,10 @@ MonoBehaviour:
   m_speed: 1
   m_jumpPower: 5
   m_moveinterval: 3
-  m_move: 0
+  m_shotinterval: 1
   m_damagePrefab: {fileID: 6271182398904386778, guid: 15e871c6ab9372d438104922c58c637f,
     type: 3}
+  m_muzzle: []
   m_sideJump: 0.5
 --- !u!58 &7524976929913172107
 CircleCollider2D:

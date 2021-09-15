@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shotType: 0
-  m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
+  m_bulletPrefab: {fileID: 25780117982408086, guid: a8743cd34077f824893c9931abfdd031,
     type: 3}
   m_color: {r: 0.4444495, g: 1, b: 0.25, a: 1}
   m_endSpeed: 0
