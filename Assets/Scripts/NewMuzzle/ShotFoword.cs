@@ -23,6 +23,8 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] private float m_endSpeed;
     /// <summary>弾の初速</summary>
     [SerializeField] private float m_startSpeed;
+    /// <summary>弾の加速度</summary>
+    [SerializeField] private float m_speedUp;
     /// <summary>弾の攻撃力</summary>
     [SerializeField] private int m_bulletPower = 1;
     /// <summary>発射間隔</summary>
@@ -47,6 +49,8 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] private bool m_isSetPlayerXpos = false;
     /// <summary>敵に複数のパターンを設定する時はこれをtrueにして敵側からfalseにしてくれ</summary>
     [SerializeField] private bool m_isStop = false;
+    /// <summary>発射した弾をこのオブジェクトの子とするか</summary>
+    [SerializeField] private bool m_isParent = false;
     /// <summary>発射位置</summary>
     [SerializeField] private Transform m_tra;
     private float m_z;
@@ -160,6 +164,9 @@ public class ShotFoword : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 弾の発射
+    /// </summary>
     private void Shot()
     {
         if (!m_player) { m_player = GameObject.FindWithTag("Player"); }
@@ -178,15 +185,15 @@ public class ShotFoword : MonoBehaviour
 
         if (!m_tra) { m_tra = this.transform; }
         var t = Instantiate(m_bulletPrefab, m_tra.position, this.transform.rotation);
-        //t.transform.parent = this.transform;
-        if (t.GetComponent<SpriteRenderer>())
+        if (m_isParent) { t.transform.parent = this.transform; }
+            if (t.GetComponent<SpriteRenderer>())
         {
             t.GetComponent<SpriteRenderer>().color = m_color;
         }
         NewBullet m_bullet = t.GetComponent<NewBullet>();
         if (m_bullet)
         {
-            m_bullet.SetParameter(m_endSpeed, m_startSpeed, m_curve, m_bulletPower);
+            m_bullet.SetParameter(m_endSpeed, m_startSpeed, m_speedUp, m_curve, m_bulletPower);
         }
     }
 

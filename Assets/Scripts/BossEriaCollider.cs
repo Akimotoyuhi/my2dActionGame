@@ -9,7 +9,7 @@ public class BossEriaCollider : MonoBehaviour
     [SerializeField] private Transform m_bossPos;
     [SerializeField] private GameObject m_bossHpGage;
     private bool m_isDefeat;
-    public bool m_isBoss = false;
+    [System.NonSerialized] public bool m_isBoss = false;
     private GameManager m_gameManager;
 
     void Start()

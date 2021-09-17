@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class NewBullet : MonoBehaviour
 {
-    [System.NonSerialized] private float m_endSpeed;
-    [System.NonSerialized] private float m_startSpeed;
-    [System.NonSerialized] private float m_curve;
+    private float m_endSpeed;
+    private float m_startSpeed;
+    private float m_speedUp;
+    private float m_curve;
     [System.NonSerialized] public int m_power;
     [SerializeField] private GameObject m_effect;
-    Vector2 v;
+    private Vector2 v;
     private Rigidbody2D m_rb;
 
     void Start()
@@ -30,6 +31,20 @@ public class NewBullet : MonoBehaviour
         transform.Rotate(0, 0, m_curve);
         v = transform.rotation * Vector2.up;
         m_rb.velocity = v * m_startSpeed;
+        if (m_speedUp > 0)
+        {
+            if (m_startSpeed <= m_endSpeed)
+            {
+                m_startSpeed += m_speedUp;
+            }
+        }
+        else if (m_speedUp < 0)
+        {
+            if (m_startSpeed >= m_endSpeed)
+            {
+                m_startSpeed += m_speedUp;
+            }
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -37,10 +52,11 @@ public class NewBullet : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void SetParameter(float maxSpeed, float minSpeed, float curve, int power)
+    public void SetParameter(float endSpeed, float startSpeed, float speedUp, float curve, int power)
     {
-        m_endSpeed = maxSpeed;
-        m_startSpeed = minSpeed;
+        m_endSpeed = endSpeed;
+        m_startSpeed = startSpeed;
+        m_speedUp = speedUp;
         m_curve = curve;
         m_power = power;
     }

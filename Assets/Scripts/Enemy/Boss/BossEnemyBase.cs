@@ -32,8 +32,8 @@ public class BossEnemyBase : MonoBehaviour
     [System.NonSerialized] public GameObject m_player;
     [System.NonSerialized] public Rigidbody2D m_rb;
     [System.NonSerialized] public Animator m_anim;
-    public GameObject m_canvas;
-    public Slider m_hpSlider;
+    [System.NonSerialized] public GameObject m_canvas;
+    [System.NonSerialized] public Slider m_hpSlider;
 
     public delegate IEnumerator Actions();
 
@@ -67,13 +67,11 @@ public class BossEnemyBase : MonoBehaviour
         {
             g[i] = Instantiate(muzzle[i], pos.position, Quaternion.identity);
             g[i].transform.parent = this.transform;
-            //muzzle[i].StopDisable();
         }
         yield return new WaitForSeconds(sec);
         for (int i = 0; i < muzzle.Length; i++)
         {
             Destroy(g[i]);
-            //muzzle[i].StopEnable();
         }
     }
 
@@ -88,10 +86,8 @@ public class BossEnemyBase : MonoBehaviour
     {
         GameObject g = Instantiate(muzzle, pos.position, Quaternion.identity);
         g.transform.parent = this.transform;
-        //muzzle.StopDisable();
         yield return new WaitForSeconds(sec);
         Destroy(g);
-        //muzzle.StopEnable();
     }
 
     /// <summary>
@@ -106,13 +102,9 @@ public class BossEnemyBase : MonoBehaviour
         g1.transform.parent = this.transform;
         GameObject g2 = Instantiate(muzzle2, pos.position, Quaternion.identity);
         g2.transform.parent = this.transform;
-        //muzzle1.StopDisable();
-        //muzzle2.StopDisable();
         yield return new WaitForSeconds(sec);
         Destroy(g1);
         Destroy(g2);
-        //muzzle1.StopEnable();
-        //muzzle2.StopEnable();
     }
 
     /// <summary>
@@ -121,29 +113,19 @@ public class BossEnemyBase : MonoBehaviour
     /// <param name="muzzle">発射するMuzzle</param>
     /// <param name="sec">発射秒数</param>
     /// <returns></returns>
-    public IEnumerator TyottoShot(ShotFoword muzzle1, ShotFoword muzzle2, ShotFoword muzzle3, float sec = 0)
+    public IEnumerator TyottoShot(GameObject muzzle1, GameObject muzzle2, GameObject muzzle3, Transform pos, float sec = 0)
     {
-        yield return null;
-        /*
-        muzzle1.StopDisable();
-        muzzle2.StopDisable();
-        muzzle2.StopDisable();
+        GameObject g1 = Instantiate(muzzle1, pos.position, Quaternion.identity);
+        g1.transform.parent = this.transform;
+        GameObject g2 = Instantiate(muzzle2, pos.position, Quaternion.identity);
+        g2.transform.parent = this.transform;
+        GameObject g3 = Instantiate(muzzle3, pos.position, Quaternion.identity);
+        g3.transform.parent = this.transform;
         yield return new WaitForSeconds(sec);
-        muzzle1.StopEnable();
-        muzzle2.StopEnable();
-        muzzle3.StopEnable();
-        */
+        Destroy(g1);
+        Destroy(g2);
+        Destroy(g3);
     }
-
-    /*
-    public void AllEnable(ShotFoword[] shot)
-    {
-        for (int i = 0; i < shot.Length; i++)
-        {
-            shot[i].StopEnable();
-        }
-    }
-    */
 
     /// <summary>
     /// 二つの数値の割合(%)を返す

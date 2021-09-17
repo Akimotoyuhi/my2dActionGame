@@ -213,10 +213,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_invisibleWall: {fileID: 5561262964788582308}
-  m_bossPrefab: {fileID: 594481320091698047, guid: 9e5bd6318a2a6074fb501444975d41cb,
-    type: 3}
+  m_bossPrefab: {fileID: 0}
   m_bossPos: {fileID: 5561262964443713166}
   m_bossHpGage: {fileID: 0}
+  m_isBoss: 0
 --- !u!1 &5561262964443713165
 GameObject:
   m_ObjectHideFlags: 0
