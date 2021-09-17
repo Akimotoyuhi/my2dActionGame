@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     /// <summary> 攻撃のダメージ倍率</summary>
     static private int[] s_attackDamage = new int[] { 1, 3 };
     /// <summary> 各アイテムのステータス上昇幅</summary>
-    static private int[] s_itembuff = new int[] { 10, 10, 5 };
+    static private int[] s_itembuff = new int[] { 5, 5, 2 };
 
     void Start()
     {

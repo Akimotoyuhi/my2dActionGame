@@ -12,6 +12,7 @@ public class NewBullet : MonoBehaviour
     [SerializeField] private GameObject m_effect;
     private Vector2 v;
     private Rigidbody2D m_rb;
+    private bool m_isquitting = false;
 
     void Start()
     {
@@ -61,8 +62,17 @@ public class NewBullet : MonoBehaviour
         m_power = power;
     }
 
+    private void OnApplicationQuit()
+    {
+        m_isquitting = true;
+    }
+
     private void OnDestroy()
     {
-        Instantiate(m_effect, this.transform.position, Quaternion.identity);
+        //シーン実行終了時にゴミが残ってしまうエラー回避用
+        if (!m_isquitting)
+        {
+            Instantiate(m_effect, this.transform.position, Quaternion.identity);
+        }
     }
 }

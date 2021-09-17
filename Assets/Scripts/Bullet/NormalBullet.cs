@@ -9,12 +9,7 @@ public class NormalBullet : BulletBase
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        //Instantiate(m_effectPrefab, gameObject.transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
-    }
-
-    private void OnDestroy()
-    {
         Instantiate(m_effectPrefab, gameObject.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }
