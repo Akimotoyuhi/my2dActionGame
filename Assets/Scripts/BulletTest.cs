@@ -11,10 +11,10 @@ public class BulletTest : MonoBehaviour
         SpeedUpAtPlayer = 2,
         SpinAndSpeedUp = 3,
         Tornado = 4,
-        go = 5,
-        six = 6,
+        XrossSpin = 5,
+        Wing = 6,
         seven = 7,
-        eite = 8,
+        eight = 8,
         nine = 9,
         ten = 10
     }
@@ -29,6 +29,7 @@ public class BulletTest : MonoBehaviour
     [SerializeField] private GameObject[] m_shot8;
     [SerializeField] private GameObject[] m_shot9;
     [SerializeField] private GameObject[] m_shot10;
+    [SerializeField] private Transform[] m_positions;
     public delegate IEnumerator Actions();
     private Actions[] m_actions;
     private bool m_isShot = false;
@@ -67,8 +68,8 @@ public class BulletTest : MonoBehaviour
         m_actions[2] = Pattern2;
         m_actions[3] = Pattern3;
         m_actions[4] = Pattern4;
-        //m_actions[5] = Pattern5;
-        //m_actions[6] = Pattern6;
+        m_actions[5] = Pattern5;
+        m_actions[6] = Pattern6;
         //m_actions[7] = Pattern7;
         //m_actions[8] = Pattern8;
         //m_actions[9] = Pattern9;
@@ -112,7 +113,27 @@ public class BulletTest : MonoBehaviour
     {
         while (m_pattern == Pattern.Tornado)
         {
-            yield return StartCoroutine(AllShot(m_shot4, this.transform, 99f));
+            yield return StartCoroutine(AllShot(m_shot4, m_positions[0], 99f));
+        }
+    }
+
+    private  IEnumerator Pattern5()
+    {
+        while (m_pattern == Pattern.XrossSpin)
+        {
+            yield return StartCoroutine(AllShot(m_shot5, this.transform, 99f));
+        }
+    }
+    private IEnumerator Pattern6()
+    {
+        while (m_pattern == Pattern.Wing)
+        {
+            StartCoroutine(AllShot(m_shot6, m_positions[0], 99f));
+            yield return new WaitForSeconds(0.02f);
+            StartCoroutine(AllShot(m_shot6, m_positions[0], 99f));
+            yield return new WaitForSeconds(0.02f);
+            StartCoroutine(AllShot(m_shot6, m_positions[0], 99f));
+            yield return new WaitForSeconds(99f);
         }
     }
 
