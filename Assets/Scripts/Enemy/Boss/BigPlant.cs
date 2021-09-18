@@ -98,38 +98,11 @@ public class BigPlant : BossEnemyBase
         yield return new WaitForSeconds(5f);
     }
 
-    /// <summary>
-    /// 体力が一定量以下になったら形態移行する
-    /// </summary>
-    private void FazeChanger()
+    public override void FazeChanger()
     {
-        if (Percent(m_life ,m_maxLife) < 50 && m_faze == Faze.one)
+        if (Percent(m_life, m_maxLife) < 50 && m_faze == Faze.one)
         {
             m_faze++;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "PlayerBullet" || collision.tag == "Blast")
-        {
-            BulletBase bullet = collision.GetComponent<BulletBase>();
-            m_life -= bullet.m_power;
-            Vector2 v = new Vector2(this.transform.position.x + Random.Range(-1f, 1f), this.transform.position.y + Random.Range(-1f, 1f));
-            var inst = Instantiate(m_damagePrefab, v, Quaternion.identity);
-            inst.GetComponent<DamageText>().m_vec = v;
-            Text text = inst.transform.GetChild(0).GetComponent<Text>();
-            text.text = $"{bullet.m_power}";
-            m_hpSlider.value = m_life;
-        }
-
-        if (m_life <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            FazeChanger();
         }
     }
 }

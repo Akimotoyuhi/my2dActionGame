@@ -49,6 +49,7 @@ MonoBehaviour:
   m_color: {r: 0.09732066, g: 1, b: 0.033018887, a: 1}
   m_endSpeed: 0
   m_startSpeed: 15
+  m_speedUp: 0
   m_bulletPower: 5
   m_fireInterval: 0.1
   m_curve: 0
@@ -61,6 +62,7 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
+  m_isParent: 0
   m_tra: {fileID: 0}
 --- !u!1 &7836816099190624178
 GameObject:
@@ -109,8 +111,9 @@ MonoBehaviour:
   m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
     type: 3}
   m_color: {r: 0.031372547, g: 1, b: 0.6949904, a: 1}
-  m_endSpeed: 0
+  m_endSpeed: 10
   m_startSpeed: 2
+  m_speedUp: 0.1
   m_bulletPower: 5
   m_fireInterval: 0.1
   m_curve: 0
@@ -123,6 +126,7 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
+  m_isParent: 0
   m_tra: {fileID: 0}
 --- !u!1 &7836816099498811633
 GameObject:
@@ -173,6 +177,7 @@ MonoBehaviour:
   m_color: {r: 0.09732066, g: 1, b: 0.033018887, a: 1}
   m_endSpeed: 0
   m_startSpeed: 15
+  m_speedUp: 0
   m_bulletPower: 5
   m_fireInterval: 0.1
   m_curve: 0
@@ -185,6 +190,7 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
+  m_isParent: 0
   m_tra: {fileID: 0}
 --- !u!1 &7836816099563391059
 GameObject:
@@ -235,6 +241,7 @@ MonoBehaviour:
   m_color: {r: 0.09732066, g: 1, b: 0.033018887, a: 1}
   m_endSpeed: 0
   m_startSpeed: 15
+  m_speedUp: 0
   m_bulletPower: 5
   m_fireInterval: 0.1
   m_curve: 0
@@ -247,6 +254,7 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
+  m_isParent: 0
   m_tra: {fileID: 0}
 --- !u!1 &7836816099564840554
 GameObject:
@@ -347,8 +355,9 @@ MonoBehaviour:
   m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
     type: 3}
   m_color: {r: 0.031372547, g: 1, b: 0.6949904, a: 1}
-  m_endSpeed: 0
+  m_endSpeed: 10
   m_startSpeed: 2
+  m_speedUp: 0.1
   m_bulletPower: 5
   m_fireInterval: 0.1
   m_curve: 0
@@ -361,6 +370,7 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
+  m_isParent: 0
   m_tra: {fileID: 0}
 --- !u!1 &7836816100282426756
 GameObject:
@@ -409,8 +419,9 @@ MonoBehaviour:
   m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
     type: 3}
   m_color: {r: 0.031372547, g: 1, b: 0.6949904, a: 1}
-  m_endSpeed: 0
+  m_endSpeed: 10
   m_startSpeed: 2
+  m_speedUp: 0.1
   m_bulletPower: 5
   m_fireInterval: 0.1
   m_curve: 0
@@ -423,6 +434,7 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
+  m_isParent: 0
   m_tra: {fileID: 0}
 --- !u!1 &7836816100434850641
 GameObject:
@@ -474,6 +486,7 @@ MonoBehaviour:
   m_color: {r: 0.09732066, g: 1, b: 0.033018887, a: 1}
   m_endSpeed: 0
   m_startSpeed: 15
+  m_speedUp: 0
   m_bulletPower: 5
   m_fireInterval: 0.1
   m_curve: 0
@@ -486,6 +499,7 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
+  m_isParent: 0
   m_tra: {fileID: 0}
 --- !u!114 &7836816100434850636
 MonoBehaviour:
@@ -564,8 +578,9 @@ MonoBehaviour:
   m_bulletPrefab: {fileID: 25780117982408086, guid: 34a80ad5878a6e4438115f3c842b4d43,
     type: 3}
   m_color: {r: 0.031372547, g: 1, b: 0.6949904, a: 1}
-  m_endSpeed: 0
+  m_endSpeed: 10
   m_startSpeed: 2
+  m_speedUp: 0.1
   m_bulletPower: 5
   m_fireInterval: 0.1
   m_curve: 0
@@ -578,4 +593,5 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
+  m_isParent: 0
   m_tra: {fileID: 0}

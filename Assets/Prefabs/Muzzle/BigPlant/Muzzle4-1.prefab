@@ -48,7 +48,8 @@ MonoBehaviour:
     type: 3}
   m_color: {r: 1, g: 0, b: 0.019385815, a: 1}
   m_endSpeed: 0
-  m_startSpeed: 3
+  m_startSpeed: 5
+  m_speedUp: 0
   m_bulletPower: 50
   m_fireInterval: 1
   m_curve: 0
@@ -61,4 +62,5 @@ MonoBehaviour:
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0
+  m_isParent: 0
   m_tra: {fileID: 0}

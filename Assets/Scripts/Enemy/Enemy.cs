@@ -83,8 +83,27 @@ public abstract class Enemy : MonoBehaviour
 
         if (m_life <= 0)
         {
-            Destroy(this.gameObject);
+            OnDead();
         }
+    }
+
+    private void OnDead()
+    {
+        if (m_rb.bodyType != RigidbodyType2D.Dynamic) { m_rb.bodyType = RigidbodyType2D.Dynamic; }
+        CircleCollider2D col = GetComponent<CircleCollider2D>();
+        if (col) { col.enabled = false; }
+        else { Debug.LogError("CircleCollider2D is null (Enemy.OnDead)"); }
+        Vector2 v = new Vector2(Random.Range(-1f, 1f), 1);
+        m_rb.AddForce(v * 3, ForceMode2D.Impulse);
+        Invoke("Dead", 1f);
+    }
+
+    /// <summary>
+    /// Invoke用
+    /// </summary>
+    private void Dead()
+    {
+        Destroy(this.gameObject);
     }
 
     public virtual void Move()

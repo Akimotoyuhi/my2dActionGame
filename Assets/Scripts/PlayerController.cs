@@ -193,21 +193,6 @@ public class PlayerController : MonoBehaviour
             if (m_vcam)
             {
                 m_vcam.m_BoundingShape2D = collision;
-                /*
-                if (m_gamemanager)
-                {
-                    if (collision.gameObject.name == m_nidozukeKinsi)
-                    {
-                        return;
-                    }
-                    m_gamemanager.EnemySpawning();
-                    m_nidozukeKinsi = collision.gameObject.name;
-                }
-                else
-                {
-                    m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
-                }
-                */
             }
             else
             {

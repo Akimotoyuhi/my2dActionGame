@@ -120,4 +120,4 @@ MonoBehaviour:
     type: 3}
   m_muzzle: {fileID: 7836816099564840554, guid: 7c0136f0812ac9c468cad02be4cdd55a,
     type: 3}
-  m_destroyTime: 3
+  m_destroyTime: 1.5

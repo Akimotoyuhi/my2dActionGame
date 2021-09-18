@@ -8,6 +8,7 @@ public class NewBullet : MonoBehaviour
     private float m_startSpeed;
     private float m_speedUp;
     private float m_curve;
+    private float m_timer;
     [System.NonSerialized] public int m_power;
     [SerializeField] private GameObject m_effect;
     private Vector2 v;
@@ -25,6 +26,11 @@ public class NewBullet : MonoBehaviour
     void Update()
     {
         Move();
+        m_timer += Time.deltaTime;
+        if (m_timer > 10f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void Move()
