@@ -7,10 +7,10 @@ public class BulletTest : MonoBehaviour
     enum Pattern
     {
         none = 0,
-        one = 1,
-        two = 2,
-        three = 3,
-        yon = 4,
+        NwayAndAtPlayer = 1,
+        SpeedUpAtPlayer = 2,
+        SpinAndSpeedUp = 3,
+        Tornado = 4,
         go = 5,
         six = 6,
         seven = 7,
@@ -64,9 +64,9 @@ public class BulletTest : MonoBehaviour
         m_actions = new Actions[10];
         m_actions[0] = Pattern0;
         m_actions[1] = Pattern1;
-        //m_actions[2] = Pattern2;
-        //m_actions[3] = Pattern3;
-        //m_actions[4] = Pattern4;
+        m_actions[2] = Pattern2;
+        m_actions[3] = Pattern3;
+        m_actions[4] = Pattern4;
         //m_actions[5] = Pattern5;
         //m_actions[6] = Pattern6;
         //m_actions[7] = Pattern7;
@@ -82,7 +82,7 @@ public class BulletTest : MonoBehaviour
 
     private IEnumerator Pattern1()
     {
-        while (m_pattern == Pattern.one)
+        while (m_pattern == Pattern.NwayAndAtPlayer)
         {
             StartCoroutine(TyottoShot(m_shot1[0], this.transform));
             yield return new WaitForSeconds(0.2f);
@@ -91,7 +91,32 @@ public class BulletTest : MonoBehaviour
         }
     }
 
-    public void AllShot(GameObject[] muzzle, Transform pos)
+    private IEnumerator Pattern2()
+    {
+        while (m_pattern == Pattern.SpeedUpAtPlayer)
+        {
+            StartCoroutine(AllShot(m_shot2, this.transform));
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private IEnumerator Pattern3()
+    {
+        while (m_pattern == Pattern.SpinAndSpeedUp)
+        {
+            yield return StartCoroutine(AllShot(m_shot3, this.transform, 0.5f));
+        }
+    }
+
+    private IEnumerator Pattern4()
+    {
+        while (m_pattern == Pattern.Tornado)
+        {
+            yield return StartCoroutine(AllShot(m_shot4, this.transform, 99f));
+        }
+    }
+
+    public IEnumerator AllShot(GameObject[] muzzle, Transform pos, float sec = 0)
     {
         GameObject[] g = new GameObject[muzzle.Length];
         for (int i = 0; i < muzzle.Length; i++)
@@ -99,11 +124,11 @@ public class BulletTest : MonoBehaviour
             g[i] = Instantiate(muzzle[i], pos.position, Quaternion.identity);
             g[i].transform.parent = this.transform;
         }
-        //yield return new WaitForSeconds(sec);
-        //for (int i = 0; i < muzzle.Length; i++)
-        //{
-        //    Destroy(g[i]);
-        //}
+        yield return new WaitForSeconds(sec);
+        for (int i = 0; i < muzzle.Length; i++)
+        {
+            Destroy(g[i]);
+        }
     }
 
     public IEnumerator TyottoShot(GameObject muzzle, Transform pos, float sec = 0)

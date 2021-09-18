@@ -48,16 +48,16 @@ MonoBehaviour:
     type: 3}
   m_color: {r: 0, g: 0.26723528, b: 1, a: 1}
   m_endSpeed: 0
-  m_startSpeed: 5
+  m_startSpeed: 7
   m_speedUp: 0
   m_bulletPower: 0
   m_fireInterval: 0.3
   m_curve: 0
-  m_zAngle: 0
+  m_zAngle: 180
   m_spinSpeed: 0
   m_zAngleTurn: 0
-  m_waynum: 10
-  m_angle: 360
+  m_waynum: 5
+  m_angle: 200
   m_isPlayer: 0
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
