@@ -56,7 +56,7 @@ MonoBehaviour:
   m_zAngle: 0
   m_spinSpeed: 0
   m_zAngleTurn: 0
-  m_waynum: 15
+  m_waynum: 10
   m_angle: 360
   m_isPlayer: 0
   m_isSpeedChange: 0

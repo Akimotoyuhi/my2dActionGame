@@ -58,7 +58,7 @@ MonoBehaviour:
   m_zAngleTurn: 0
   m_waynum: 20
   m_angle: 360
-  m_isPlayer: 0
+  m_isPlayer: 1
   m_isSpeedChange: 0
   m_isSetPlayerXpos: 0
   m_isStop: 0

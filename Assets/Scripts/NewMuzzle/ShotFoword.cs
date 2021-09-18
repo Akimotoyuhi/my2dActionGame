@@ -86,14 +86,6 @@ public class ShotFoword : MonoBehaviour
     }
 
     /// <summary>
-    /// 一回だけ撃ちたい時の関数（FireIntarvalを無視できる）
-    /// </summary>
-    public void OneShot()
-    {
-        m_types[(int)m_shotType]();
-    }
-
-    /// <summary>
     /// 攻撃パターンを配列に入れる
     /// </summary>
     private void SetTypes()
@@ -118,13 +110,14 @@ public class ShotFoword : MonoBehaviour
     /// </summary>
     private void Nway()
     {
+        SetAngle();
         transform.Rotate(new Vector3(0, 0, (m_angle / m_waynum) * (-m_waynum / 2)));
         for (int i = 0; i < m_waynum; i++)
         {
             Shot();
             transform.Rotate(new Vector3(0, 0, m_angle / m_waynum));
         }
-        SetAngle();
+        transform.rotation = Quaternion.Euler(0, 0, m_zAngle);
     }
 
     /// <summary>
@@ -208,7 +201,7 @@ public class ShotFoword : MonoBehaviour
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 0, m_zAngle);
+            //transform.rotation = Quaternion.Euler(0, 0, m_zAngle);
         }
     }
 }
