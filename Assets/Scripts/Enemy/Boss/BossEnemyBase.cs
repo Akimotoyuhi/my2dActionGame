@@ -172,7 +172,7 @@ public class BossEnemyBase : MonoBehaviour
         else { Debug.LogError("CircleCollider2D is null (Enemy.OnDead)"); }
         Vector2 v = new Vector2(Random.Range(-1f, 1f), 1);
         m_rb.AddForce(v * 3, ForceMode2D.Impulse);
-        Invoke("Dead", 1f);
+        Invoke("Dead", 0.1f);
     }
 
     /// <summary>

@@ -93,6 +93,10 @@ public abstract class Enemy : MonoBehaviour
         CircleCollider2D col = GetComponent<CircleCollider2D>();
         if (col) { col.enabled = false; }
         else { Debug.LogError("CircleCollider2D is null (Enemy.OnDead)"); }
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
         Vector2 v = new Vector2(Random.Range(-1f, 1f), 1);
         m_rb.AddForce(v * 3, ForceMode2D.Impulse);
         Invoke("Dead", 1f);

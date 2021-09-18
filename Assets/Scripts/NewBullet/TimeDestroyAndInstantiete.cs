@@ -6,7 +6,6 @@ public class TimeDestroyAndInstantiete : NewBullet
 {
     [SerializeField] GameObject m_muzzle;
     [SerializeField] float m_destroyTime;
-    float m_timer = 0;
 
     void Update()
     {
