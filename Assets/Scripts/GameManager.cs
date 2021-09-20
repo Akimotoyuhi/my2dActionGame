@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized] public Vector2 m_spawnPoint = new Vector2(-11f, -2.5f);
     [SerializeField] private Transform m_testSpawnPos;
     [SerializeField] private bool isTest = false;
-    //[SerializeField] private GameObject m_enemySpawnpoint;
     [SerializeField] private GameObject m_bossHpGage;
+    [Header("オーディオ")]
+    [SerializeField] private AudioClip m_bgm;
+    [SerializeField] private AudioClip m_bossBgm;
 
     void Start()
     {

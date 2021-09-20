@@ -11,6 +11,7 @@ public class ShotFoword : MonoBehaviour
         Spin = 2
     }
     private delegate void Types();
+    [Header("基本項目")]
     /// <summary>弾の種類</summary>
     private Types[] m_types;
     /// <summary>撃つ弾のそれ</summary>
@@ -19,28 +20,34 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] private GameObject m_bulletPrefab;
     /// <summary>弾の色</summary>
     [SerializeField] private Color m_color;
+    [Header("速度関係")]
     /// <summary>弾の最終速度</summary>
     [SerializeField] private float m_endSpeed;
     /// <summary>弾の初速</summary>
     [SerializeField] private float m_startSpeed;
     /// <summary>弾の加速度</summary>
     [SerializeField] private float m_speedUp;
+    [Header("弾と直接関係ないやつ")]
     /// <summary>弾の攻撃力</summary>
     [SerializeField] private int m_bulletPower = 1;
     /// <summary>発射間隔</summary>
     [SerializeField] private float m_fireInterval = 1;
+    [Header("カーブ関係")]
     /// <summary>弾のカーブのすごさ</summary>
     [SerializeField] private float m_curve;
+    [Header("角度関係")]
     /// <summary>発射角度</summary>
     [SerializeField] private float m_zAngle;
     /// <summary>回転速度</summary>
     [SerializeField] private float m_spinSpeed;
     /// <summary>回転が逆になる弾数</summary>
     [SerializeField] private int m_zAngleTurn;
+    [Header("特殊設定項目")]
     /// <summary>Way発射数</summary>
     [SerializeField] private int m_waynum = 1;
     /// <summary>角度</summary>
     [SerializeField] private float m_angle;
+    [Header("追加オプション")]
     /// <summary>自機狙いかどうか</summary>
     [SerializeField] private bool m_isPlayer = false;
     /// <summary>速度を変えるかどうか</summary>
@@ -51,13 +58,17 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] private bool m_isStop = false;
     /// <summary>発射した弾をこのオブジェクトの子とするか</summary>
     [SerializeField] private bool m_isParent = false;
+    [Header("射出位置関係")]
     /// <summary>発射位置</summary>
     [SerializeField] private Transform m_tra;
+    /// <summary>発射位置の誤差</summary>
+    [SerializeField] private float m_posDifference;
     private float m_z;
     private float m_timer = 99;
     private int m_shotCount = 0;
     private bool m_isTurm = false;
     private GameObject m_player;
+    private Vector2 m_vec;
 
     void Start()
     {
@@ -177,9 +188,10 @@ public class ShotFoword : MonoBehaviour
         }
 
         if (!m_tra) { m_tra = this.transform; }
-        var t = Instantiate(m_bulletPrefab, m_tra.position, this.transform.rotation);
+        m_vec = new Vector2(Random.Range(m_tra.position.x - m_posDifference, m_tra.position.x + m_posDifference), Random.Range(m_tra.position.y - m_posDifference, m_tra.position.y + m_posDifference));
+        var t = Instantiate(m_bulletPrefab, m_vec, this.transform.rotation);
         if (m_isParent) { t.transform.parent = this.transform; }
-            if (t.GetComponent<SpriteRenderer>())
+        if (t.GetComponent<SpriteRenderer>())
         {
             t.GetComponent<SpriteRenderer>().color = m_color;
         }

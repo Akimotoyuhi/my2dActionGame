@@ -1071,10 +1071,9 @@ MonoBehaviour:
   m_shot6:
   - {fileID: 3641628178804074632, guid: ad42c5424e0760f4c83370f074792b4d, type: 3}
   - {fileID: 3355612609381138577, guid: 85a0671af3a928143ad8cb19d79536c7, type: 3}
-  m_shot7: []
-  m_shot8: []
-  m_shot9: []
-  m_shot10: []
+  m_shot7:
+  - {fileID: 4763218014339077505, guid: cd5d7e2951647d3469d8e6a87840495b, type: 3}
+  - {fileID: 6012333327814141771, guid: 02697e23d642ee9479fa01651e082928, type: 3}
   m_positions:
   - {fileID: 739480311}
 --- !u!4 &887113245

@@ -13,10 +13,7 @@ public class BulletTest : MonoBehaviour
         Tornado = 4,
         XrossSpin = 5,
         Wing = 6,
-        seven = 7,
-        eight = 8,
-        nine = 9,
-        ten = 10
+        Special = 7,
     }
     [SerializeField] private Pattern m_pattern = Pattern.none;
     [SerializeField] private GameObject[] m_shot1;
@@ -26,9 +23,6 @@ public class BulletTest : MonoBehaviour
     [SerializeField] private GameObject[] m_shot5;
     [SerializeField] private GameObject[] m_shot6;
     [SerializeField] private GameObject[] m_shot7;
-    [SerializeField] private GameObject[] m_shot8;
-    [SerializeField] private GameObject[] m_shot9;
-    [SerializeField] private GameObject[] m_shot10;
     [SerializeField] private Transform[] m_positions;
     public delegate IEnumerator Actions();
     private Actions[] m_actions;
@@ -70,10 +64,7 @@ public class BulletTest : MonoBehaviour
         m_actions[4] = Pattern4;
         m_actions[5] = Pattern5;
         m_actions[6] = Pattern6;
-        //m_actions[7] = Pattern7;
-        //m_actions[8] = Pattern8;
-        //m_actions[9] = Pattern9;
-        //m_actions[10] = Pattern10;
+        m_actions[7] = Pattern7;
     }
 
     private IEnumerator Pattern0()
@@ -134,6 +125,14 @@ public class BulletTest : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
             StartCoroutine(AllShot(m_shot6, m_positions[0], 99f));
             yield return new WaitForSeconds(99f);
+        }
+    }
+
+    private IEnumerator Pattern7()
+    {
+        while (m_pattern == Pattern.Special)
+        {
+            yield return StartCoroutine(AllShot(m_shot7, this.transform, 99f));
         }
     }
 
