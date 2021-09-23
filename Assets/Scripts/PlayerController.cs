@@ -123,24 +123,10 @@ public class PlayerController : MonoBehaviour
             m_anim.SetBool("Run", false);
             xSpeed = 0f;
         }
-
         Jump();
-
         Fire();
-
         AttackChanged();
-
         ManaRegene();
-
-        // 落下速度を上げたい
-        //if (m_isJump)
-        //{
-        //    m_rb.velocity = new Vector2(xSpeed, m_rb.velocity.y);
-        //}
-        //else
-        //{
-        //    m_rb.velocity = new Vector2(xSpeed, m_rb.velocity.y * 1.2f);
-        //}
         m_rb.velocity = new Vector2(xSpeed, m_rb.velocity.y);
     }
 

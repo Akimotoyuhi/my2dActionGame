@@ -403,6 +403,7 @@ MonoBehaviour:
   m_isStop: 0
   m_isParent: 0
   m_tra: {fileID: 0}
+  m_posDifference: 0
 --- !u!4 &128715011
 Transform:
   m_ObjectHideFlags: 0
@@ -2135,6 +2136,9 @@ MonoBehaviour:
   m_testSpawnPos: {fileID: 866879415}
   isTest: 1
   m_bossHpGage: {fileID: 284668795611268704}
+  m_audioSource: {fileID: 0}
+  m_bgm: {fileID: 0}
+  m_bossBgm: {fileID: 0}
 --- !u!4 &1718044024
 Transform:
   m_ObjectHideFlags: 0

@@ -8768,8 +8768,9 @@ MonoBehaviour:
   m_testSpawnPos: {fileID: 0}
   isTest: 0
   m_bossHpGage: {fileID: 1093794419038675853}
+  m_audioSource: {fileID: 204749420}
   m_bgm: {fileID: 8300000, guid: 9a84d3589e5135b4981d67dd5323caa9, type: 3}
-  m_bossBgm: {fileID: 0}
+  m_bossBgm: {fileID: 8300000, guid: 19a3d85eb04dd73409670301ac4df2db, type: 3}
 --- !u!82 &204749420
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65917,6 +65918,7 @@ MonoBehaviour:
     type: 3}
   m_bossPos: {fileID: 6468191260831736839}
   m_bossHpGage: {fileID: 1093794419038675853}
+  m_gameManager: {fileID: 204749419}
 --- !u!114 &4096700001510714429
 MonoBehaviour:
   m_ObjectHideFlags: 0

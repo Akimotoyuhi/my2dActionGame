@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool isTest = false;
     [SerializeField] private GameObject m_bossHpGage;
     [Header("オーディオ")]
+    [SerializeField] private AudioSource m_audioSource;
     [SerializeField] private AudioClip m_bgm;
     [SerializeField] private AudioClip m_bossBgm;
 
@@ -20,37 +21,23 @@ public class GameManager : MonoBehaviour
         {
             m_spawnPoint = new Vector2(m_testSpawnPos.position.x, m_testSpawnPos.position.y);
         }
+        PlayBgm();
         PlayerSpawn();
     }
 
-    /*
-    /// <summary>
-    /// プレイヤーがCameraColliderに入った事を受け取ったら全てのEnemySpawnointから敵を出させる
-    /// </summary>
-    public void EnemySpawning()
+    public void PlayBgm(bool isBoss = false)
     {
-        if (!m_enemySpawnpoint)
+        if (isBoss)
         {
-            Debug.LogWarning("(GameManager.cs)EnemySoawnpoint is null");
-            return;
+            m_audioSource.clip = m_bossBgm;
+            m_audioSource.Play();
         }
-
-        for (int i = 0; i < m_enemySpawnpoint.transform.childCount; i++)
+        else
         {
-            EnemySpawnPoint e = m_enemySpawnpoint.transform.GetChild(i).GetComponent<EnemySpawnPoint>();
-            e.EnemySpawn();
+            m_audioSource.clip = m_bgm;
+            m_audioSource.Play();
         }
     }
-
-    public void EnemyDestroy()
-    {
-        for (int i = 0; i < m_enemySpawnpoint.transform.childCount; i++)
-        {
-            EnemySpawnPoint e = m_enemySpawnpoint.transform.GetChild(i).GetComponent<EnemySpawnPoint>();
-            e.EnemyDestroy();
-        }
-    }
-    */
 
     /// <summary>
     /// プレイヤーが死んだ事を受け取って数秒待ってからスポーンさせる

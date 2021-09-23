@@ -10,7 +10,7 @@ public class BossEriaCollider : MonoBehaviour
     [SerializeField] private GameObject m_bossHpGage;
     private bool m_isDefeat;
     [System.NonSerialized] public bool m_isBoss = false;
-    private GameManager m_gameManager;
+    [SerializeField] private GameManager m_gameManager;
 
     void Start()
     {
@@ -35,6 +35,7 @@ public class BossEriaCollider : MonoBehaviour
         m_bossHpGage.SetActive(true);
         GameObject g = Instantiate(m_bossPrefab, m_bossPos.position, Quaternion.identity);
         g.transform.parent = this.transform;
+        m_gameManager.PlayBgm(m_isBoss);
     }
 
     public void EndBoss()
@@ -43,5 +44,6 @@ public class BossEriaCollider : MonoBehaviour
         m_invisibleWall.SetActive(false);
         m_bossHpGage.SetActive(false);
         m_isDefeat = true;
+        m_gameManager.PlayBgm();
     }
 }
