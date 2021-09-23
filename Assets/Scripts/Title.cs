@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
+    [SerializeField] private AudioSource m_audioSource;
+    [SerializeField] private AudioClip m_se;
     [SerializeField] private GameObject m_title;
     [SerializeField] private GameObject m_select;
     private bool m_swicth = false;
@@ -18,6 +20,7 @@ public class Title : MonoBehaviour
     {
         if (!m_swicth && Input.anyKeyDown)
         {
+            m_audioSource.PlayOneShot(m_se);
             TitleButton();
         }
     }

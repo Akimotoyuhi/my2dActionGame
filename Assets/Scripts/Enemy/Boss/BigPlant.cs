@@ -89,13 +89,12 @@ public class BigPlant : BossEnemyBase
         yield return StartCoroutine(TyottoShot(m_shot3[0], m_shot3[1], m_position[0], 2f));
         yield return new WaitForSeconds(0.1f);
         yield return StartCoroutine(TyottoShot(m_shot3[2], m_shot3[3], m_position[0], 2f));
-        yield return new WaitForSeconds(1f);
     }
 
     private IEnumerator Pattern4()
     {
         StartCoroutine(TyottoShot(m_shot4[0], m_position[0]));
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
     }
 
     public override void FazeChanger()

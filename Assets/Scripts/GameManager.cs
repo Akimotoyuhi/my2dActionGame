@@ -27,15 +27,18 @@ public class GameManager : MonoBehaviour
 
     public void PlayBgm(bool isBoss = false)
     {
-        if (isBoss)
+        if (m_audioSource)
         {
-            m_audioSource.clip = m_bossBgm;
-            m_audioSource.Play();
-        }
-        else
-        {
-            m_audioSource.clip = m_bgm;
-            m_audioSource.Play();
+            if (isBoss)
+            {
+                m_audioSource.clip = m_bossBgm;
+                m_audioSource.Play();
+            }
+            else
+            {
+                m_audioSource.clip = m_bgm;
+                m_audioSource.Play();
+            }
         }
     }
 
