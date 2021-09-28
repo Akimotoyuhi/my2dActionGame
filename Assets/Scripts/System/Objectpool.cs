@@ -46,7 +46,7 @@ public class Objectpool : MonoBehaviour
         {
             NewBullet obj = Instantiate(m_prefab, transform).GetComponent<NewBullet>();
             obj.gameObject.SetActive(false);
-            m_pool.Enqueue(obj);
+            //m_pool.Enqueue(obj);
         }
     }
 }
