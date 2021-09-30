@@ -2,52 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Objectpool : MonoBehaviour
+public class Objectpool<T> where T : Object, IPoolable
 {
-    [SerializeField] private int m_capasity;
-    [SerializeField] private GameObject m_prefab;
-    private bool m_isActive = false;
-    private Queue<IPoolable<NewBullet>> m_pool;
+    private T m_baseObj = null;
+    private Transform m_parent = null;
+    /// <summary>プール</summary>
+    private List<T> m_pool = new List<T>();
+    private int m_index = 0;
 
-    void Start()
+    public void SetBaseObj(T obj, Transform parent)
     {
-        
+        m_baseObj = obj;
+        m_parent = parent;
     }
 
-    void Update()
+    /// <summary>プールに追加</summary>
+    /// <param name="obj">プールするオブジェクト</param>
+    public void Pooling(T obj)
     {
-        
+        obj.DisactiveForInstantiate();
+        m_pool.Add(obj);
     }
 
-    /// <summary>
-    /// ObjectPool作成
-    /// 
-    /// NOTE:許容量を設定しているが、それは許容量を超えた際にメモリの再割り当てが発生するのを防ぐ為
-    /// </summary>
-    /// <param name="capasity">許容量</param>
-    /// <param name="isFixid"></param>
-    private void CreatePool(int capasity, bool isFixid)
+    public void SetCapasity(int size)
     {
-        if (m_isActive)
-        {
-            Debug.LogWarning("Poolは既に生成されています！");
-            return;
-        }
+        if (size < m_pool.Count) return;
 
-        if (m_prefab == null)
+        for (int i = m_pool.Count - 1; i < size; i++)
         {
-            Debug.LogError("Prefabがセットされていません！");
-            return;
+            T obj = default(T);
+            if (m_parent)
+            {
+                obj = GameObject.Instantiate(m_baseObj, m_parent);
+            }
+            else
+            {
+                obj = GameObject.Instantiate(m_baseObj);
+            }
+            obj.DisactiveForInstantiate();
+            m_pool.Add(obj);
         }
+    }
 
-        m_capasity = capasity;
-        m_pool = new Queue<IPoolable<NewBullet>>(capasity);
-        for (int i = 0; i < capasity; i++)
+    public T Instansiate()
+    {
+        T ret = null;
+        for (int i = 0; i < m_pool.Count; i++)
         {
-            NewBullet obj = Instantiate(m_prefab, transform).GetComponent<NewBullet>();
-            obj.gameObject.SetActive(false);
-            //m_pool.Enqueue(obj);
+            int index = (m_index + i) % m_pool.Count;
+            if (m_pool[index].IsActive) continue;
+
+            m_pool[index].Create();
+            ret = m_pool[index];
+            break;
         }
+        return ret;
     }
 }
 
@@ -56,10 +65,10 @@ public class Objectpool : MonoBehaviour
 /// EntityはIPoolableを実装するクラスのインスタンスを返させる
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public interface IPoolable<T> where T : MonoBehaviour
+public interface IPoolable
 {
-    T Entity { get; }
-
-    void OnReleased(); //生成時
-    void OnCatched(); //破棄時
+    bool IsActive { get; }
+    void DisactiveForInstantiate();
+    void Create(); //生成時
+    void Detroy(); //破棄時
 }
