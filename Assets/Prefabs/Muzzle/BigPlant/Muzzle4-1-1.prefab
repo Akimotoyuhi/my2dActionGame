@@ -51,6 +51,7 @@ MonoBehaviour:
   m_startSpeed: 15
   m_speedUp: 0
   m_bulletPower: 5
+  m_lifeTime: 10
   m_fireInterval: 0.1
   m_curve: 0
   m_zAngle: -40
@@ -64,6 +65,7 @@ MonoBehaviour:
   m_isStop: 0
   m_isParent: 0
   m_tra: {fileID: 0}
+  m_posDifference: 0
 --- !u!1 &7836816099190624178
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +117,7 @@ MonoBehaviour:
   m_startSpeed: 2
   m_speedUp: 0.1
   m_bulletPower: 5
+  m_lifeTime: 10
   m_fireInterval: 0.1
   m_curve: 0
   m_zAngle: 90
@@ -128,6 +131,7 @@ MonoBehaviour:
   m_isStop: 0
   m_isParent: 0
   m_tra: {fileID: 0}
+  m_posDifference: 0
 --- !u!1 &7836816099498811633
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +183,7 @@ MonoBehaviour:
   m_startSpeed: 15
   m_speedUp: 0
   m_bulletPower: 5
+  m_lifeTime: 10
   m_fireInterval: 0.1
   m_curve: 0
   m_zAngle: -80
@@ -192,6 +197,7 @@ MonoBehaviour:
   m_isStop: 0
   m_isParent: 0
   m_tra: {fileID: 0}
+  m_posDifference: 0
 --- !u!1 &7836816099563391059
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +249,7 @@ MonoBehaviour:
   m_startSpeed: 15
   m_speedUp: 0
   m_bulletPower: 5
+  m_lifeTime: 10
   m_fireInterval: 0.1
   m_curve: 0
   m_zAngle: 0
@@ -256,6 +263,7 @@ MonoBehaviour:
   m_isStop: 0
   m_isParent: 0
   m_tra: {fileID: 0}
+  m_posDifference: 0
 --- !u!1 &7836816099564840554
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7836816099564840555}
-  - component: {fileID: 7836816099564840552}
+  - component: {fileID: 3346777582473340366}
   m_Layer: 0
   m_Name: Muzzle4-1-1
   m_TagString: Untagged
@@ -295,7 +303,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7836816099564840552
+--- !u!114 &3346777582473340366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cff5fa61c3b7cb4faa232aba88fc2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_destroyTime: 3
+  m_destroyTime: 2
 --- !u!1 &7836816099661042281
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +367,7 @@ MonoBehaviour:
   m_startSpeed: 2
   m_speedUp: 0.1
   m_bulletPower: 5
+  m_lifeTime: 10
   m_fireInterval: 0.1
   m_curve: 0
   m_zAngle: 180
@@ -372,6 +381,7 @@ MonoBehaviour:
   m_isStop: 0
   m_isParent: 0
   m_tra: {fileID: 0}
+  m_posDifference: 0
 --- !u!1 &7836816100282426756
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +433,7 @@ MonoBehaviour:
   m_startSpeed: 2
   m_speedUp: 0.1
   m_bulletPower: 5
+  m_lifeTime: 10
   m_fireInterval: 0.1
   m_curve: 0
   m_zAngle: 270
@@ -436,6 +447,7 @@ MonoBehaviour:
   m_isStop: 0
   m_isParent: 0
   m_tra: {fileID: 0}
+  m_posDifference: 0
 --- !u!1 &7836816100434850641
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +500,7 @@ MonoBehaviour:
   m_startSpeed: 15
   m_speedUp: 0
   m_bulletPower: 5
+  m_lifeTime: 10
   m_fireInterval: 0.1
   m_curve: 0
   m_zAngle: 40
@@ -501,6 +514,7 @@ MonoBehaviour:
   m_isStop: 0
   m_isParent: 0
   m_tra: {fileID: 0}
+  m_posDifference: 0
 --- !u!114 &7836816100434850636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +596,7 @@ MonoBehaviour:
   m_startSpeed: 2
   m_speedUp: 0.1
   m_bulletPower: 5
+  m_lifeTime: 10
   m_fireInterval: 0.1
   m_curve: 0
   m_zAngle: 0
@@ -595,3 +610,4 @@ MonoBehaviour:
   m_isStop: 0
   m_isParent: 0
   m_tra: {fileID: 0}
+  m_posDifference: 0

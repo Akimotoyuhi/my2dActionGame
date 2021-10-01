@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 594481318706401395}
   - component: {fileID: 594481318706401392}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Hit
-  m_TagString: Block
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +174,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!58 &594481320091698044
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -214,8 +214,6 @@ MonoBehaviour:
     type: 3}
   m_position:
   - {fileID: 2505551158545053627}
-  m_canvas: {fileID: 0}
-  m_hpSlider: {fileID: 0}
   m_shot1:
   - {fileID: 4956517413805081738, guid: a3d4cac5eb9195c49ae0bb4e8da3e03d, type: 3}
   m_shot2:

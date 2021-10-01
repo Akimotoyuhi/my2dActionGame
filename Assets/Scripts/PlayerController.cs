@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour
                     return;
                 }
                 NewBullet bullet = collision.GetComponent<NewBullet>();
+                if (!bullet) return;
                 m_life -= bullet.m_power;
                 m_hpSlider.value = m_life;
                 var inst = Instantiate(m_damageText, this.gameObject.transform.position, Quaternion.identity);
@@ -156,6 +157,7 @@ public class PlayerController : MonoBehaviour
                     return;
                 }
                 Enemy enemy = collision.GetComponent<Enemy>();
+                if (!enemy) return;
                 m_life -= enemy.m_power;
                 m_hpSlider.value = m_life;
                 var inst = Instantiate(m_damageText, this.gameObject.transform.position, Quaternion.identity);

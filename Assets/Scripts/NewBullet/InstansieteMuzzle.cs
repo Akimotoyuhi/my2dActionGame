@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeDestroyAndInstantiete : NewBullet
+public class InstansieteMuzzle : NewBullet
 {
     [SerializeField] GameObject m_muzzle;
     [SerializeField] float m_destroyTime;

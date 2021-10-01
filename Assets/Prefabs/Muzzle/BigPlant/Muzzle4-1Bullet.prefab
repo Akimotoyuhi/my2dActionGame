@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7883144162069412755}
   - component: {fileID: -4995915705095660211}
   - component: {fileID: -3358930722951090413}
-  - component: {fileID: 7883144162069412756}
   - component: {fileID: -6885602797713615421}
+  - component: {fileID: 4371874178802721410}
   m_Layer: 12
   m_Name: Muzzle4-1Bullet
   m_TagString: EnemyBullet
@@ -105,24 +105,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7883144162069412756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7883144162069412757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738f6a28d76f5a14a860260ad3d5f830, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_timer: 0
-  m_effect: {fileID: 5593626734118585817, guid: 6a52d95894fab9e4d9885084f6152251,
-    type: 3}
-  m_muzzle: {fileID: 7836816099564840554, guid: 7c0136f0812ac9c468cad02be4cdd55a,
-    type: 3}
-  m_destroyTime: 1.5
 --- !u!82 &-6885602797713615421
 AudioSource:
   m_ObjectHideFlags: 0
@@ -219,3 +201,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4371874178802721410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7883144162069412757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512058ade83d7d347a14fc8c0bf6ad8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_effect: {fileID: 5593626734118585817, guid: 6a52d95894fab9e4d9885084f6152251,
+    type: 3}
+  m_muzzle: {fileID: 7836816099564840554, guid: 7c0136f0812ac9c468cad02be4cdd55a,
+    type: 3}
+  m_destroyTime: 1.5
