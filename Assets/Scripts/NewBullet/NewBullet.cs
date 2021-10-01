@@ -8,12 +8,13 @@ public class NewBullet : MonoBehaviour
     private float m_startSpeed;
     private float m_speedUp;
     private float m_curve;
-    public float m_timer;
+    protected float m_timer;
+    private float m_lifeTime;
     [System.NonSerialized] public int m_power;
     [SerializeField] private GameObject m_effect;
     private Vector2 v;
     private Rigidbody2D m_rb;
-    private bool m_isquitting = false;
+    private bool m_isQuiting = false;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class NewBullet : MonoBehaviour
     {
         Move();
         m_timer += Time.deltaTime;
-        if (m_timer > 10f)
+        if (m_timer > m_lifeTime)
         {
             Destroy(this.gameObject);
         }
@@ -59,26 +60,50 @@ public class NewBullet : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void SetParameter(float endSpeed, float startSpeed, float speedUp, float curve, int power)
+    public void SetParameter(float endSpeed, float startSpeed, float speedUp, float curve, int power, float lifeTime)
     {
         m_endSpeed = endSpeed;
         m_startSpeed = startSpeed;
         m_speedUp = speedUp;
         m_curve = curve;
         m_power = power;
+        m_lifeTime = lifeTime;
     }
 
     private void OnApplicationQuit()
     {
-        m_isquitting = true;
+        m_isQuiting = true;
     }
 
     private void OnDestroy()
     {
         //シーン実行終了時にゴミが残ってしまうエラー回避用
-        if (!m_isquitting)
+        if (!m_isQuiting)
         {
             Instantiate(m_effect, this.transform.position, Quaternion.identity);
         }
     }
+    /*
+    //オブジェクトプールに対応
+    public bool IsActive => m_renderer.enabled;
+    private Renderer m_renderer;
+
+    public void DisactiveForInstantiate()
+    {
+        m_renderer = GetComponent<Renderer>();
+        m_renderer.enabled = false;
+    }
+
+    public void Create()
+    {
+        m_renderer.enabled = true;
+        m_timer = 0f;
+
+    }
+
+    public void Detroy()
+    {
+
+    }
+    */
 }

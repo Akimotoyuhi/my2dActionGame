@@ -24,6 +24,11 @@ public class Objectpool<T> where T : Object, IPoolable
         m_pool.Add(obj);
     }
 
+    /// <summary>
+    /// プールのサイズ設定
+    /// プール内の全てのオブジェクトが使われていた場合は新たに追加する（？）
+    /// </summary>
+    /// <param name="size"></param>
     public void SetCapasity(int size)
     {
         if (size < m_pool.Count) return;
@@ -60,11 +65,6 @@ public class Objectpool<T> where T : Object, IPoolable
     }
 }
 
-/// <summary>
-/// プールさせるオブジェクトには、このインターフェースの実装を強制する
-/// EntityはIPoolableを実装するクラスのインスタンスを返させる
-/// </summary>
-/// <typeparam name="T"></typeparam>
 public interface IPoolable
 {
     bool IsActive { get; }

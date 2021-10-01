@@ -27,9 +27,11 @@ public class ShotFoword : MonoBehaviour
     [SerializeField] private float m_startSpeed;
     /// <summary>弾の加速度</summary>
     [SerializeField] private float m_speedUp;
-    [Header("弾と直接関係ないやつ")]
+    [Header("発射間隔とパラメーター")]
     /// <summary>弾の攻撃力</summary>
     [SerializeField] private int m_bulletPower = 1;
+    /// <summary>弾が消えるまでの時間</summary>
+    [SerializeField] private float m_lifeTime = 10f;
     /// <summary>発射間隔</summary>
     [SerializeField] private float m_fireInterval = 1;
     [Header("カーブ関係")]
@@ -198,7 +200,7 @@ public class ShotFoword : MonoBehaviour
         NewBullet m_bullet = t.GetComponent<NewBullet>();
         if (m_bullet)
         {
-            m_bullet.SetParameter(m_endSpeed, m_startSpeed, m_speedUp, m_curve, m_bulletPower);
+            m_bullet.SetParameter(m_endSpeed, m_startSpeed, m_speedUp, m_curve, m_bulletPower, m_lifeTime);
         }
     }
 
