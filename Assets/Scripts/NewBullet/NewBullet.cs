@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBullet : MonoBehaviour
+public class NewBullet : MonoBehaviour,IDamage, IPoolable
 {
     private float m_endSpeed;
     private float m_startSpeed;
@@ -83,7 +83,13 @@ public class NewBullet : MonoBehaviour
             Instantiate(m_effect, this.transform.position, Quaternion.identity);
         }
     }
-    /*
+
+    //IDamageに対応
+    public int Damage()
+    {
+        return m_power;
+    }
+
     //オブジェクトプールに対応
     public bool IsActive => m_renderer.enabled;
     private Renderer m_renderer;
@@ -105,5 +111,4 @@ public class NewBullet : MonoBehaviour
     {
 
     }
-    */
 }

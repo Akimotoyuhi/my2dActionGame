@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour, IDamage
 {
     /// <summary>最大体力</summary>
     [SerializeField] public int m_maxLife = 1;
@@ -116,5 +116,10 @@ public abstract class Enemy : MonoBehaviour
         {
             return;
         }
+    }
+
+    public int Damage()
+    {
+        return m_power;
     }
 }

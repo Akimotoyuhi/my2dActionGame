@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossEnemyBase : MonoBehaviour
+public class BossEnemyBase : MonoBehaviour, IDamage
 {
     /// <summary>最大体力</summary>
     [SerializeField] public int m_maxLife = 1;
@@ -186,5 +186,10 @@ public class BossEnemyBase : MonoBehaviour
     private void OnDestroy()
     {
         transform.parent.gameObject.GetComponent<BossEriaCollider>().EndBoss();
+    }
+
+    public int Damage()
+    {
+        return m_power;
     }
 }

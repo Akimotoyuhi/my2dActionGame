@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool godMode = false;
     private bool m_isGround = false;
     //private bool m_isJump = false;
-    private bool m_damage = false;
+    private bool m_isDamage = false;
     private float m_timer = 0;
     private float m_bulletTimer = 1;
     private float m_mpTimer = 0;
@@ -134,37 +134,18 @@ public class PlayerController : MonoBehaviour
     {
         if (!godMode)
         {
-            if (collision.tag == "EnemyBullet")
+            if (!m_isDamage)
             {
-                if (m_damage)
+                IDamage damage = collision.GetComponent<IDamage>();
+                if (damage != null)
                 {
-                    return;
+                    m_life -= damage.Damage();
+                    m_hpSlider.value = m_life;
+                    var inst = Instantiate(m_damageText, this.gameObject.transform.position, Quaternion.identity);
+                    Text text = inst.transform.GetChild(0).GetComponent<Text>();
+                    text.text = $"{damage.Damage()}";
+                    StartCoroutine("DamageTimer");
                 }
-                NewBullet bullet = collision.GetComponent<NewBullet>();
-                if (!bullet) return;
-                m_life -= bullet.m_power;
-                m_hpSlider.value = m_life;
-                var inst = Instantiate(m_damageText, this.gameObject.transform.position, Quaternion.identity);
-                Text text = inst.transform.GetChild(0).GetComponent<Text>();
-                text.text = $"{bullet.m_power}";
-
-                StartCoroutine("DamageTimer");
-            }
-            if (collision.tag == "Enemy")
-            {
-                if (m_damage)
-                {
-                    return;
-                }
-                Enemy enemy = collision.GetComponent<Enemy>();
-                if (!enemy) return;
-                m_life -= enemy.m_power;
-                m_hpSlider.value = m_life;
-                var inst = Instantiate(m_damageText, this.gameObject.transform.position, Quaternion.identity);
-                Text text = inst.transform.GetChild(0).GetComponent<Text>();
-                text.text = $"{enemy.m_power}";
-
-                StartCoroutine("DamageTimer");
             }
         }
         
@@ -273,7 +254,7 @@ public class PlayerController : MonoBehaviour
                 if (bullet)
                 {
                     bullet.m_minSpeed = m_bulletSpeed;
-                    bullet.m_power = SetDamage(m_power);
+                    bullet.m_power = SetBltDamage(m_power);
                     bullet.m_velo = v;
                 }
             }
@@ -294,7 +275,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private int SetDamage(int damage)
+    /// <summary>
+    /// 弾のダメージ量を計算
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <returns></returns>
+    private int SetBltDamage(int damage)
     {
         return damage * s_attackDamage[m_selectBulletIndex];
     }
@@ -372,12 +358,12 @@ public class PlayerController : MonoBehaviour
     /// <returns></returns>
     IEnumerator DamageTimer()
     {
-        if (m_damage)
+        if (m_isDamage)
         {
             yield break;
         }
 
-        m_damage = true;
+        m_isDamage = true;
 
         // 無敵時間中の点滅
         for (int i = 0; i < 10; i++)
@@ -388,6 +374,6 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
-        m_damage = false;
+        m_isDamage = false;
     }
 }
