@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //被ダメージ処理
         if (!godMode)
         {
             if (!m_isDamage)
@@ -332,7 +333,7 @@ public class PlayerController : MonoBehaviour
     public void GetStatusItem(StatusItems getItem)
     {
         m_haveItem[(int)getItem]++;
-        SetState();
+        SetMaxState();
     }
 
     /// <summary>
@@ -348,6 +349,19 @@ public class PlayerController : MonoBehaviour
         m_mana = m_maxMana;
         m_mpSlider.maxValue = m_maxMana;
         m_mpSlider.value = m_mana;
+        m_power = m_power + m_haveItem[(int)StatusItems.Power] * s_itembuff[(int)StatusItems.Power];
+        Debug.Log($"最大体力{m_maxLife}: 最大マナ{m_maxMana}: 攻撃力{m_power}");
+    }
+
+    /// <summary>
+    /// 上の最大値の更新だけvar
+    /// </summary>
+    private void SetMaxState()
+    {
+        m_maxLife = m_maxLife + m_haveItem[(int)StatusItems.Life] * s_itembuff[(int)StatusItems.Life];
+        m_hpSlider.maxValue = m_maxLife;
+        m_maxMana = m_maxMana + m_haveItem[(int)StatusItems.Mana] * s_itembuff[(int)StatusItems.Mana];
+        m_mpSlider.maxValue = m_maxMana;
         m_power = m_power + m_haveItem[(int)StatusItems.Power] * s_itembuff[(int)StatusItems.Power];
         Debug.Log($"最大体力{m_maxLife}: 最大マナ{m_maxMana}: 攻撃力{m_power}");
     }
