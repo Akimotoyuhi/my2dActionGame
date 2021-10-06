@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_power: 5
   m_moveSpeed: 5
-  m_jumpPower: 7
+  m_jumpPower: 20
   m_fireInterval: 0.2
   m_maxLife: 50
   m_maxMana: 50
@@ -312,6 +312,8 @@ MonoBehaviour:
   m_damageText: {fileID: 4010514509476805378, guid: fdf5d5f516c1af54ca96a6109b599bbb,
     type: 3}
   m_spawnEffect: {fileID: 100004, guid: 2ee0d8fc99703e349869e71f98164d25, type: 3}
+  m_limitTime: 0.1
+  m_gr: 9.8
   ground: {fileID: 4491234211038491085}
   godMode: 0
 --- !u!58 &4491234211938195069

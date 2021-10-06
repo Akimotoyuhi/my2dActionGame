@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject m_damageText;
     /// <summary> スポーン時エフェクト</summary>
     [SerializeField] private GameObject m_spawnEffect;
+    [SerializeField] float m_limitTime = 0.1f;
+    [SerializeField] float m_gravityDrag = .8f;
     private GameObject m_playerUi = null;
     private GameObject[] m_bulletSprites;
     private Rigidbody2D m_rb = null;
@@ -63,9 +65,9 @@ public class PlayerController : MonoBehaviour
     private GameManager m_gamemanager = null;
     [SerializeField] private IsGrounded ground = null;
     [SerializeField] private bool godMode = false;
-    private bool m_isGround = false;
-    //private bool m_isJump = false;
+    private bool m_isJump = false;
     private bool m_isDamage = false;
+    private bool m_isGround;
     private float m_timer = 0;
     private float m_bulletTimer = 1;
     private float m_mpTimer = 0;
@@ -123,6 +125,7 @@ public class PlayerController : MonoBehaviour
             m_anim.SetBool("Run", false);
             xSpeed = 0f;
         }
+        //Jump();
         Jump();
         Fire();
         AttackChanged();
@@ -183,44 +186,20 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Jump()
     {
-        bool isrel = false;
-        if (Input.GetButtonDown("Jump"))
+        Vector2 velocity = m_rb.velocity;
+        if (Input.GetButtonDown("Jump") && m_isGround)
         {
-            // 押されたと同時にタイマーとフラグをリセット
-            m_timer = 0;
-            m_isrelease = false;
+            m_isGround = false;
+            velocity.y = m_jumpPower;
         }
-        if (Input.GetButtonUp("Jump"))
+        else if (!Input.GetButton("Jump") && velocity.y > 0)
         {
-            // 途中でジャンプボタンから手を離した
-            if (m_isrelease) return; ;
-            isrel = true;
-            m_isrelease = true;
+            // 上昇中にジャンプボタンを離したら上昇を減速する
+            velocity.y *= m_gravityDrag;
         }
-        if (Input.GetButton("Jump")) 
-        { 
-            // ジャンプボタンが押されている時間を数える
-            m_timer += Time.deltaTime; 
-        }
-
-        if (m_isGround)
-        {
-            // 入力の最大値を超えたら強制的に飛ぶ
-            if (m_timer > 0.1 && !m_isrelease)
-            {
-                m_rb.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
-                m_anim.SetTrigger("Jump");
-                m_isrelease = true;
-                return;
-            }
-            if (isrel)
-            {
-                m_rb.AddForce(Vector2.up * (m_jumpPower / 1.5f), ForceMode2D.Impulse);
-                m_anim.SetTrigger("Jump");
-            }
-        }
+        m_rb.velocity = velocity;
     }
-    
+
     /// <summary>
     /// 攻撃
     /// </summary>

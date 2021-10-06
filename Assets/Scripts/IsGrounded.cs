@@ -10,18 +10,18 @@ public class IsGrounded : MonoBehaviour
 
     public bool IsGrouded()
     {
-        if (m_enter || m_stay)
-        {
-            isGrouded = true;
-        }
-        else if (m_exit)
-        {
-            isGrouded = false;
-        }
+        //if (m_enter || m_stay)
+        //{
+        //    isGrouded = true;
+        //}
+        //else if (m_exit)
+        //{
+        //    isGrouded = false;
+        //}
 
-        m_enter = false;
-        m_exit = false;
-        m_stay = false;
+        //m_enter = false;
+        //m_exit = false;
+        //m_stay = false;
 
         return isGrouded;
     }
@@ -30,7 +30,7 @@ public class IsGrounded : MonoBehaviour
     {
         if (collision.tag == ground)
         {
-            m_enter = true;
+            isGrouded = true;
         }
     }
 
@@ -38,7 +38,7 @@ public class IsGrounded : MonoBehaviour
     {
         if (collision.tag == ground)
         {
-            m_stay = true;
+            isGrouded = true;
         }
     }
 
@@ -46,7 +46,7 @@ public class IsGrounded : MonoBehaviour
     {
         if (collision.tag == ground)
         {
-            m_exit = true;
+            isGrouded = false;
         }
     }
 }
