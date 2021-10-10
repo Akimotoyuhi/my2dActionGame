@@ -51,27 +51,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject m_damageText;
     /// <summary> スポーン時エフェクト</summary>
     [SerializeField] private GameObject m_spawnEffect;
-    [SerializeField] float m_limitTime = 0.1f;
-    [SerializeField] float m_gravityDrag = .8f;
-    private GameObject m_playerUi = null;
+    //[SerializeField] float m_limitTime = 0.1f;
+    /// <summary> 重力</summary>
+    [SerializeField] float m_gravityDrag = 0.8f;
     private GameObject[] m_bulletSprites;
-    private Rigidbody2D m_rb = null;
-    private Animator m_anim = null;
-    private Slider m_hpSlider = null;
-    private Slider m_mpSlider = null;
-    private GameObject m_canvas = null;
-    private CinemachineConfiner m_vcam = null;
-    private SpriteRenderer m_spriteRenderer = null;
-    private GameManager m_gamemanager = null;
-    [SerializeField] private IsGrounded ground = null;
+    private Rigidbody2D m_rb;
+    private Animator m_anim;
+    private Slider m_hpSlider;
+    private Slider m_mpSlider;
+    private CinemachineConfiner m_vcam;
+    private SpriteRenderer m_spriteRenderer;
+    private GameManager m_gamemanager;
+    [SerializeField] private IsGrounded ground;
     [SerializeField] private bool godMode = false;
-    private bool m_isJump = false;
     private bool m_isDamage = false;
     private bool m_isGround;
-    private float m_timer = 0;
     private float m_bulletTimer = 1;
     private float m_mpTimer = 0;
-    private bool m_isrelease = false;
     /// <summary> 消費ｍｐ</summary>
     static private int[] s_attackMana = new int[] { 2, 10 };
     /// <summary> 攻撃のダメージ倍率</summary>
@@ -85,13 +81,13 @@ public class PlayerController : MonoBehaviour
         m_anim = GetComponent<Animator>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        m_canvas = GameObject.Find("Canvas");
-        m_playerUi = m_canvas.transform.Find("PlayerStateUI").gameObject;
-        m_hpSlider = m_playerUi.transform.Find("HPgage").GetComponent<Slider>();
+        GameObject canvas = GameObject.Find("Canvas");
+        GameObject playerUi = canvas.transform.Find("PlayerStateUI").gameObject;
+        m_hpSlider = playerUi.transform.Find("HPgage").GetComponent<Slider>();
         m_hpSlider.maxValue = m_maxLife;
-        m_mpSlider = m_playerUi.transform.Find("MPgage").GetComponent<Slider>();
+        m_mpSlider = playerUi.transform.Find("MPgage").GetComponent<Slider>();
         m_mpSlider.maxValue = m_maxMana;
-        GameObject BulletType = m_playerUi.transform.Find("BulletType").gameObject;
+        GameObject BulletType = playerUi.transform.Find("BulletType").gameObject;
         m_bulletSprites = new GameObject[BulletType.transform.childCount];
         for (int i = 0; i < BulletType.transform.childCount; i++)
         {
@@ -189,7 +185,7 @@ public class PlayerController : MonoBehaviour
         Vector2 velocity = m_rb.velocity;
         if (Input.GetButtonDown("Jump") && m_isGround)
         {
-            m_isGround = false;
+            //m_isGround = false;
             velocity.y = m_jumpPower;
         }
         else if (!Input.GetButton("Jump") && velocity.y > 0)
