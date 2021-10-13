@@ -33,6 +33,9 @@ public abstract class Enemy : MonoBehaviour, IDamage
     [System.NonSerialized] public Rigidbody2D m_rb;
     [System.NonSerialized] public Animator m_anim;
 
+    /// <summary>
+    /// 敵作る時にとりあえずStartでやっておいてほしい事
+    /// </summary>
     public void SetUp()
     {
         m_rb = GetComponent<Rigidbody2D>();
@@ -43,6 +46,9 @@ public abstract class Enemy : MonoBehaviour, IDamage
         }
     }
 
+    /// <summary>
+    /// 拡張版セットアップ
+    /// </summary>
     public void AnimSetUp()
     {
         SetUp();
@@ -87,6 +93,9 @@ public abstract class Enemy : MonoBehaviour, IDamage
         }
     }
 
+    /// <summary>
+    /// 死んだ時のリアクション
+    /// </summary>
     private void OnDead()
     {
         if (m_rb.bodyType != RigidbodyType2D.Dynamic) { m_rb.bodyType = RigidbodyType2D.Dynamic; }
@@ -103,7 +112,7 @@ public abstract class Enemy : MonoBehaviour, IDamage
     }
 
     /// <summary>
-    /// Invoke用
+    /// Invoke用 呼ばれると死ぬ
     /// </summary>
     private void Dead()
     {

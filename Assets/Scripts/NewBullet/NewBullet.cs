@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBullet : MonoBehaviour,IDamage, IPoolable
+public class NewBullet : MonoBehaviour, IDamage, IPoolable
 {
     private float m_endSpeed;
     private float m_startSpeed;
@@ -10,7 +10,8 @@ public class NewBullet : MonoBehaviour,IDamage, IPoolable
     private float m_curve;
     protected float m_timer;
     private float m_lifeTime;
-    [System.NonSerialized] public int m_power;
+    private int m_power;
+    private Transform m_defPos;
     [SerializeField] private GameObject m_effect;
     private Vector2 v;
     private Rigidbody2D m_rb;
@@ -19,18 +20,20 @@ public class NewBullet : MonoBehaviour,IDamage, IPoolable
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
-        v = transform.rotation * Vector2.up;
-        v.Normalize();
-        m_rb.velocity = v * m_startSpeed;
+        m_defPos = this.transform;
+        //v = transform.rotation * Vector2.up;
+        //v.Normalize();
+        //m_rb.velocity = v * m_startSpeed;
     }
 
     void Update()
     {
+        if (!m_renderer.enabled) { return; }
         Move();
         m_timer += Time.deltaTime;
         if (m_timer > m_lifeTime)
         {
-            Destroy(this.gameObject);
+            Destroy();
         }
     }
 
@@ -57,10 +60,10 @@ public class NewBullet : MonoBehaviour,IDamage, IPoolable
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(this.gameObject);
+        Destroy();
     }
 
-    public void SetParameter(float endSpeed, float startSpeed, float speedUp, float curve, int power, float lifeTime)
+    public void SetParameter(float endSpeed, float startSpeed, float speedUp, float curve, int power, float lifeTime, Color color)
     {
         m_endSpeed = endSpeed;
         m_startSpeed = startSpeed;
@@ -68,6 +71,7 @@ public class NewBullet : MonoBehaviour,IDamage, IPoolable
         m_curve = curve;
         m_power = power;
         m_lifeTime = lifeTime;
+        if (GetComponent<SpriteRenderer>()) GetComponent<SpriteRenderer>().color = color;
     }
 
     private void OnApplicationQuit()
@@ -82,6 +86,11 @@ public class NewBullet : MonoBehaviour,IDamage, IPoolable
         {
             Instantiate(m_effect, this.transform.position, Quaternion.identity);
         }
+    }
+
+    public void SetDefpos(Transform pos)
+    {
+        m_defPos = pos;
     }
 
     //IDamageに対応
@@ -104,11 +113,11 @@ public class NewBullet : MonoBehaviour,IDamage, IPoolable
     {
         m_renderer.enabled = true;
         m_timer = 0f;
-
+        this.transform.position = m_defPos.position;
     }
 
-    public void Detroy()
+    public void Destroy()
     {
-
+        m_renderer.enabled = false;
     }
 }

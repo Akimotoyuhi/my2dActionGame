@@ -25,7 +25,9 @@ public class PooltestBullet : MonoBehaviour, IPoolable
 
     public void DisactiveForInstantiate()
     {
-
+        //生成時に非表示にする
+        m_renderer = GetComponent<Renderer>();
+        m_renderer.enabled = false;
     }
 
     public void Create()
@@ -33,7 +35,7 @@ public class PooltestBullet : MonoBehaviour, IPoolable
 
     }
 
-    public void Detroy()
+    public void Destroy()
     {
 
     }

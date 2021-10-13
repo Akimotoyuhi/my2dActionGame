@@ -121,7 +121,6 @@ public class PlayerController : MonoBehaviour
             m_anim.SetBool("Run", false);
             xSpeed = 0f;
         }
-        //Jump();
         Jump();
         Fire();
         AttackChanged();

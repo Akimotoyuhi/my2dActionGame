@@ -68,7 +68,7 @@ public class Objectpool<T> where T : Object, IPoolable
 public interface IPoolable
 {
     bool IsActive { get; }
-    void DisactiveForInstantiate();
+    void DisactiveForInstantiate(); //実行時
     void Create(); //生成時
-    void Detroy(); //破棄時
+    void Destroy(); //破棄時
 }

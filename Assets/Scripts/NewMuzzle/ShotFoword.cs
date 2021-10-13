@@ -71,6 +71,7 @@ public class ShotFoword : MonoBehaviour
     private bool m_isTurm = false;
     private GameObject m_player;
     private Vector2 m_vec;
+    private Objectpool<NewBullet> m_objPool = new Objectpool<NewBullet>();
 
     void Start()
     {
@@ -78,6 +79,10 @@ public class ShotFoword : MonoBehaviour
         SetTypes();
         transform.rotation = Quaternion.Euler(0, 0, m_zAngle);
         m_z = m_zAngle;
+
+        //作ってプールする
+        var blt = Instantiate(m_bulletPrefab).GetComponent<NewBullet>();
+        m_objPool.Pooling(blt);
     }
 
     void Update()
@@ -175,7 +180,7 @@ public class ShotFoword : MonoBehaviour
     /// </summary>
     private void Shot()
     {
-        if (!m_player) { m_player = GameObject.FindWithTag("Player"); }
+        if (!m_player) m_player = GameObject.FindWithTag("Player");
         if (m_isSetPlayerXpos)
         {
             //自分から見てプレイヤーが左右どっちかにいるかを判別して自分の向く方向を変える
@@ -189,19 +194,20 @@ public class ShotFoword : MonoBehaviour
             }
         }
 
-        if (!m_tra) { m_tra = this.transform; }
+        if (!m_tra) m_tra = this.transform;
         m_vec = new Vector2(Random.Range(m_tra.position.x - m_posDifference, m_tra.position.x + m_posDifference), Random.Range(m_tra.position.y - m_posDifference, m_tra.position.y + m_posDifference));
-        var t = Instantiate(m_bulletPrefab, m_vec, this.transform.rotation);
-        if (m_isParent) { t.transform.parent = this.transform; }
-        if (t.GetComponent<SpriteRenderer>())
+        //var t = Instantiate(m_bulletPrefab, m_vec, this.transform.rotation);
+        NewBullet t = m_objPool.Instansiate();
+        if (m_isParent) t.transform.parent = this.transform;
+        if (!t)
         {
-            t.GetComponent<SpriteRenderer>().color = m_color;
+            //プール内に使えるオブジェクトが無い場合は新しく作ってプールする
+            t = Instantiate(m_bulletPrefab).GetComponent<NewBullet>();
+            m_objPool.Pooling(t);
+            t.SetDefpos(this.transform);
         }
-        NewBullet m_bullet = t.GetComponent<NewBullet>();
-        if (m_bullet)
-        {
-            m_bullet.SetParameter(m_endSpeed, m_startSpeed, m_speedUp, m_curve, m_bulletPower, m_lifeTime);
-        }
+        else t.SetDefpos(this.transform);
+        t.SetParameter(m_endSpeed, m_startSpeed, m_speedUp, m_curve, m_bulletPower, m_lifeTime, m_color);
     }
 
     private void SetAngle()
