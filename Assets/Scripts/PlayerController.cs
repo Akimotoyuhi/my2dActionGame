@@ -184,7 +184,7 @@ public class PlayerController : MonoBehaviour
         Vector2 velocity = m_rb.velocity;
         if (Input.GetButtonDown("Jump") && m_isGround)
         {
-            //m_isGround = false;
+            m_isGround = false;
             velocity.y = m_jumpPower;
         }
         else if (!Input.GetButton("Jump") && velocity.y > 0)

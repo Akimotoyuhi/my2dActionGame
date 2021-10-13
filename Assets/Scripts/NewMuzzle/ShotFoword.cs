@@ -81,8 +81,8 @@ public class ShotFoword : MonoBehaviour
         m_z = m_zAngle;
 
         //作ってプールする
-        var blt = Instantiate(m_bulletPrefab).GetComponent<NewBullet>();
-        m_objPool.Pooling(blt);
+        //var blt = Instantiate(m_bulletPrefab).GetComponent<NewBullet>();
+        //m_objPool.Pooling(blt);
     }
 
     void Update()
@@ -197,17 +197,16 @@ public class ShotFoword : MonoBehaviour
         if (!m_tra) m_tra = this.transform;
         m_vec = new Vector2(Random.Range(m_tra.position.x - m_posDifference, m_tra.position.x + m_posDifference), Random.Range(m_tra.position.y - m_posDifference, m_tra.position.y + m_posDifference));
         //var t = Instantiate(m_bulletPrefab, m_vec, this.transform.rotation);
-        NewBullet t = m_objPool.Instansiate();
-        if (m_isParent) t.transform.parent = this.transform;
-        if (!t)
+        NewBullet b = m_objPool.Instansiate();
+        //if (m_isParent) b.transform.parent = this.transform; //子にするか　今はバグるのでコメント
+        if (!b)
         {
             //プール内に使えるオブジェクトが無い場合は新しく作ってプールする
-            t = Instantiate(m_bulletPrefab).GetComponent<NewBullet>();
-            m_objPool.Pooling(t);
-            t.SetDefpos(this.transform);
+            b = Instantiate(m_bulletPrefab, m_vec, Quaternion.identity).GetComponent<NewBullet>();
+            m_objPool.Pooling(b);
         }
-        else t.SetDefpos(this.transform);
-        t.SetParameter(m_endSpeed, m_startSpeed, m_speedUp, m_curve, m_bulletPower, m_lifeTime, m_color);
+        b.SetDefpos(m_vec);
+        b.SetParameter(m_endSpeed, m_startSpeed, m_speedUp, m_curve, m_bulletPower, m_lifeTime, m_color, transform.rotation);
     }
 
     private void SetAngle()

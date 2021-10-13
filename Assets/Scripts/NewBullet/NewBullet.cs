@@ -11,7 +11,8 @@ public class NewBullet : MonoBehaviour, IDamage, IPoolable
     protected float m_timer;
     private float m_lifeTime;
     private int m_power;
-    private Transform m_defPos;
+    private Vector2 m_defPos;
+    //private Quaternion m_angle;
     [SerializeField] private GameObject m_effect;
     private Vector2 v;
     private Rigidbody2D m_rb;
@@ -20,10 +21,10 @@ public class NewBullet : MonoBehaviour, IDamage, IPoolable
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
-        m_defPos = this.transform;
-        //v = transform.rotation * Vector2.up;
-        //v.Normalize();
-        //m_rb.velocity = v * m_startSpeed;
+        //this.transform.position = m_defPos;
+        v = transform.rotation * Vector2.up;
+        v.Normalize();
+        m_rb.velocity = v * m_startSpeed;
     }
 
     void Update()
@@ -63,7 +64,7 @@ public class NewBullet : MonoBehaviour, IDamage, IPoolable
         Destroy();
     }
 
-    public void SetParameter(float endSpeed, float startSpeed, float speedUp, float curve, int power, float lifeTime, Color color)
+    public void SetParameter(float endSpeed, float startSpeed, float speedUp, float curve, int power, float lifeTime, Color color, Quaternion angle)
     {
         m_endSpeed = endSpeed;
         m_startSpeed = startSpeed;
@@ -72,6 +73,7 @@ public class NewBullet : MonoBehaviour, IDamage, IPoolable
         m_power = power;
         m_lifeTime = lifeTime;
         if (GetComponent<SpriteRenderer>()) GetComponent<SpriteRenderer>().color = color;
+        this.transform.rotation = angle;
     }
 
     private void OnApplicationQuit()
@@ -88,9 +90,9 @@ public class NewBullet : MonoBehaviour, IDamage, IPoolable
         }
     }
 
-    public void SetDefpos(Transform pos)
+    public void SetDefpos(Vector2 pos)
     {
-        m_defPos = pos;
+        this.transform.position = pos;
     }
 
     //IDamageに対応
@@ -113,7 +115,7 @@ public class NewBullet : MonoBehaviour, IDamage, IPoolable
     {
         m_renderer.enabled = true;
         m_timer = 0f;
-        this.transform.position = m_defPos.position;
+        this.transform.position = m_defPos;
     }
 
     public void Destroy()
